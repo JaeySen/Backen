@@ -10,6 +10,6 @@ const userSchema = new mongoose.Schema({
     // country : String,
 }, {versionKey:false});
 
-const User = new mongoose.model('User', userSchema, 'userTable');
+const User = new mongoose.model('User', userSchema, 'users');
 
 module.exports = User;
