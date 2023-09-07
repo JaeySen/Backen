@@ -15,7 +15,7 @@ const getAllProjects = (req, res) => {
 }
 
 const getProjectById = (req, res) => {
-    Project.findById(req.params.id).exec().then((data)=>{
+    Project.find({ id: req.params.id }).exec().then((data)=>{
         res.status(202).json({
             success: true, 
             data:data
