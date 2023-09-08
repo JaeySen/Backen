@@ -57,4 +57,4 @@ const projectSchema = new Schema({
     endDate: Number
 })
 
-module.exports = mongoose.model('projects', projectSchema);
+module.exports = mongoose.model('Project', projectSchema, 'projects');

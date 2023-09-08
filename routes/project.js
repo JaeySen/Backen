@@ -5,7 +5,8 @@ const upload = require('../middleware/upload');
 
 const {
     getAllProjects,
-    getProjectById
+    getProjectById,
+    getProjectsByEmail
 } = require('../controller/project');
 
 
@@ -14,6 +15,7 @@ const {
 // router.post('/addEmployee', upload.single('avatar'), HandleAddEmployee);
 router.get('/getAllProjects', getAllProjects);
 router.get('/getProjectById/:id', getProjectById);
+router.get('/getProjectsByEmail/:email', getProjectsByEmail);
 // router.put('/updateEmployeeById/:id', HandleUpdateEmployeeById);
 // router.patch('/patchEmployeeById/:id', HandlePatchEmployeeById);
 // router.delete('/deleteEmployeeById/:id', HandleDeleteEmployeeById);
