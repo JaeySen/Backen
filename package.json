@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "nodemon",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon --watch controller --watch routes server.js"
   },
   "author": "shubhankar singh",
   "license": "ISC",
