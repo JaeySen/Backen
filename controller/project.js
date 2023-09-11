@@ -16,7 +16,7 @@ const getAllProjects = (req, res) => {
     })
 }
 
-const getProjectsByEmail = (req, res) => {
+const getProjectsByUserEmail = (req, res) => {
     User.findOne({ email: req.params.email }).then((data)=>{
         UserProject.find({ user: data._id }, 'project -_id').populate({path: 'project', model: 'Project'}).then((data) => {
             let temp = new Array();
@@ -51,6 +51,21 @@ const getProjectsByEmail = (req, res) => {
     })
 }
 
+const getProjectsByUserId = (req, res) => {
+    User.findOne({ _id: req.params.uid }).populate({path: 'projects', model: 'Project'}).then((data)=>{
+            // console.log(temp)
+            res.status(200).json({
+                success: true,
+                data:data
+            })
+    }).catch((err)=>{
+        res.status(404).json({
+            success: false, 
+            message:err
+        })
+    })
+}
+
 const getProjectById = (req, res) => {
     Project.find({ id: req.params.id }).exec().then((data)=>{
         res.status(202).json({
@@ -65,5 +80,6 @@ const getProjectById = (req, res) => {
 module.exports = {
     getAllProjects,
     getProjectById,
-    getProjectsByEmail
+    getProjectsByUserEmail,
+    getProjectsByUserId
 }

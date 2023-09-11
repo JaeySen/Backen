@@ -234,6 +234,39 @@
             }
           }
         }
+      },
+      "/project": {
+        
+      },
+      "/project/${projectId}": {
+
+      }, 
+      "/project/group": {
+        "post": {
+          "tags": ["Project"],
+          "description": "Add group to project with name and projectId",
+          "parameters": [
+            {
+              "name": "group",
+              "in": "body",
+              "description": "Group name",
+              "schema": {
+                "$ref": "#/definitions/AddGroupToProject"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "Group added to Project",
+              "schema": {
+                "$ref": "#/definitions/PostResponseSuccess"
+              }
+            }
+          }
+        }
       }
     },
     "definitions": {
@@ -294,6 +327,18 @@
           }, 
           "authorization": {
             "type": "Array"
+          }
+        }
+      },
+      "AddGroupToProject": {
+        "required": ["name", "project"],
+        "properties": {
+          "name": {
+            "type": "string"
+          }, 
+          "project": {
+            "type": "string",
+            "default": "${projectId}"
           }
         }
       },

@@ -18,7 +18,7 @@ router.get('/', getAllGroups);
 router.post('/', createGroup);
 router.delete('/:id', deleteGroup);
 router.post('/user', addUserToGroup);
-router.delete('/user/:id', removeUserFromGroup)
+router.delete('/user/:id', removeUserFromGroup);
 // router.get('/getUsersByGroupId/:gid', getUsersByGroupId);
 // router.get('/getUsersByProjectId/:pid', getUsersByProjectId);
 // router.put('/updateEmployeeById/:id', HandleUpdateEmployeeById);

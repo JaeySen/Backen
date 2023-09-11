@@ -3,6 +3,7 @@ const Group = require('../model/group');
 // const Project = require('../model/project');
 // const UserProject = require('../model/users_projects');
 // const GroupUser = require('../model/groups_users');
+const ProjectGroup = require('../model/projects_groups');
 const { ObjectId } = require('mongodb');
 
 const getAllGroups = (req, res) => {
@@ -55,65 +56,48 @@ const deleteGroup = (req, res) => {
     })
 }
 
+const addGroupToProject = (req, res) => {
+    const newGroup = new Group();
 
-// const getUsersByGroupId = async (req, res) => {
-//     await GroupUser.find({ group: req.params.gid }).select("-_id -group").populate({path: 'user', model: 'User'}).then((data)=>{
-//         res.status(200).json({
-//             success: true,
-//             data:data
-//         })
-//     }).catch((err)=>{
-//         res.status(404).json({
-//             success: false, 
-//             message:err
-//         })
-//     })
-// }
+    newGroup.name = req.body.name;
+    newGroup.created = new Date().getDate();
+    newGroup.save().then((data) => {
+        const newGroupInProject = new ProjectGroup();
+    
+        newGroupInProject.group = data._id;
+        newGroupInProject.project = req.body.project;
+        // newGroupInProject.created = new Date().getTime();
+    
+        newGroupInProject.save().then(() => {
+            res.status(201).json({
+                success: true,
+                message: 'Group added to Project Successfully'
+            })
+        }).catch((err) => {
+            res.status(404).json({
+                success: false, 
+                message:err
+            })
+        })
+    })
+    .catch((err) => {
+        res.status(404).json({
+            success: false, 
+            message:err
+        })
+    })
 
-// const getUserById = (req, res) => {
-//     User.findOne({ _id: req.params.gid }).then((data)=>{
-//         res.status(202).json({
-//             success: true,
-//             data:data
-//         })
-//     }).catch((err)=>{
-//         res.status(404).json({
-//             success: false, 
-//             message:err
-//         })
-//     })
-// }
+}
 
-// const getUsersByProjectId = (req, res) => {
-//     UserProject.find({ project: req.params.pid }).select('user -_id').populate({path: 'user', model: 'User'}).then((data)=>{
-//         res.status(202).json({
-//             success: true,
-//             data:data
-//         })
-//     }).catch((err)=>{
-//         res.status(404).json({
-//             success: false, 
-//             message:err
-//         })
-//     })
-// }
-
-
-// const getProjectById = (req, res) => {
-//     User.find({ id: req.params.id }).exec().then((data)=>{
-//         res.status(202).json({
-//             success: true, 
-//             data:data
-//         })
-//     }).catch((err)=>{
-//         res.status(404).json({message:err})
-//     })
+// const updateGroup = (req, res) => {
+//     Group.findOneAndUpdate()
 // }
 
 module.exports = {
     getAllGroups,
     createGroup,
-    deleteGroup
+    deleteGroup,
+    addGroupToProject
     // getUsersByGroupId,
     // getUsersByProjectId
 }
