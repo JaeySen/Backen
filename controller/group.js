@@ -19,6 +19,43 @@ const getAllGroups = (req, res) => {
     })
 }
 
+const createGroup = (req, res) => {
+    const group = new Group();
+    
+    group.name = req.body.name;
+    group.created = new Date().getTime();
+
+    group.save().then(() => {
+        res.status(201).json({
+            success: true,
+            message: '1 Group added Successfully'
+        })
+    }).catch((err) => {
+        res.status(404).json({
+            success: false, 
+            message:err
+        })
+    })
+}
+
+
+const deleteGroup = (req, res) => {
+    Group.deleteOne({ _id: req.params.id })
+    .then(data => {
+        res.status(200).json({
+            success: true,
+            data:data
+        })
+    })
+    .catch(err => {
+        res.status(400).json({
+            success: false,
+            data:err
+        })
+    })
+}
+
+
 // const getUsersByGroupId = async (req, res) => {
 //     await GroupUser.find({ group: req.params.gid }).select("-_id -group").populate({path: 'user', model: 'User'}).then((data)=>{
 //         res.status(200).json({
@@ -75,6 +112,8 @@ const getAllGroups = (req, res) => {
 
 module.exports = {
     getAllGroups,
+    createGroup,
+    deleteGroup
     // getUsersByGroupId,
     // getUsersByProjectId
 }

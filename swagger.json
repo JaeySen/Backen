@@ -14,7 +14,15 @@
     "tags": [
       {
         "name": "Users",
-        "description": "API for users in the system"
+        "description": "User APIs"
+      }, 
+      {
+        "name": "Group",
+        "description": "Group APIs"
+      }, 
+      {
+        "name": "Project",
+        "description": "Project APIs"
       }
     ],
     "schemes": [
@@ -27,7 +35,7 @@
       "application/json"
     ],
     "paths": {
-      "/users": {
+      "/user": {
         "post": {
           "tags": [
             "Users"
@@ -70,7 +78,7 @@
           }
         }
       },
-      "/users/{userId}": {
+      "/user/{userId}": {
         "parameters": [
           {
             "name": "userId",
@@ -132,34 +140,197 @@
             }
           }
         }
+      },
+      "/group": {
+        "post": {
+          "tags": [
+            "Group"
+          ],
+          "description": "Create new group",
+          "parameters": [
+            {
+              "name": "group",
+              "in": "body",
+              "description": "Group Schema properties",
+              "schema": {
+                "$ref": "#/definitions/Group"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "201": {
+              "description": "New group is created",
+              "schema": {
+                "$ref": "#/definitions/Group"
+              }
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Group"
+          ],
+          "summary": "Get all groups",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Group"
+              }
+            }
+          }
+        }
+      }, 
+      "/group/{groupId}": {
+        "delete": {
+          "summary": "Delete group with given ID",
+          "tags": [
+            "Group"
+          ],
+          "responses": {
+            "200": {
+              "description": "Group is deleted",
+              "schema": {
+                "$ref": "#/definitions/DeleteResponseSuccess"
+              }
+            },
+            "404": {
+              "description": "Group is NOT deleted",
+              "schema": {
+                "$ref": "#/definitions/DeleteResponseFailed"
+              }
+            }
+          }
+        }
       }
     },
     "definitions": {
       "User": {
         "required": [
-          "email",
           "_id"
         ],
         "properties": {
           "_id": {
-            "type": "string",
+            "type": "ObjectId",
             "uniqueItems": true
           },
           "email": {
             "type": "string",
             "uniqueItems": true
           },
-          "lastName": {
+          "username": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "last_name": {
             "type": "string"
           },
-          "firstName": {
+          "first_name": {
             "type": "string"
+          },
+          "created": {
+            "type": "UNIX timestamp"
           }
         }
       },
-      "Users": {
-        "type": "array",
-        "$ref": "#/definitions/User"
+      "Project": {
+        "required":["_id"],
+        "properties": {
+          "_id": {
+            "type": "ObjectId",
+            "uniqueItems": true
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      }, 
+      "Group": {
+        "required": ["_id"],
+        "properties": {
+          "_id": {
+            "type": "ObjectId",
+            "uniqueItems": true
+          }, 
+          "name": {
+            "type": "string"
+          },
+          "created": {
+            "type": "UNIX timestamp"
+          }, 
+          "authorization": {
+            "type": "Array"
+          }
+        }
+      },
+      "DeleteResponseSuccess": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "default": true
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "acknowledged": {
+                "type": "boolean",
+                "default": true
+              },
+              "deleteCount": {
+                "type": "integer",
+                "default": 1
+              }
+            }
+          }
+        }
+      },
+      "DeleteResponseFailed": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "default": true
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "stringValue": {
+                "type": "string",
+                "default": "\"${groupId}\""
+              },
+              "valueType": {
+                "type": "string",
+                "default": "string"
+              },
+              "kind": {
+                "type": "string",
+                "default": "ObjectId"
+              },
+              "value": {
+                "type": "string",
+                "default": "${groupId}"
+              },
+              "path": {
+                "type": "string",
+                "default": "field"
+              },
+              "reason": {
+                "type": "object",
+                "default": "{}"
+              },
+              "name": {
+                "type": "string",
+                "default": "CastError"
+              },
+              "message": {
+                "type": "string",
+                "default": "Cast to ObjectId failed for value \"${groupId}\" (type string) at path \"_id\" for model \"groups\""
+              }
+            }
+          }
+        }
       }
     }
   }

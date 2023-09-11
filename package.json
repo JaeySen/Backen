@@ -6,7 +6,7 @@
   "scripts": {
     "test": "nodemon",
     "start": "node server.js",
-    "dev": "nodemon --watch controller --watch routes --watch model server.js"
+    "dev": "nodemon --watch controller --watch routes --watch model --watch swagger.json server.js"
   },
   "author": "shubhankar singh",
   "license": "ISC",
