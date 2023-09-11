@@ -5,17 +5,19 @@ const upload = require('../middleware/upload');
 
 const {
     getAllUsers,
+    getUserById,
+    getUserByUsername,
     getUsersByGroupId,
     getUsersByProjectId
 } = require('../controller/user');
 
-
-
 // router.route('/getAllEmployee').get(HandleControllerOne).post(HandleControllerTwo);
 // router.post('/addEmployee', upload.single('avatar'), HandleAddEmployee);
-router.get('/getAllUsers', getAllUsers);
-router.get('/getUsersByGroupId/:gid', getUsersByGroupId);
-router.get('/getUsersByProjectId/:pid', getUsersByProjectId);
+router.get('/', getAllUsers);
+router.get('/:id', getUserById);
+// router.get('/:name', getUserByUsername);
+router.get('/group/:gid', getUsersByGroupId);
+router.get('/project/:pid', getUsersByProjectId);
 // router.put('/updateEmployeeById/:id', HandleUpdateEmployeeById);
 // router.patch('/patchEmployeeById/:id', HandlePatchEmployeeById);
 // router.delete('/deleteEmployeeById/:id', HandleDeleteEmployeeById);

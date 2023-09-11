@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
     // phonecode : String,
     // phone : String,
     // country : String,
-}, {versionKey:false});
+});
 
 const User = new mongoose.model('User', userSchema, 'users');
 

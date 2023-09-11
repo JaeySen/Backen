@@ -141,6 +141,56 @@
           }
         }
       },
+      "/user/group/{groupId}": {
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "description": "ID of group that we want to get all users",
+            "type": "string"
+          }
+        ],
+        "get": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "Get users with group Id",
+          "responses": {
+            "200": {
+              "description": "List of users in group is returned",
+              "schema": {
+                "$ref": "#/definitions/UserList"
+              }
+            }
+          }
+        }
+      },
+      "/user/project/{projectId}": {
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "description": "ID of project that we want to get all users",
+            "type": "string"
+          }
+        ],
+        "get": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "Get users with project Id",
+          "responses": {
+            "200": {
+              "description": "List of users in project is returned",
+              "schema": {
+                "$ref": "#/definitions/UserList"
+              }
+            }
+          }
+        }
+      },
       "/group": {
         "post": {
           "tags": [
@@ -327,6 +377,42 @@
           }, 
           "authorization": {
             "type": "Array"
+          }
+        }
+      },
+      "UserList": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "user": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "string",
+                  "default": "string ObjectId",
+                  "uniqueItems": true
+                },
+                "email": {
+                  "type": "string",
+                  "uniqueItems": true
+                },
+                "username": {
+                  "type": "string",
+                  "uniqueItems": true
+                },
+                "last_name": {
+                  "type": "string"
+                },
+                "first_name": {
+                  "type": "string"
+                },
+                "created": {
+                  "type": "integer",
+                  "default": "integer UNIX Timestamp"
+                }
+              }
+            }
           }
         }
       },
