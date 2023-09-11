@@ -205,6 +205,35 @@
             }
           }
         }
+      },
+      "/group/user": {
+        "post": {
+          "tags": [
+            "Group"
+          ],
+          "description": "Add user to group with userId",
+          "parameters": [
+            {
+              "name": "group",
+              "in": "body",
+              "description": "Group Schema properties",
+              "schema": {
+                "$ref": "#/definitions/GroupUserBodySchema"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "201": {
+              "description": "User is added to Group",
+              "schema": {
+                "$ref": "#/definitions/PostResponseSuccess"
+              }
+            }
+          }
+        }
       }
     },
     "definitions": {
@@ -214,7 +243,8 @@
         ],
         "properties": {
           "_id": {
-            "type": "ObjectId",
+            "type": "string",
+            "default": "string ObjectId",
             "uniqueItems": true
           },
           "email": {
@@ -232,7 +262,8 @@
             "type": "string"
           },
           "created": {
-            "type": "UNIX timestamp"
+            "type": "integer",
+            "default": "integer UNIX Timestamp"
           }
         }
       },
@@ -329,6 +360,30 @@
                 "default": "Cast to ObjectId failed for value \"${groupId}\" (type string) at path \"_id\" for model \"groups\""
               }
             }
+          }
+        }
+      }, 
+      "GroupUserBodySchema": {
+        "required": ["group", "user"],
+        "properties": {
+          "group": {
+            "type": "string",
+            "default": "${groupId}"
+          },
+          "user": {
+            "type": "string",
+            "default": "${userId}"
+          }
+        }
+      }, 
+      "PostResponseSuccess": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "default": true
+          },
+          "message": {
+            "type": "string"
           }
         }
       }

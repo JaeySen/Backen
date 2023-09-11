@@ -6,16 +6,19 @@ const upload = require('../middleware/upload');
 const {
     getAllGroups,
     createGroup,
-    deleteGroup
+    deleteGroup,
     // getUsersByGroupId,
     // getUsersByProjectId
 } = require('../controller/group');
+const { addUserToGroup, removeUserFromGroup } = require('../controller/user')
 
 // router.route('/getAllEmployee').get(HandleControllerOne).post(HandleControllerTwo);
 // router.post('/addEmployee', upload.single('avatar'), HandleAddEmployee);
 router.get('/', getAllGroups);
 router.post('/', createGroup);
 router.delete('/:id', deleteGroup);
+router.post('/user', addUserToGroup);
+router.delete('/user/:id', removeUserFromGroup)
 // router.get('/getUsersByGroupId/:gid', getUsersByGroupId);
 // router.get('/getUsersByProjectId/:pid', getUsersByProjectId);
 // router.put('/updateEmployeeById/:id', HandleUpdateEmployeeById);
