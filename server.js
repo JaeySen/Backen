@@ -1,13 +1,17 @@
 require("dotenv").config();
 const express = require('express');
+const router = express.Router();
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const auth = require('./routes/auth');
-const employee = require('./routes/employee');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+// const auth = require('./routes/auth');
+// const employee = require('./routes/employee');
 const project = require('./routes/project');
 const user = require('./routes/user');
 const group = require('./routes/group');
 const connectMongoDB = require('./db/connection');
+const { getAllProjects } = require("./controller/project");
 const port = process.env.DEV_PORT || 5000;
 const app = express();
 
@@ -28,11 +32,13 @@ app.use('/public', express.static('public'));
 app.use(cors());
 
 app.use(express.json());
-app.use('/auth',auth);
-app.use('/employee',employee);
-app.use('/project',project);
-app.use('/user',user);
-app.use('/group',group);
+
+// app.use('/auth',auth);
+// app.use('/employee',employee);
+app.use('/api/v1/project',project);
+app.use('/api/v1/user',user);
+app.use('/api/v1/group',group);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.listen(port,()=>{
     console.log(`server started at ${port}`);
