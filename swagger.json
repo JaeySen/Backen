@@ -9,11 +9,11 @@
         "url": "https://opensource.org/licenses/MIT"
       }
     },
-    "host": "localhost:3000",
+    "host": "localhost:5001",
     "basePath": "/api/v1",
     "tags": [
       {
-        "name": "Users",
+        "name": "User",
         "description": "User APIs"
       }, 
       {
@@ -38,8 +38,9 @@
       "/user": {
         "post": {
           "tags": [
-            "Users"
+            "User"
           ],
+          "summary": "Create new user in system",
           "description": "Create new user in system",
           "parameters": [
             {
@@ -65,14 +66,14 @@
         },
         "get": {
           "tags": [
-            "Users"
+            "User"
           ],
           "summary": "Get all users in system",
           "responses": {
             "200": {
               "description": "OK",
               "schema": {
-                "$ref": "#/definitions/Users"
+                "$ref": "#/definitions/User"
               }
             }
           }
@@ -90,7 +91,7 @@
         ],
         "get": {
           "tags": [
-            "Users"
+            "User"
           ],
           "summary": "Get user with given ID",
           "responses": {
@@ -105,7 +106,7 @@
         "delete": {
           "summary": "Delete user with given ID",
           "tags": [
-            "Users"
+            "User"
           ],
           "responses": {
             "200": {
@@ -119,7 +120,7 @@
         "put": {
           "summary": "Update user with give ID",
           "tags": [
-            "Users"
+            "User"
           ],
           "parameters": [
             {
@@ -147,18 +148,18 @@
             "name": "groupId",
             "in": "path",
             "required": true,
-            "description": "ID of group that we want to get all users",
+            "description": "ID of group that we want to get all User",
             "type": "string"
           }
         ],
         "get": {
           "tags": [
-            "Users"
+            "User"
           ],
-          "summary": "Get users with group Id",
+          "summary": "Get Users within a group with groupId",
           "responses": {
             "200": {
-              "description": "List of users in group is returned",
+              "description": "List of User in group is returned",
               "schema": {
                 "$ref": "#/definitions/UserList"
               }
@@ -172,18 +173,18 @@
             "name": "projectId",
             "in": "path",
             "required": true,
-            "description": "ID of project that we want to get all users",
+            "description": "ID of project that we want to get all User",
             "type": "string"
           }
         ],
         "get": {
           "tags": [
-            "Users"
+            "User"
           ],
-          "summary": "Get users with project Id",
+          "summary": "Get Users within a project with projectId",
           "responses": {
             "200": {
-              "description": "List of users in project is returned",
+              "description": "List of User in project is returned",
               "schema": {
                 "$ref": "#/definitions/UserList"
               }
@@ -195,8 +196,9 @@
         "post": {
           "tags": [
             "Group"
-          ],
+          ],        
           "description": "Create new group",
+          "summary": "Create new group",
           "parameters": [
             {
               "name": "group",
@@ -224,6 +226,7 @@
             "Group"
           ],
           "summary": "Get all groups",
+          "description": "Get all groups",
           "responses": {
             "200": {
               "description": "OK",
@@ -261,6 +264,7 @@
           "tags": [
             "Group"
           ],
+          "summary": "Add user to group with userId",
           "description": "Add user to group with userId",
           "parameters": [
             {
@@ -286,15 +290,42 @@
         }
       },
       "/project": {
-        
+        "get": {
+          "tags": [
+            "Project"
+          ],
+          "summary": "Get all projects",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Project"
+              }
+            }
+          }
+        }
       },
       "/project/${projectId}": {
-
+        "get": {
+          "tags": [
+            "Project"
+          ],
+          "summary": "Get project with given ID",
+          "responses": {
+            "200": {
+              "description": "Project is return",
+              "schema": {
+                "$ref": "#/definitions/Project"
+              }
+            }
+          }
+        }
       }, 
       "/project/group": {
         "post": {
           "tags": ["Project"],
-          "description": "Add group to project with name and projectId",
+          "summary": "Add group to project with group name and projectId",
+          "description": "Add group to project with group name and projectId",
           "parameters": [
             {
               "name": "group",
