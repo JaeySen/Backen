@@ -2,7 +2,7 @@ const User = require('../model/user');
 const Group = require('../model/group');
 // const Project = require('../model/project');
 // const UserProject = require('../model/users_projects');
-// const GroupUser = require('../model/groups_users');
+const GroupUser = require('../model/groups_users');
 const ProjectGroup = require('../model/projects_groups');
 const { ObjectId } = require('mongodb');
 
@@ -20,17 +20,57 @@ const getAllGroups = (req, res) => {
     })
 }
 
-const createGroup = (req, res) => {
+const getGroupsWithUserId = (req, res) => {
+    GroupUser.find({ user: req.params.user }, '-_id -user').populate({path: 'group', model: 'Group', select: 'name created', project: 'name'}).then((data)=>{
+        res.status(200).json({
+            success: true,
+            data:data
+        })
+    }).catch((err)=>{
+        res.status(404).json({
+            success: false, 
+            message:err
+        })
+    })
+}
+
+const createGroup = async (req, res) => {
     const group = new Group();
     
     group.name = req.body.name;
     group.created = new Date().getTime();
 
-    group.save().then(() => {
+    await group.save().then(async (createdDoc) => {
+        // console.log(createdDoc);
+        // const relProject = new ProjectGroup();
+
+        // const arr = new Array(JSON.parse(req.body.auth))
+        // console.log(arr);
+        // relProject.auth.push(...arr);
+        // console.log(relProject.auth);
+        // relProject.project = req.body.project;
+        // relProject.group = createdDoc._id;
+        // relProject.users_role = req.body.role;
+        // const arr = [JSON.parse(req.body.auth)];
+
+
         res.status(201).json({
             success: true,
             message: '1 Group added Successfully'
         })
+
+        // await relProject.save().then(() => {
+        //     res.status(201).json({
+        //         success: true,
+        //         message: '1 Group added Successfully'
+        //     })
+        // })
+        // .catch((err) => {
+        //     res.status(404).json({
+        //         success: false, 
+        //         message:err
+        //     })
+        // })
     }).catch((err) => {
         res.status(404).json({
             success: false, 
@@ -95,6 +135,7 @@ const addGroupToProject = (req, res) => {
 
 module.exports = {
     getAllGroups,
+    getGroupsWithUserId,
     createGroup,
     deleteGroup,
     addGroupToProject
