@@ -7,7 +7,9 @@ const {
     getAllProjects,
     getProjectById,
     getProjectsByUserEmail,
-    getProjectsByUserId
+    getProjectsByUserId,
+    leaveProject,
+    createProject
 } = require('../controller/project');
 const { addGroupToProject } = require('../controller/group');
 
@@ -16,10 +18,12 @@ const { addGroupToProject } = require('../controller/group');
 // router.route('/getAllEmployee').get(HandleControllerOne).post(HandleControllerTwo);
 // router.post('/addEmployee', upload.single('avatar'), HandleAddEmployee);
 router.get('/', getAllProjects);
+router.post('/', createProject);
 router.get('/:id', getProjectById);
-router.get('/:email', getProjectsByUserEmail);
+router.get('/email/:email', getProjectsByUserEmail);
 router.get('/:uid', getProjectsByUserId);
 router.post('/group', addGroupToProject);
+router.delete('/user/leave', leaveProject)
 // router.put('/updateEmployeeById/:id', HandleUpdateEmployeeById);
 // router.patch('/patchEmployeeById/:id', HandlePatchEmployeeById);
 // router.delete('/deleteEmployeeById/:id', HandleDeleteEmployeeById);

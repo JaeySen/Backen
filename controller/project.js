@@ -1,6 +1,7 @@
 const Project = require('../model/project');
 const User = require('../model/user');
 const UserProject = require('../model/users_projects');
+const Types = require('mongoose').Types
 
 const getAllProjects = (req, res) => {
     Project.find({}).then((data)=>{
@@ -77,9 +78,61 @@ const getProjectById = (req, res) => {
     })
 }
 
+const createProject = async (req, res) => {
+    const project = new Project();
+
+    project.name = req.body.name;
+    project.description = req.body.description;
+    project.created = new Date().getDate();
+
+    await project.save().then( async(data)=>{
+        console.log(data._id, req.body.user)
+        const rel = new UserProject();
+        
+        rel.project = data._id;
+        rel.user = new Types.ObjectId(req.body.user);
+
+        await rel.save().then(() => {
+            res.status(201).json({
+                success: true,
+                message: '1 Project added Successfully'
+            })
+        })
+        .catch((err)=>{
+            res.status(404).json({
+                success: false, 
+                message:err
+            })
+        })
+
+    }).catch((err)=>{
+        res.status(404).json({
+            success: false, 
+            message:err
+        })
+    })
+}
+
+const leaveProject = async (req, res) => {
+    console.log(req.body.user)
+    await UserProject.deleteOne({ user: new Types.ObjectId(req.body.user), project: new Types.ObjectId(req.body.project) }).then((data)=>{
+        res.status(202).json({
+            success: true,
+            data:data
+        })
+    }).catch((err)=>{
+        res.status(404).json({
+            success: false, 
+            message:err
+        })
+    })
+}
+
 module.exports = {
     getAllProjects,
     getProjectById,
     getProjectsByUserEmail,
-    getProjectsByUserId
+    getProjectsByUserId,
+    createProject,
+    leaveProject
 }

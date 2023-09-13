@@ -53,6 +53,7 @@ const projectSchema = new Schema({
     name: String,
     serverLocation: String,
     description: String,
+    created: String,
     startDate: Number,
     endDate: Number
 })
