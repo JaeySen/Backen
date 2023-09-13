@@ -101,7 +101,7 @@ const addGroupToProject = (req, res) => {
     const newGroup = new Group();
 
     newGroup.name = req.body.name;
-    newGroup.created = new Date().getDate();
+    newGroup.created = new Date().getTime();
     newGroup.save().then((data) => {
         const newGroupInProject = new ProjectGroup();
     

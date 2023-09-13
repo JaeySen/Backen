@@ -62,6 +62,31 @@ const getUserByUsername = (req, res) => {
     })
 }
 
+const getUserByEmail = async (req, res) => {
+    // console.log(req.params.email)
+    await User.findOne({ email: req.params.email })
+    .then((data) => {
+        if (data !== null) {
+            res.status(200).json({
+                success: true,
+                data:data
+            })
+        } else {
+            res.status(404).json({
+                success: false,
+                message: 'Not found'
+            })
+        }
+
+    })
+    .catch((err) => {
+        res.status(404).json({
+            success: false, 
+            message:err
+        })
+    })
+}
+
 const getUsersByProjectId = (req, res) => {
     UserProject.find({ project: req.params.pid }).select('user -_id').populate({path: 'user', model: 'User'}).then((data)=>{
         res.status(202).json({
@@ -112,23 +137,57 @@ const removeUserFromGroup = (req, res) => {
     })
 }
 
-// const getProjectById = (req, res) => {
-//     User.find({ id: req.params.id }).exec().then((data)=>{
-//         res.status(202).json({
-//             success: true, 
-//             data:data
-//         })
-//     }).catch((err)=>{
-//         res.status(404).json({message:err})
-//     })
-// }
+const updateUserInfo = async (req, res) => {
+    await User.findOneAndUpdate(
+        { email: req.body.email },
+        { $set: {
+            first_name: req.body.firstName, 
+            last_name: req.body.lastName
+        }}
+    )
+    .then((res) => {
+        res.status(202).json({
+            success: true,
+            data:res
+        })
+    })
+    .catch(err => {
+        res.status(404).json({
+            success: false,
+            data:err
+        })
+    })
+}
+
+const createUser = async (req, res) => {
+    const user = new User();
+    
+    user.email = req.body.email;
+    user.username = req.body.username;
+    user.created = new Date().getTime();
+
+    await user.save().then((data) => {
+        res.status(201).json({
+            success: true,
+            data: data
+        })
+    }).catch((err) => {
+        res.status(404).json({
+            success: false, 
+            message:err
+        })
+    })
+}
 
 module.exports = {
     getAllUsers,
     getUserById,
     getUserByUsername,
+    getUserByEmail,
     getUsersByGroupId,
     getUsersByProjectId,
     addUserToGroup,
-    removeUserFromGroup
+    removeUserFromGroup,
+    createUser,
+    updateUserInfo
 }
