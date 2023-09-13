@@ -4,7 +4,6 @@ const Group = require('../model/group');
 // const UserProject = require('../model/users_projects');
 const GroupUser = require('../model/groups_users');
 const ProjectGroup = require('../model/projects_groups');
-const { ObjectId } = require('mongodb');
 
 const getAllGroups = (req, res) => {
     Group.find({}).then((data)=>{
@@ -21,10 +20,12 @@ const getAllGroups = (req, res) => {
 }
 
 const getGroupsWithUserId = (req, res) => {
-    GroupUser.find({ user: req.params.user }, '-_id -user').populate({path: 'group', model: 'Group', select: 'name created', project: 'name'}).then((data)=>{
+    GroupUser.find({ user: req.params.user }, '-_id -user').populate({path: 'group', model: 'Group', select: 'name created'}).then((data)=>{
+        let transformedData = new Array();
+        transformedData = data.map((obj) => { return { ...transformedData, _id: obj.group._id, name: obj.group.name, created: obj.group.created }})
         res.status(200).json({
             success: true,
-            data:data
+            data:transformedData
         })
     }).catch((err)=>{
         res.status(404).json({
