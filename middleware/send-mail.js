@@ -1,21 +1,29 @@
+require("dotenv").config();
 const nodemailer = require('nodemailer');
-
+// const mailjetTransport = require('nodemailer-mailjet-transport');
 //send the mail
 const sendMail = (email, msg) => {
     let to = email;
     let text = msg;
-    let subject = "authentication info";
+    let subject = "Authentication Notice";
 
     var transporter = nodemailer.createTransport({
-        service:'gmail',
-        auth:{
-            user:"shubhankars.official@gmail.com",
-            pass:"kzuaxltnxnqmvqam"
+        // host: process.env.MAILTRAP_HOST,
+        // port: process.env.MAILTRAP_PORT,
+        // auth: {
+        //   user: process.env.MAILTRAP_USER,
+        //   pass: process.env.MAILTRAP_PASS
+        // }
+        host: process.env.ELASTIC_HOST,
+        port: process.env.ELASTIC_PORT,
+        auth: {
+          user: process.env.ELASTIC_USER,
+          pass: process.env.ELASTIC_PASS
         }
     })
 
     var mailOptions = {
-        from : "shubhankars.official@gmail.com",
+        from : process.env.MAILTRAP_DOMAIN,
         to : `${to}`,
         subject : `${subject}`,
         text : `${text}`
@@ -36,18 +44,25 @@ const sendMail = (email, msg) => {
 const sendMailTemplate = (email, data) => {
     let to = email;
     let text = data;
-    let subject = "verification mail";
+    let subject = "Verification Mail";
 
     var transporter = nodemailer.createTransport({
-        service:'gmail',
-        auth:{
-            user:"shubhankars.official@gmail.com",
-            pass:"kzuaxltnxnqmvqam"
+        host: process.env.ELASTIC_HOST,
+        port: 2525,
+        auth: {
+          user: process.env.ELASTIC_USER,
+          pass: process.env.ELASTIC_PASS
         }
+        // host: process.env.MAILJET_HOST,
+        // port: process.env.MAILJET_PORT,
+        // auth: {
+        //     apiKey: process.env.MAILJET_API_KEY,
+        //     apiSecret: process.env.AILJET_API_SECRET
+        // }
     })
 
     var mailOptions = {
-        from : "shubhankars.official@gmail.com",
+        from :  process.env.DEV_TEST,
         to : `${to}`,
         subject : `${subject}`,
         html : `<!DOCTYPE html>
@@ -403,7 +418,7 @@ const sendMailTemplate = (email, data) => {
                                 <div class="text" style="padding: 0 2.5em; text-align: center;">
                                     <h2>Please verify your email</h2>
                                     <h3>Amazing deals, updates, interesting news right in your inbox</h3>
-                                    <p><a href="#" class="btn btn-primary">Yes! Subscribe Me</a></p>
+                                    <p><a href="${process.env.DEV_ROOT}/login" class="btn btn-primary">Yes! Subscribe Me</a></p>
                                 </div>
                             </td>
                         </tr>
@@ -476,7 +491,7 @@ const sendMailTemplate = (email, data) => {
         if(error){
             console.log(error);
         }else{
-            console.log("mail sent");
+            console.log("mail with template sent");
             flag = 0;
         }
     })

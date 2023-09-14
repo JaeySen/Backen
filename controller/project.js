@@ -86,7 +86,7 @@ const createProject = async (req, res) => {
     project.created = new Date().getTime();
 
     await project.save().then( async(data)=>{
-        console.log(data._id, req.body.user)
+        // console.log(data._id, req.body.user)
         const rel = new UserProject();
         
         rel.project = data._id;

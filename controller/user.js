@@ -19,10 +19,12 @@ const getAllUsers = (req, res) => {
 }
 
 const getUsersByGroupId = async (req, res) => {
-    await GroupUser.find({ group: req.params.gid }).select("-_id -group").populate({path: 'user', model: 'User'}).then((data)=>{
+    await GroupUser.find({ group: req.params.gid }).select("-_id -group").populate({path: 'user', model: 'User', select: '-created -passwordHash -__v'}).then((data)=>{
+        let transformedData = new Array();
+        transformedData = data.map((obj) => { return { ...transformedData, username: obj.user.username, email: obj.user.email, role: obj.user.role, key: obj.user._id }})
         res.status(200).json({
             success: true,
-            data:data
+            data:transformedData
         })
     }).catch((err)=>{
         res.status(404).json({
@@ -178,6 +180,26 @@ const createUser = async (req, res) => {
         })
     })
 }
+const updateMemberRole = async (req, res) => {
+    await User.findOneAndUpdate(
+        { email: req.body.email },
+        { $set: {
+            role: req.body.role
+        }}
+    )
+    .then((res) => {
+        res.status(202).json({
+            success: true,
+            data:res
+        })
+    })
+    .catch(err => {
+        res.status(404).json({
+            success: false,
+            data:err
+        })
+    })
+}
 
 module.exports = {
     getAllUsers,
@@ -189,5 +211,6 @@ module.exports = {
     addUserToGroup,
     removeUserFromGroup,
     createUser,
-    updateUserInfo
+    updateUserInfo,
+    updateMemberRole
 }

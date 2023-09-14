@@ -54,12 +54,22 @@ const createGroup = async (req, res) => {
         // relProject.users_role = req.body.role;
         // const arr = [JSON.parse(req.body.auth)];
 
+        const relUser = new GroupUser();
 
-        res.status(201).json({
-            success: true,
-            message: '1 Group added Successfully'
+        relUser.user = req.body.userid;
+        relUser.group = createdDoc._id;
+
+        await relUser.save().then(() => {
+            res.status(201).json({
+                success: true,
+                message: '1 Group added Successfully'
+            })
+        }).catch(() => {
+            res.status(404).json({
+                success: false, 
+                message: "Group added Failed"
+            })
         })
-
         // await relProject.save().then(() => {
         //     res.status(201).json({
         //         success: true,

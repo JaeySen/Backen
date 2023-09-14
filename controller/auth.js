@@ -20,16 +20,25 @@ const HandleRegister = (req, res) => {
       newUserModel.email = email;
       newUserModel.passwordHash = hash;
       newUserModel.created = new Date().getTime();
+      newUserModel.role = "user";
       // newUserModel.phonecode=phonecode;
       // newUserModel.phone=phone;
       // newUserModel.country=country;
       newUserModel
         .save()
-        .then(() => {
+        .then((doc) => {
           res
             .status(202)
-            .json({ success: true, message: "SignUp Successfully"});    
-        //   sendMail(email, "Sign Up Successfully");
+            .json({ success: true, message: "SignUp Successfully",
+            data: {
+              username: doc.username,
+              email: doc.email, 
+              role: doc.role,
+              userId: doc._id
+            }});    
+          // sendMail(email, "Sign Up Successfully");
+          sendMailTemplate(email, 'msg');
+
         })
         .catch((err) => {
           res.status(202).json({ success: false, message: err });
@@ -56,7 +65,7 @@ const HandleLogin = (req, res) => {
           const token = jwt.sign(
             {
               user: user.name,
-              email: user.email,
+              email: user.email
             },
             "secret",
             { expiresIn: "1h" }
@@ -68,15 +77,15 @@ const HandleLogin = (req, res) => {
               success: true,
               auth_token: token,
               message: "Logged In Successfully",
-              data: [
-                {
-                  username: user.username,
-                  email: user.email,
-                //   phonecode: user.phonecode,
-                //   phone: user.phone,
-                //   country: user.country,
-                },
-              ],
+              data: {
+                username: user.username,
+                email: user.email,
+                role: user.role,
+                userId: user._id
+              //   phonecode: user.phonecode,
+              //   phone: user.phone,
+              //   country: user.country,
+              },
             });
         } else {
           res
