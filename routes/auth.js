@@ -8,8 +8,8 @@ const {
 } = require('../controller/auth');
 
 
-router.post('/register', HandleRegister)
-router.post('/login', HandleLogin)
+router.post('/signup', HandleRegister);
+router.post('/signin', HandleLogin);
 
 
 module.exports=router;

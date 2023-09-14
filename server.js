@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
-// const auth = require('./routes/auth');
+const auth = require('./routes/auth');
 // const employee = require('./routes/employee');
 const project = require('./routes/project');
 const user = require('./routes/user');
@@ -33,7 +33,7 @@ app.use(cors());
 
 app.use(express.json());
 
-// app.use('/auth',auth);
+app.use('/api/v1/auth',auth);
 // app.use('/employee',employee);
 app.use('/api/v1/project',project);
 app.use('/api/v1/user',user);
