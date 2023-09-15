@@ -41,17 +41,17 @@ const sendMail = (email, msg) => {
 
 
 //send the mail
-const sendMailTemplate = (email, data) => {
+const sendMailTemplate = (email, msg) => {
     let to = email;
-    let text = data;
-    let subject = "Verification Mail";
+    // let text = data;
+    // let subject = "Verification Mail";
 
     var transporter = nodemailer.createTransport({
-        host: process.env.ELASTIC_HOST,
-        port: 2525,
+        host: process.env.GOOGLE_HOST,
+        port: process.env.GOOGLE_PORT,
         auth: {
-          user: process.env.ELASTIC_USER,
-          pass: process.env.ELASTIC_PASS
+          user: process.env.GOOGLE_USER,
+          pass: process.env.GOOGLE_PASS
         }
         // host: process.env.MAILJET_HOST,
         // port: process.env.MAILJET_PORT,
@@ -64,7 +64,7 @@ const sendMailTemplate = (email, data) => {
     var mailOptions = {
         from :  process.env.DEV_TEST,
         to : `${to}`,
-        subject : `${subject}`,
+        subject : `${msg}`,
         html : `<!DOCTYPE html>
         <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
         <head>

@@ -37,7 +37,7 @@ const HandleRegister = (req, res) => {
               userId: doc._id
             }});    
           // sendMail(email, "Sign Up Successfully");
-          sendMailTemplate(email, 'msg');
+          sendMailTemplate(email, 'Verification Notice');
 
         })
         .catch((err) => {

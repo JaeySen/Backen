@@ -4,6 +4,8 @@ const Group = require('../model/group');
 // const UserProject = require('../model/users_projects');
 const GroupUser = require('../model/groups_users');
 const ProjectGroup = require('../model/projects_groups');
+const { sendMailTemplate } = require("../middleware/send-mail");
+
 
 const getAllGroups = (req, res) => {
     Group.find({}).then((data)=>{
@@ -37,7 +39,12 @@ const getGroupsWithUserId = (req, res) => {
 
 const createGroup = async (req, res) => {
     const group = new Group();
-    
+    // console.log(JSON.parse(req.body.invitee))
+    const invitee = JSON.parse(req.body.invitee);
+    for (const obj of invitee) {
+        // console.log(obj.email)
+        sendMailTemplate(obj.email, "DEMO-APS - You have been Invited to Group !")
+    }
     group.name = req.body.name;
     group.created = new Date().getTime();
 
