@@ -2,7 +2,8 @@ const User = require('../model/user');
 const Project = require('../model/project');
 const UserProject = require('../model/users_projects');
 const GroupUser = require('../model/groups_users');
-const { ObjectId } = require('mongodb');
+const jwt = require("jsonwebtoken");
+
 
 const getAllUsers = (req, res) => {
     User.find({}).then((data)=>{
@@ -69,14 +70,25 @@ const getUserByEmail = async (req, res) => {
     await User.findOne({ email: req.params.email })
     .then((data) => {
         if (data !== null) {
+
+            const token = jwt.sign(
+                {
+                  user: data.username,
+                  email: data.email
+                },
+                "secret",
+                { expiresIn: "1h" }
+              );
+    
             res.status(200).json({
                 success: true,
+                auth_token: token,
                 data:data
             })
         } else {
             res.status(404).json({
                 success: false,
-                message: 'Not found'
+                message: 'User Not found'
             })
         }
 
@@ -169,8 +181,19 @@ const createUser = async (req, res) => {
     user.created = new Date().getTime();
 
     await user.save().then((data) => {
+
+        const token = jwt.sign(
+            {
+              user: user.username,
+              email: user.email
+            },
+            "secret",
+            { expiresIn: "1h" }
+          );
+
         res.status(201).json({
             success: true,
+            auth_token: token,
             data: data
         })
     }).catch((err) => {
