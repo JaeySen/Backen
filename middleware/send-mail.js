@@ -47,18 +47,31 @@ const sendMailTemplate = (email, msg) => {
     // let subject = "Verification Mail";
 
     var transporter = nodemailer.createTransport({
-        host: process.env.GOOGLE_HOST,
-        port: process.env.GOOGLE_PORT,
+        host: process.env.BREVO_HOST,
+        port: process.env.BREVO_PORT,
         auth: {
-          user: process.env.GOOGLE_USER,
-          pass: process.env.GOOGLE_PASS
+          user: process.env.BREVO_USER,
+          pass: process.env.BREVO_PASS
         }
+        // host: process.env.GOOGLE_HOST,
+        // port: process.env.GOOGLE_PORT,
+        // auth: {
+        //   user: process.env.GOOGLE_USER,
+        //   pass: process.env.GOOGLE_PASS
+        // }
+        // host: process.env.MS_HOST,
+        // port: process.env.MS_PORT,
+        // auth: {
+        //   user: process.env.MS_USER,
+        //   pass: process.env.MS_PASS
+        // }
         // host: process.env.MAILJET_HOST,
         // port: process.env.MAILJET_PORT,
         // auth: {
         //     apiKey: process.env.MAILJET_API_KEY,
         //     apiSecret: process.env.AILJET_API_SECRET
         // }
+
     })
 
     var mailOptions = {

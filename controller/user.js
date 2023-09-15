@@ -214,6 +214,19 @@ const createUser = async (req, res) => {
         })
     })
 }
+
+const createUserPromise =  () => {
+    return new Promise((resolve, reject) => {
+        const user = new User();
+    
+        user.email = req.body.email;
+        user.username = req.body.username;
+        user.created = new Date().getTime();
+    
+        user.save().then((user) => resolve(user)).catch((err) => reject(new Error("An error occurs while creating new User: ", err)))
+    })
+}
+
 const updateMemberRole = async (req, res) => {
     const user = await getUserByEmailPromise(req.body.email);
     if (user) {
@@ -244,11 +257,13 @@ module.exports = {
     getUserById,
     getUserByUsername,
     getUserByEmail,
+    getUserByEmailPromise,
     getUsersByGroupId,
     getUsersByProjectId,
     addUserToGroup,
     removeUserFromGroup,
     createUser,
+    createUserPromise,
     updateUserInfo,
     updateMemberRole
 }
