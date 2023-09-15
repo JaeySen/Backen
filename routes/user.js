@@ -11,8 +11,7 @@ const {
     getUsersByGroupId,
     getUsersByProjectId,
     createUser,
-    updateUserInfo,
-    updateMemberRole
+    updateUserInfo
 } = require('../controller/user');
 
 // router.route('/getAllEmployee').get(HandleControllerOne).post(HandleControllerTwo);
@@ -25,7 +24,6 @@ router.get('/email/:email', getUserByEmail);
 router.get('/name/:name', getUserByUsername);
 router.get('/group/:gid', getUsersByGroupId);
 router.get('/project/:pid', getUsersByProjectId);
-router.put('/updaterole', updateMemberRole);
 // router.put('/updateEmployeeById/:id', HandleUpdateEmployeeById);
 // router.patch('/patchEmployeeById/:id', HandlePatchEmployeeById);
 // router.delete('/deleteEmployeeById/:id', HandleDeleteEmployeeById);

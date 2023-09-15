@@ -22,7 +22,7 @@ const getAllUsers = (req, res) => {
 const getUsersByGroupId = async (req, res) => {
     await GroupUser.find({ group: req.params.gid }).select("-_id -group").populate({path: 'user', model: 'User', select: '-created -passwordHash -__v'}).then((data)=>{
         let transformedData = new Array();
-        transformedData = data.map((obj) => { return { ...transformedData, username: obj.user.username, email: obj.user.email, role: obj.user.role, key: obj.user._id }})
+        transformedData = data.map((obj) => { return { ...transformedData, username: obj.user.username, email: obj.user.email, role: obj.user.role, key: obj.user._id, role: obj.role }})
         res.status(200).json({
             success: true,
             data:transformedData
@@ -101,6 +101,17 @@ const getUserByEmail = async (req, res) => {
     })
 }
 
+const getUserByEmailPromise = (email) => {
+    // console.log(req.params.email)
+    return new Promise((resolve, reject) => {
+        User.findOne({ email: email })
+        .then((user) => {
+            resolve(user);
+        })
+        .catch((err) => reject(new Error('An error occured fetching user:' + err)))
+    })
+}
+
 const getUsersByProjectId = (req, res) => {
     UserProject.find({ project: req.params.pid }).select('user -_id').populate({path: 'user', model: 'User'}).then((data)=>{
         res.status(202).json({
@@ -159,10 +170,10 @@ const updateUserInfo = async (req, res) => {
             last_name: req.body.lastName
         }}
     )
-    .then((res) => {
+    .then((ures) => {
         res.status(202).json({
             success: true,
-            data:res
+            data:ures
         })
     })
     .catch(err => {
@@ -204,24 +215,28 @@ const createUser = async (req, res) => {
     })
 }
 const updateMemberRole = async (req, res) => {
-    await User.findOneAndUpdate(
-        { email: req.body.email },
-        { $set: {
-            role: req.body.role
-        }}
-    )
-    .then((res) => {
-        res.status(202).json({
-            success: true,
-            data:res
+    const user = await getUserByEmailPromise(req.body.email);
+    if (user) {
+        await GroupUser.findOneAndUpdate(
+            { group: req.body.group, user: user._id },
+            { $set: {
+                role: req.body.role
+            }},
+            {new: true}
+        )
+        .then((ures) => {
+            res.status(202).json({ // currently not return true despite run well
+                success: true,
+                data:ures
+            })
         })
-    })
-    .catch(err => {
-        res.status(404).json({
-            success: false,
-            data:err
+        .catch((err) => {
+            res.status(404).json({
+                success: false,
+                message: "Role update Failed!: " + err 
+            })
         })
-    })
+    }
 }
 
 module.exports = {
