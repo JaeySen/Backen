@@ -1,7 +1,7 @@
 const express = require('express');
 let router = express.Router();
 // const checkAuth = require('../middleware/check-auth');
-const upload = require('../middleware/upload');
+// const upload = require('../middleware/upload');
 
 const {
     getAllProjects,
@@ -19,11 +19,11 @@ const { addGroupToProject } = require('../controller/group');
 // router.post('/addEmployee', upload.single('avatar'), HandleAddEmployee);
 router.get('/', getAllProjects);
 router.post('/', createProject);
-router.get('/:id', getProjectById);
-router.get('/email/:email', getProjectsByUserEmail);
-router.get('/:uid', getProjectsByUserId);
+router.get('/:projectId', getProjectById);
+router.get('/user/:userId', getProjectsByUserId);
+router.get('/user/:email', getProjectsByUserEmail);
 router.post('/group', addGroupToProject);
-router.delete('/user/leave', leaveProject)
+router.delete('/del-user', leaveProject);
 // router.put('/updateEmployeeById/:id', HandleUpdateEmployeeById);
 // router.patch('/patchEmployeeById/:id', HandlePatchEmployeeById);
 // router.delete('/deleteEmployeeById/:id', HandleDeleteEmployeeById);

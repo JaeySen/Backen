@@ -15,13 +15,13 @@ const { addUserToGroup, removeUserFromGroup, updateMemberRole } = require('../co
 
 // router.route('/getAllEmployee').get(HandleControllerOne).post(HandleControllerTwo);
 // router.post('/addEmployee', upload.single('avatar'), HandleAddEmployee);
-router.get('/', getAllGroups);
-router.get('/user/:user', getGroupsWithUserId)
 router.post('/', createGroup);
-router.delete('/:id', deleteGroup);
-router.post('/user', addUserToGroup);
-router.delete('/user/:id', removeUserFromGroup);
-router.put('/user/role', updateMemberRole);
+router.get('/', getAllGroups);
+router.delete('/:groupId', deleteGroup);
+router.post('/add-user', addUserToGroup);
+router.get('/user/:userId', getGroupsWithUserId)
+router.put('/user/set-role', updateMemberRole);
+router.delete('/user/remove', removeUserFromGroup);
 // router.get('/getUsersByGroupId/:gid', getUsersByGroupId);
 // router.get('/getUsersByProjectId/:pid', getUsersByProjectId);
 // router.put('/updateEmployeeById/:id', HandleUpdateEmployeeById);

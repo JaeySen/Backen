@@ -23,7 +23,7 @@ const getAllGroups = (req, res) => {
 }
 
 const getGroupsWithUserId = (req, res) => {
-    GroupUser.find({ user: req.params.user }, '-_id -user').populate({path: 'group', model: 'Group', select: 'name created'}).then((data)=>{
+    GroupUser.find({ user: req.params.userId }, '-_id -user').populate({path: 'group', model: 'Group', select: 'name created'}).then((data)=>{
         let transformedData = new Array();
         transformedData = data.map((obj) => { return { ...transformedData, _id: obj.group._id, name: obj.group.name, created: obj.group.created }})
         res.status(200).json({
@@ -64,16 +64,18 @@ const createGroup = async (req, res) => {
         await Promise.all(worker.map(async (_, index) => {
             // console.log(obj.email)
             return new Promise(async(resolve, reject) => {
-                sendMailTemplate(invitees[index].email, "DEMO-APS - You have been Invited to Group !");
                 const relInvitee = new GroupUser();
                 let invitee;
                 
                 const existedUser = await getUserByEmailPromise(invitees[index].email);
                 
                 if (existedUser) {
-                    invitee = existedUser
+                    sendMailTemplate(invitees[index].email, "DEMO-APS - You have been Invited to Group !");
+                    invitee = existedUser;
+
                 } else {
-                    invitee = await createUserPromise();
+                    sendMailTemplate(invitees[index].email, "DEMO-APS - You have been Invited to Group !", "register", `?invitee=${invitees[index].email}`)
+                    await createUserPromise(invitees[index].email).then(user => invitee = user);
                 }
     
                 relInvitee.user = invitee._id;
@@ -134,7 +136,7 @@ const createGroup = async (req, res) => {
 
 
 const deleteGroup = (req, res) => {
-    Group.deleteOne({ _id: req.params.id })
+    Group.deleteOne({ _id: req.params.groupId })
     .then(data => {
         res.status(200).json({
             success: true,

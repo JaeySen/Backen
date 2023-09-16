@@ -53,11 +53,13 @@ const getProjectsByUserEmail = (req, res) => {
 }
 
 const getProjectsByUserId = (req, res) => {
-    User.findOne({ _id: req.params.uid }).populate({path: 'projects', model: 'Project'}).then((data)=>{
+    UserProject.find({ user: req.params.userId }, '-_id -user').populate({path: 'project', model: 'Project'}).then((data)=>{
+        let transformedData = new Array();
+        transformedData = data.map((obj) => { return { ...transformedData, _id: obj.project._id, name: obj.project.name, description: obj.project.description, created: obj.project.created }})
             // console.log(temp)
             res.status(200).json({
                 success: true,
-                data:data
+                data:transformedData
             })
     }).catch((err)=>{
         res.status(404).json({
@@ -68,7 +70,7 @@ const getProjectsByUserId = (req, res) => {
 }
 
 const getProjectById = (req, res) => {
-    Project.find({ id: req.params.id }).exec().then((data)=>{
+    Project.find({ id: req.params.projectId }).exec().then((data)=>{
         res.status(202).json({
             success: true, 
             data:data
@@ -114,7 +116,6 @@ const createProject = async (req, res) => {
 }
 
 const leaveProject = async (req, res) => {
-    console.log(req.body.user)
     await UserProject.deleteOne({ user: new Types.ObjectId(req.body.user), project: new Types.ObjectId(req.body.project) }).then((data)=>{
         res.status(202).json({
             success: true,

@@ -20,7 +20,7 @@ const getAllUsers = (req, res) => {
 }
 
 const getUsersByGroupId = async (req, res) => {
-    await GroupUser.find({ group: req.params.gid }).select("-_id -group").populate({path: 'user', model: 'User', select: '-created -passwordHash -__v'}).then((data)=>{
+    await GroupUser.find({ group: req.params.groupId }).select("-_id -group").populate({path: 'user', model: 'User', select: '-created -passwordHash -__v'}).then((data)=>{
         let transformedData = new Array();
         transformedData = data.map((obj) => { return { ...transformedData, username: obj.user.username, email: obj.user.email, role: obj.user.role, key: obj.user._id, role: obj.role }})
         res.status(200).json({
@@ -113,7 +113,7 @@ const getUserByEmailPromise = (email) => {
 }
 
 const getUsersByProjectId = (req, res) => {
-    UserProject.find({ project: req.params.pid }).select('user -_id').populate({path: 'user', model: 'User'}).then((data)=>{
+    UserProject.find({ project: req.params.projectId }).select('user -_id').populate({path: 'user', model: 'User'}).then((data)=>{
         res.status(202).json({
             success: true,
             data:data
@@ -147,7 +147,7 @@ const addUserToGroup = (req, res) => {
 }
 
 const removeUserFromGroup = (req, res) => {
-    GroupUser.deleteOne({ user: req.params.id })
+    GroupUser.deleteOne({ user: req.body.userId })
     .then(data => {
         res.status(200).json({
             success: true,
@@ -215,12 +215,12 @@ const createUser = async (req, res) => {
     })
 }
 
-const createUserPromise =  () => {
+const createUserPromise =  (email) => {
     return new Promise((resolve, reject) => {
         const user = new User();
     
-        user.email = req.body.email;
-        user.username = req.body.username;
+        user.email = email;
+        user.username = "";
         user.created = new Date().getTime();
     
         user.save().then((user) => resolve(user)).catch((err) => reject(new Error("An error occurs while creating new User: ", err)))
