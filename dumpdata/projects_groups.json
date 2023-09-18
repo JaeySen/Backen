@@ -1,33 +1,36 @@
 [{
-  "_id": {
-    "$oid": "64fed26bea8ee1dafec69130"
-  },
-  "group": {
-    "$oid": "64fed26bea8ee1dafec6912e"
-  },
-  "project": {
-    "$oid": "64e45ee9de31141666f9ecf1"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "64fed292f01fe0c9e01a3c76"
-  },
-  "group": {
-    "$oid": "64fed292f01fe0c9e01a3c74"
-  },
-  "project": {
-    "$oid": "64e45ee9de31141666f9ecf1"
-  }
-},{
-  "_id": {
-    "$oid": "64ffde6fdbaec1f089956233"
-  },
-  "auth": [],
-  "project": {
-    "$oid": "64e45ee9de31141666f9ecef"
-  },
-  "group": {
-    "$oid": "64ffde6fdbaec1f089956231"
-  }
+	"_id": {
+		"$oid": "64fed26bea8ee1dafec69130"
+	},
+	"group": {
+		"$oid": "64fed26bea8ee1dafec6912e"
+	},
+	"project": {
+		"$oid": "64e45ee9de31141666f9ecf1"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "64fed292f01fe0c9e01a3c76"
+	},
+	"group": {
+		"$oid": "64fed292f01fe0c9e01a3c74"
+	},
+	"project": {
+		"$oid": "64e45ee9de31141666f9ecf1"
+	}
+},
+{
+	"_id": {
+		"$oid": "64ffde6fdbaec1f089956233"
+	},
+	"auth": [],
+	"project": {
+		"$oid": "64e45ee9de31141666f9ecef"
+	},
+	"group": {
+		"$oid": "64ffde6fdbaec1f089956231"
+	}
 }]
+
