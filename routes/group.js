@@ -1,13 +1,14 @@
-const express = require('express');
+const express = require("express");
 let router = express.Router();
 // const checkAuth = require('../middleware/check-auth');
-const upload = require('../middleware/upload');
+const upload = require("../middleware/upload");
 
 const {
     getAllGroups,
     createGroup,
     deleteGroup,
     getGroupsWithUserId,
+  getAllGroupWithProjectId,
     // getUsersByGroupId,
     // getUsersByProjectId
 } = require('../controller/group');
@@ -17,9 +18,10 @@ const { addUserToGroup, removeUserFromGroup, updateMemberRole } = require('../co
 // router.post('/addEmployee', upload.single('avatar'), HandleAddEmployee);
 router.post('/', createGroup);
 router.get('/', getAllGroups);
+router.get('/:id', getAllGroupWithProjectId);
 router.delete('/:groupId', deleteGroup);
 router.post('/add-user', addUserToGroup);
-router.get('/user/:userId', getGroupsWithUserId)
+router.get('/user/:userId', getGroupsWithUserId);
 router.put('/user/set-role', updateMemberRole);
 router.delete('/user/remove', removeUserFromGroup);
 // router.get('/getUsersByGroupId/:gid', getUsersByGroupId);
