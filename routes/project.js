@@ -12,7 +12,7 @@ const {
     createProject
 } = require('../controller/project');
 const { addGroupToProject } = require('../controller/group');
-
+const { addMemberToProject } = require('../controller/user');
 
 
 // router.route('/getAllEmployee').get(HandleControllerOne).post(HandleControllerTwo);
@@ -23,6 +23,7 @@ router.get('/:projectId', getProjectById);
 router.get('/user/:userId', getProjectsByUserId);
 router.get('/user/:email', getProjectsByUserEmail);
 router.post('/group', addGroupToProject);
+router.post('/add-members', addMemberToProject);
 router.delete('/del-user', leaveProject);
 // router.put('/updateEmployeeById/:id', HandleUpdateEmployeeById);
 // router.patch('/patchEmployeeById/:id', HandlePatchEmployeeById);

@@ -211,7 +211,50 @@ const addMemberToGroup = async (req, res) => {
 }
 
 const addMemberToProject = async (req, res) => {
+    const invitees = JSON.parse(req.body.invitee);
+    const projectId = req.body.projectId;
+    const worker = [...new Array(invitees.length)];
+    const errors = [];
+    await Promise.all(worker.map(async (_, index) => {
+        return new Promise(async(resolve, reject) => {
+            const relInvitee = new UserProject();
+            let invitee;
+            
+            const existedUser = await getUserByEmailPromise(invitees[index]);
+            
+            if (existedUser) {
+                sendMailTemplate(invitees[index], "DEMO-APS - You have been Invited to Group !");
+                invitee = existedUser;
 
+            } else {
+                sendMailTemplate(invitees[index], "DEMO-APS - You have been Invited to Group !", "register", `?invitee=${invitees[index]}`)
+                await createUserPromise(invitees[index]).then(user => invitee = user);
+            }
+
+            relInvitee.user = invitee._id;
+            relInvitee.project = projectId;
+            // relInvitee.role = 'user';
+
+            relInvitee.save()   
+            .then(res => resolve(res))
+            .catch(err => {
+                errors.push(err);
+                reject(err);
+            })
+        })
+    }))
+    .then(() => {
+        res.status(200).json({
+            success: true,
+            message: "New Project Members added Successfully!"
+        })
+    })
+    .catch(() => {
+        res.status(404).json({
+            success: false, 
+            message: "Promise all Failed"
+        })
+    })
 }
 
 const removeUserFromGroup = (req, res) => {
@@ -341,6 +384,7 @@ module.exports = {
     getUsersByGroupId,
     getUsersByProjectId,
     addMemberToGroup,
+    addMemberToProject,
     removeUserFromGroup,
     createUser,
     createUserPromise,
