@@ -5,7 +5,8 @@ const groupUserSchema = new Schema({
     group: { type: Schema.Types.ObjectId, ref: "groups" , required: true },
     user: { type: Schema.Types.ObjectId, ref: "users", required: true },
     created: Number,
-    role: String
+    role: String,
+    status: String
 }, {versionKey: false})
 
 module.exports = mongoose.model('groups_users', groupUserSchema);

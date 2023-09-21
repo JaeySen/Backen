@@ -41,7 +41,7 @@ const getUsersByGroupId = (req, res) => {
         GroupUser.find({ group: req.params.groupId }).select("-_id -group").populate({path: 'user', model: 'User', select: '-created -passwordHash -__v'})
         .then((data)=>{
             let transformedData = new Array();
-            transformedData = data.map((obj) => { return { ...transformedData, username: obj.user.username, email: obj.user.email, role: obj.role, key: obj.user._id}})
+            transformedData = data.map((obj) => { return { ...transformedData, username: obj.user.username, email: obj.user.email, role: obj.role, key: obj.user._id, status: obj.status}})
             resolve(
                 res.status(200).json({
                     success: true,
@@ -208,6 +208,10 @@ const addMemberToGroup = async (req, res) => {
             message: "Promise all Failed"
         })
     })
+}
+
+const addMemberToProject = async (req, res) => {
+
 }
 
 const removeUserFromGroup = (req, res) => {
