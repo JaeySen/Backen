@@ -5,7 +5,7 @@ const Group = require('../model/group');
 const GroupUser = require('../model/groups_users');
 const ProjectGroup = require('../model/projects_groups');
 const { sendMailTemplate } = require("../middleware/send-mail");
-const { getUserByEmailPromise, createUserPromise } = require("./user")
+const { getUserByEmailPromise, createUserPromise, createUserProjectLink } = require("./user")
 
 
 const getAllGroups = (req, res) => {
@@ -47,85 +47,86 @@ const createGroup = async (req, res) => {
     group.created = new Date().getTime();
 
     await group.save().then(async (createdDoc) => {
-        // console.log(createdDoc);
-        // const relProject = new ProjectGroup();
-
+        const relProject = new ProjectGroup();
+        const projectId = req.body.projectId;
         // const arr = new Array(JSON.parse(req.body.auth))
         // console.log(arr);
         // relProject.auth.push(...arr);
         // console.log(relProject.auth);
-        // relProject.project = req.body.project;
-        // relProject.group = createdDoc._id;
+        relProject.project = projectId;
+        relProject.group = createdDoc._id;
         // relProject.users_role = req.body.role;
         // const arr = [JSON.parse(req.body.auth)];
-
-        const worker = [...new Array(invitees.length)]
-        const errors = [];
-        await Promise.all(worker.map(async (_, index) => {
-            // console.log(obj.email)
-            return new Promise(async(resolve, reject) => {
-                const relInvitee = new GroupUser();
-                let invitee;
-                
-                const existedUser = await getUserByEmailPromise(invitees[index].email);
-                
-                if (existedUser) {
-                    sendMailTemplate(invitees[index].email, "DEMO-APS - You have been Invited to Group !");
-                    invitee = existedUser;
-
-                } else {
-                    sendMailTemplate(invitees[index].email, "DEMO-APS - You have been Invited to Group !", "register", `?invitee=${invitees[index].email}`)
-                    await createUserPromise(invitees[index].email).then(user => invitee = user);
-                }
+        await relProject.save().then( async() => {
+            const worker = [...new Array(invitees.length)]
+            const errors = [];
+            await Promise.all(worker.map(async (_, index) => {
+                // console.log(obj.email)
+                return new Promise(async(resolve, reject) => {
+                    const relInvitee = new GroupUser();
+                    let invitee;
+                    
+                    const existedUser = await getUserByEmailPromise(invitees[index].email);
+                    
+                    if (existedUser) {
+                        sendMailTemplate(invitees[index].email, "DEMO-APS - You have been Invited to Group !");
+                        invitee = existedUser;
     
-                relInvitee.user = invitee._id;
-                relInvitee.group = createdDoc._id;
-                relInvitee.role = 'user';
+                    } else {
+                        sendMailTemplate(invitees[index].email, "DEMO-APS - You have been Invited to Group !", "register", `?invitee=${invitees[index].email}`)
+                        await createUserPromise(invitees[index].email).then(user => invitee = user);
+                    }
+        
+                    relInvitee.user = invitee._id;
+                    relInvitee.group = createdDoc._id;
+                    relInvitee.role = 'user';
+        
+                    relInvitee.save()
+                    .then(async () => { 
+                        await createUserProjectLink(invitee._id, projectId)
+                        .then(res => resolve(res))
+                        .catch(err => {
+                            errors.push(err);
+                            reject(err);
+                        })
+                    }).catch(err => {
+                        errors.push(err);
+                        reject(err);
+                    })
+                })
+            })).then( async () => {
+                const relAdmin = new GroupUser();
     
-                relInvitee.save().then((res) => resolve(res)).catch(err => {
-                    errors.push(err);
-                    reject(err);
+                relAdmin.user = req.body.userid;
+                relAdmin.group = createdDoc._id;
+                relAdmin.role = "admin";
+    
+        
+                await relAdmin.save().then(() => {
+                    res.status(201).json({
+                        success: true,
+                        message: '1 Group added Successfully'
+                    })
+                }).catch(() => {
+                    res.status(404).json({
+                        success: false, 
+                        message: "Admin add to Group Failed"
+                    })
                 })
             })
-        })).then( async () => {
-            const relAdmin = new GroupUser();
-
-            relAdmin.user = req.body.userid;
-            relAdmin.group = createdDoc._id;
-            relAdmin.role = "admin";
-
-    
-            await relAdmin.save().then(() => {
-                res.status(201).json({
-                    success: true,
-                    message: '1 Group added Successfully'
-                })
-            }).catch(() => {
+            .catch(err => {
                 res.status(404).json({
                     success: false, 
-                    message: "Admin add to Group Failed"
+                    message: "Promise all Failed"
                 })
             })
         })
-        .catch(err => {
+        .catch(() => {
             res.status(404).json({
                 success: false, 
-                message: "Promise all Failed"
+                message: "Create Project-Group Link Failed!"
             })
         })
-
-        // await relProject.save().then(() => {
-        //     res.status(201).json({
-        //         success: true,
-        //         message: '1 Group added Successfully'
-        //     })
-        // })
-        // .catch((err) => {
-        //     res.status(404).json({
-        //         success: false, 
-        //         message:err
-        //     })
-        // })
     }).catch((err) => {
         res.status(404).json({
             success: false, 
@@ -133,7 +134,6 @@ const createGroup = async (req, res) => {
         })
     })
 }
-
 
 const deleteGroup = (req, res) => {
     Group.deleteOne({ _id: req.params.groupId })
@@ -184,6 +184,24 @@ const addGroupToProject = (req, res) => {
 
 }
 
+const getGroupsWithProjectId = (req, res) => {
+    ProjectGroup.find({ project: req.params.projectId}, "-_id -project -auth")
+    .populate({path: 'group', model: 'Group'})
+    .then((data)=>{
+        let transformedData = new Array();
+        transformedData = data.map((obj) => { return { ...transformedData, _id: obj.group._id, name: obj.group.name, created: obj.group.created }})
+        res.status(202).json({
+            success: true,
+            data:transformedData
+        })
+    }).catch((err)=>{
+        res.status(404).json({
+            success: false, 
+            message:err
+        })
+    })
+}
+
 // const updateGroup = (req, res) => {
 //     Group.findOneAndUpdate()
 // }
@@ -191,9 +209,9 @@ const addGroupToProject = (req, res) => {
 module.exports = {
     getAllGroups,
     getGroupsWithUserId,
+    getGroupsWithProjectId,
     createGroup,
     deleteGroup,
-    addGroupToProject
-    // getUsersByGroupId,
+    addGroupToProject,
     // getUsersByProjectId
 }

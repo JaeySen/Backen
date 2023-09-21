@@ -8,6 +8,7 @@ const {
     createGroup,
     deleteGroup,
     getGroupsWithUserId,
+    getGroupsWithProjectId,
     // getUsersByGroupId,
     // getUsersByProjectId
 } = require('../controller/group');
@@ -17,6 +18,7 @@ const { addUserToGroup, removeUserFromGroup, updateMemberRole } = require('../co
 // router.post('/addEmployee', upload.single('avatar'), HandleAddEmployee);
 router.post('/', createGroup);
 router.get('/', getAllGroups);
+router.get('/project/:projectId', getGroupsWithProjectId);
 router.delete('/:groupId', deleteGroup);
 router.post('/add-user', addUserToGroup);
 router.get('/user/:userId', getGroupsWithUserId)
