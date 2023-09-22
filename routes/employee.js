@@ -1,29 +1,26 @@
-const express = require('express');
+const express = require("express");
 let router = express.Router();
 // const checkAuth = require('../middleware/check-auth');
-const upload = require('../middleware/upload');
+const upload = require("../middleware/upload");
 
 const {
-    HandleAddEmployee, 
-    HandleDeleteEmployeeById, 
-    HandleGetAllEmployee, 
-    HandleGetEmployeeById, 
-    HandlePatchEmployeeById, 
-    HandleSearchEmployee, 
-    HandleUpdateEmployeeById
-} = require('../controller/employee');
-
-
+  HandleAddEmployee,
+  HandleDeleteEmployeeById,
+  HandleGetAllEmployee,
+  HandleGetEmployeeById,
+  HandlePatchEmployeeById,
+  HandleSearchEmployee,
+  HandleUpdateEmployeeById,
+} = require("../controller/employee");
 
 // router.route('/getAllEmployee').get(HandleControllerOne).post(HandleControllerTwo);
-router.post('/addEmployee', upload.single('avatar'), HandleAddEmployee);
-router.get('/getAllEmployee', HandleGetAllEmployee);
-router.get('/getEmployeeById/:id', HandleGetEmployeeById);
-router.put('/updateEmployeeById/:id', HandleUpdateEmployeeById);
-router.patch('/patchEmployeeById/:id', HandlePatchEmployeeById);
-router.delete('/deleteEmployeeById/:id', HandleDeleteEmployeeById);
-router.get('/search/:key', HandleSearchEmployee);
-
+router.post("/addEmployee", upload.single("avatar"), HandleAddEmployee);
+router.get("/getAllEmployee", HandleGetAllEmployee);
+router.get("/getEmployeeById/:id", HandleGetEmployeeById);
+router.put("/updateEmployeeById/:id", HandleUpdateEmployeeById);
+router.patch("/patchEmployeeById/:id", HandlePatchEmployeeById);
+router.delete("/deleteEmployeeById/:id", HandleDeleteEmployeeById);
+router.get("/search/:key", HandleSearchEmployee);
 
 // Product API find
 // router.post('/post/date', (req,res)=>{
@@ -43,4 +40,4 @@ router.get('/search/:key', HandleSearchEmployee);
 //     })
 // })
 
-module.exports=router;
+module.exports = router;

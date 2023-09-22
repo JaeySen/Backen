@@ -1,174 +1,191 @@
-[{
-  "_id": {
-    "$oid": "64fed26bea8ee1dafec69130"
+[
+  {
+    "_id": {
+      "$oid": "64fed26bea8ee1dafec69130"
+    },
+    "group": {
+      "$oid": "64fed26bea8ee1dafec6912e"
+    },
+    "project": {
+      "$oid": "64e45ee9de31141666f9ecf1"
+    },
+    "__v": 0
   },
-  "group": {
-    "$oid": "64fed26bea8ee1dafec6912e"
+  {
+    "_id": {
+      "$oid": "64fed292f01fe0c9e01a3c76"
+    },
+    "group": {
+      "$oid": "64fed292f01fe0c9e01a3c74"
+    },
+    "project": {
+      "$oid": "64e45ee9de31141666f9ecf1"
+    }
   },
-  "project": {
-    "$oid": "64e45ee9de31141666f9ecf1"
+  {
+    "_id": {
+      "$oid": "64ffde6fdbaec1f089956233"
+    },
+    "auth": [],
+    "project": {
+      "$oid": "64e45ee9de31141666f9ecef"
+    },
+    "group": {
+      "$oid": "64ffde6fdbaec1f089956231"
+    }
   },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "64fed292f01fe0c9e01a3c76"
+  {
+    "_id": {
+      "$oid": "65090c6f3b1890222e859579"
+    },
+    "auth": [],
+    "project": {
+      "$oid": "6505ce8597d0499c196095ff"
+    },
+    "group": {
+      "$oid": "65090c6f3b1890222e859576"
+    }
   },
-  "group": {
-    "$oid": "64fed292f01fe0c9e01a3c74"
+  {
+    "_id": {
+      "$oid": "650927362e5936049a084817"
+    },
+    "auth": [],
+    "project": {
+      "$oid": "6505ce8597d0499c196095ff"
+    },
+    "group": {
+      "$oid": "650927362e5936049a084814"
+    }
   },
-  "project": {
-    "$oid": "64e45ee9de31141666f9ecf1"
+  {
+    "_id": {
+      "$oid": "650a58f975a5312d80f54a13"
+    },
+    "auth": [],
+    "project": {
+      "$oid": "6505ce8597d0499c196095ff"
+    },
+    "group": {
+      "$oid": "650a58f975a5312d80f54a10"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "650a5a2b75a5312d80f54a52"
+    },
+    "auth": [],
+    "project": {
+      "$oid": "6505ce8597d0499c196095ff"
+    },
+    "group": {
+      "$oid": "650a5a2b75a5312d80f54a50"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "650a6fad75a5312d80f54e27"
+    },
+    "auth": [],
+    "project": {
+      "$oid": "6505ce8597d0499c196095ff"
+    },
+    "group": {
+      "$oid": "650a6fad75a5312d80f54e23"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "650a72eb75a5312d80f54ece"
+    },
+    "auth": [],
+    "project": {
+      "$oid": "6505ce8597d0499c196095ff"
+    },
+    "group": {
+      "$oid": "650a72eb75a5312d80f54ecc"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "650aaea86e870547e189cd15"
+    },
+    "auth": [],
+    "project": {
+      "$oid": "6505ce8597d0499c196095ff"
+    },
+    "group": {
+      "$oid": "650aaea86e870547e189cd11"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "650aaee76e870547e189cd3c"
+    },
+    "auth": [],
+    "project": {
+      "$oid": "6505ce8597d0499c196095ff"
+    },
+    "group": {
+      "$oid": "650aaee76e870547e189cd3a"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "650aaeff6e870547e189cd67"
+    },
+    "auth": [],
+    "project": {
+      "$oid": "6505ce8597d0499c196095ff"
+    },
+    "group": {
+      "$oid": "650aaeff6e870547e189cd65"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "650ab01f6e870547e189cdd3"
+    },
+    "auth": [],
+    "project": {
+      "$oid": "6505ce8597d0499c196095ff"
+    },
+    "group": {
+      "$oid": "650ab01f6e870547e189cdd1"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "650ab0a96e870547e189cdf2"
+    },
+    "auth": [],
+    "project": {
+      "$oid": "6505ce8597d0499c196095ff"
+    },
+    "group": {
+      "$oid": "650ab0a96e870547e189cdf0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "650aca5c29a3a67709e59bf5"
+    },
+    "auth": [],
+    "project": {
+      "$oid": "6505ce8597d0499c196095ff"
+    },
+    "group": {
+      "$oid": "650aca5c29a3a67709e59bf3"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "650d0325b21bdc9a7f0b648a"
+    },
+    "projectId": {
+      "$oid": "650d027fb21bdc9a7f0b6488"
+    },
+    "groupList": "",
+    "role": ""
   }
-},{
-  "_id": {
-    "$oid": "64ffde6fdbaec1f089956233"
-  },
-  "auth": [],
-  "project": {
-    "$oid": "64e45ee9de31141666f9ecef"
-  },
-  "group": {
-    "$oid": "64ffde6fdbaec1f089956231"
-  }
-},{
-  "_id": {
-    "$oid": "65090c6f3b1890222e859579"
-  },
-  "auth": [],
-  "project": {
-    "$oid": "6505ce8597d0499c196095ff"
-  },
-  "group": {
-    "$oid": "65090c6f3b1890222e859576"
-  }
-},{
-  "_id": {
-    "$oid": "650927362e5936049a084817"
-  },
-  "auth": [],
-  "project": {
-    "$oid": "6505ce8597d0499c196095ff"
-  },
-  "group": {
-    "$oid": "650927362e5936049a084814"
-  }
-},{
-  "_id": {
-    "$oid": "650a58f975a5312d80f54a13"
-  },
-  "auth": [],
-  "project": {
-    "$oid": "6505ce8597d0499c196095ff"
-  },
-  "group": {
-    "$oid": "650a58f975a5312d80f54a10"
-  }
-},{
-  "_id": {
-    "$oid": "650a5a2b75a5312d80f54a52"
-  },
-  "auth": [],
-  "project": {
-    "$oid": "6505ce8597d0499c196095ff"
-  },
-  "group": {
-    "$oid": "650a5a2b75a5312d80f54a50"
-  }
-},{
-  "_id": {
-    "$oid": "650a6fad75a5312d80f54e27"
-  },
-  "auth": [],
-  "project": {
-    "$oid": "6505ce8597d0499c196095ff"
-  },
-  "group": {
-    "$oid": "650a6fad75a5312d80f54e23"
-  }
-},{
-  "_id": {
-    "$oid": "650a72eb75a5312d80f54ece"
-  },
-  "auth": [],
-  "project": {
-    "$oid": "6505ce8597d0499c196095ff"
-  },
-  "group": {
-    "$oid": "650a72eb75a5312d80f54ecc"
-  }
-},{
-  "_id": {
-    "$oid": "650aaea86e870547e189cd15"
-  },
-  "auth": [],
-  "project": {
-    "$oid": "6505ce8597d0499c196095ff"
-  },
-  "group": {
-    "$oid": "650aaea86e870547e189cd11"
-  }
-},{
-  "_id": {
-    "$oid": "650aaee76e870547e189cd3c"
-  },
-  "auth": [],
-  "project": {
-    "$oid": "6505ce8597d0499c196095ff"
-  },
-  "group": {
-    "$oid": "650aaee76e870547e189cd3a"
-  }
-},{
-  "_id": {
-    "$oid": "650aaeff6e870547e189cd67"
-  },
-  "auth": [],
-  "project": {
-    "$oid": "6505ce8597d0499c196095ff"
-  },
-  "group": {
-    "$oid": "650aaeff6e870547e189cd65"
-  }
-},{
-  "_id": {
-    "$oid": "650ab01f6e870547e189cdd3"
-  },
-  "auth": [],
-  "project": {
-    "$oid": "6505ce8597d0499c196095ff"
-  },
-  "group": {
-    "$oid": "650ab01f6e870547e189cdd1"
-  }
-},{
-  "_id": {
-    "$oid": "650ab0a96e870547e189cdf2"
-  },
-  "auth": [],
-  "project": {
-    "$oid": "6505ce8597d0499c196095ff"
-  },
-  "group": {
-    "$oid": "650ab0a96e870547e189cdf0"
-  }
-},{
-  "_id": {
-    "$oid": "650aca5c29a3a67709e59bf5"
-  },
-  "auth": [],
-  "project": {
-    "$oid": "6505ce8597d0499c196095ff"
-  },
-  "group": {
-    "$oid": "650aca5c29a3a67709e59bf3"
-  }
-},{
-  "_id":{
-    "$oid": "650d0325b21bdc9a7f0b648a"
-  },
-  "projectId": {
-    "$oid": "650d027fb21bdc9a7f0b6488"
-  },
-  "groupList": "",
-  "role": ""
-}]
+]

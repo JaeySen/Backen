@@ -27,18 +27,18 @@ const HandleRegister = (req, res) => {
       newUserModel
         .save()
         .then((doc) => {
-          res
-            .status(202)
-            .json({ success: true, message: "SignUp Successfully",
+          res.status(202).json({
+            success: true,
+            message: "SignUp Successfully",
             data: {
               username: doc.username,
-              email: doc.email, 
+              email: doc.email,
               role: doc.role,
-              userId: doc._id
-            }});    
+              userId: doc._id,
+            },
+          });
           // sendMail(email, "Sign Up Successfully");
-          sendMailTemplate(email, 'Verification Notice');
-
+          sendMailTemplate(email, "Verification Notice");
         })
         .catch((err) => {
           res.status(202).json({ success: false, message: err });
@@ -65,28 +65,26 @@ const HandleLogin = (req, res) => {
           const token = jwt.sign(
             {
               user: user.name,
-              email: user.email
+              email: user.email,
             },
             "secret",
             { expiresIn: "1h" }
           );
 
-          res
-            .status(202)
-            .json({
-              success: true,
-              auth_token: token,
-              message: "Logged In Successfully",
-              data: {
-                username: user.username,
-                email: user.email,
-                role: user.role,
-                userId: user._id
+          res.status(202).json({
+            success: true,
+            auth_token: token,
+            message: "Logged In Successfully",
+            data: {
+              username: user.username,
+              email: user.email,
+              role: user.role,
+              userId: user._id,
               //   phonecode: user.phonecode,
               //   phone: user.phone,
               //   country: user.country,
-              },
-            });
+            },
+          });
         } else {
           res
             .status(202)

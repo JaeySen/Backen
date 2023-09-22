@@ -1,9 +1,9 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const groupAccessSchema = new Schema({
-    role: String,
-    authorization: [String]
-})
+  role: String,
+  authorization: [String],
+});
 
-module.exports = mongoose.model('group_Access', groupAccessSchema);
+module.exports = mongoose.model("group_Access", groupAccessSchema);
