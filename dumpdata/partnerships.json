@@ -1,10 +1,10 @@
 [{
   "_id": {
-    "$oid": "650d0325b21bdc9a7f0b648a"
+    "$oid": "650d035cb21bdc9a7f0b648c"
   },
   "projectId": {
     "$oid": "650d027fb21bdc9a7f0b6488"
   },
-  "groupList": "",
-  "role": ""
+  "owner": "",
+  "collaborator": ""
 }]

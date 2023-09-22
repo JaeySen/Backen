@@ -1,199 +1,26 @@
 [{
-	"_id": {
-		"$oid": "64f93efd9ee8f8d7da1af6e4"
-	},
-	"username": "htait0",
-	"first_name": "Hortensia",
-	"last_name": "Tait",
-	"email": "htait0@nifty.com",
-	"created": "1693922055000"
+  "_id": {
+    "$oid": "650d007bb21bdc9a7f0b647b"
+  },
+  "username": "DinhTu",
+  "first_name": "Dinh",
+  "last_name": "Tu",
+  "email": "dinhtu@gmail.com",
+  "organization": {
+    "$oid": "650d00fab21bdc9a7f0b647d"
+  },
+  "adminScope": "user"
 },
 {
-	"_id": {
-		"$oid": "64f93efd9ee8f8d7da1af6e5"
-	},
-	"username": "awhiteoak1",
-	"first_name": "Allyn",
-	"last_name": "Whiteoak",
-	"email": "awhiteoak1@about.com",
-	"created": "1691628963000"
-},
-{
-	"_id": {
-		"$oid": "64f93efd9ee8f8d7da1af6e6"
-	},
-	"username": "bdosdill2",
-	"first_name": "Bunnie",
-	"last_name": "Dosdill",
-	"email": "bdosdill2@google.pl",
-	"created": "1691602486000"
-},
-{
-	"_id": {
-		"$oid": "64f93efd9ee8f8d7da1af6e7"
-	},
-	"username": "bgriffithe3",
-	"first_name": "Belvia",
-	"last_name": "Griffithe",
-	"email": "bgriffithe3@discuz.net",
-	"created": "1691117380000"
-},
-{
-	"_id": {
-		"$oid": "64f93efd9ee8f8d7da1af6e8"
-	},
-	"username": "akobierski4",
-	"first_name": "Ashien",
-	"last_name": "Kobierski",
-	"email": "akobierski4@dyndns.org",
-	"created": "1692162421000"
-},
-{
-	"_id": {
-		"$oid": "64f93efd9ee8f8d7da1af6e9"
-	},
-	"username": "lstygall5",
-	"first_name": "Lief",
-	"last_name": "Stygall",
-	"email": "lstygall5@is.gd",
-	"created": "1692371617000"
-},
-{
-	"_id": {
-		"$oid": "64f93efd9ee8f8d7da1af6ea"
-	},
-	"username": "msissens6",
-	"first_name": "Maynard",
-	"last_name": "Sissens",
-	"email": "msissens6@netlog.com",
-	"created": "1693588166000"
-},
-{
-	"_id": {
-		"$oid": "64f93efd9ee8f8d7da1af6eb"
-	},
-	"username": "ecrop7",
-	"first_name": "Ephraim",
-	"last_name": "Crop",
-	"email": "ecrop7@themeforest.net",
-	"created": "1693384784000"
-},
-{
-	"_id": {
-		"$oid": "64f93efd9ee8f8d7da1af6ec"
-	},
-	"username": "sblackhurst8",
-	"first_name": "Shayla",
-	"last_name": "Blackhurst",
-	"email": "sblackhurst8@huffingtonpost.com",
-	"created": "1692696536000"
-},
-{
-	"_id": {
-		"$oid": "64f93efd9ee8f8d7da1af6ed"
-	},
-	"username": "nmilmore9",
-	"first_name": "Nathanial",
-	"last_name": "Milmore",
-	"email": "nmilmore9@bravesites.com",
-	"created": "1693977221000"
-},
-{
-	"_id": {
-		"$oid": "64faa226b5550eee9292e7a2"
-	},
-	"username": "Hilo",
-	"email": "longhientranjjj@gmail.com",
-	"firebase": "108182018056871238388"
-},
-{
-	"_id": {
-		"$oid": "650266850dd848dbf7db14e2"
-	},
-	"username": "Hien Long",
-	"email": "1959016@itec.hcmus.edu.vn",
-	"passwordHash": "$2b$11$511mqMkUyeEt.kvhgEZ2Fewf8Q/xvnbjCXTtAC0JG2jidgFDH4L8W",
-	"created": 1.694656133946E+12,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "650274e0e4e153a6d7f8cc02"
-	},
-	"username": "Rashody",
-	"email": "mail@mail.com",
-	"passwordHash": "$2b$11$R3b2.ZWY8x5Ec9X8X3cN.OxO7dx7lM7fskJ/J1kH8rqM8tLBSS9kq",
-	"created": 1.694659808735E+12,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "65027512e4e153a6d7f8cc04"
-	},
-	"username": "Rashody",
-	"email": "mail@mail.com",
-	"passwordHash": "$2b$11$z/s2uMepyQo7YqA8zb.QFePdBOBRzffuqAJcRiNDAEYGxnTV.qqw2",
-	"created": 1.694659858437E+12,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "65027856bd456f465430a522"
-	},
-	"username": "heuser",
-	"email": "u@user.com",
-	"passwordHash": "$2b$11$Kys826D6WzOCyFlUfwLa7.kJu4i.hCDyQgXhPoSI4ulBSB/JI3Pfy",
-	"created": 1.694660694479E+12,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "65027925ad8655dabb20b3b3"
-	},
-	"username": "heuuser",
-	"email": "uu@user.com",
-	"passwordHash": "$2b$11$LDzbGU.NTUcHkT.cjxD51.TChNa68LTn7XvehqCsSt.YgVfcPPNjy",
-	"created": 1.694660901205E+12,
-	"role": "user",
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "65027977ad8655dabb20b3b5"
-	},
-	"username": "sheuser",
-	"email": "she@mail.com",
-	"passwordHash": "$2b$11$mnV.GrjddOladgQKe1gNGuqsuvPhkEP91XQuNyYuN80FoejhyGBsm",
-	"created": 1.694660983454E+12,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6502c23eb77b9060eb2d1004"
-	},
-	"username": "Clowned",
-	"email": "clowned95@yahoo.com",
-	"passwordHash": "$2b$11$FlUZKCu8TmhFbSenkAAUH.rqkGH/gj1D8.XzVWDxeCWZi47kxOsGG",
-	"created": 1.694679614487E+12,
-	"role": "user",
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6504036542580678796dd88e"
-	},
-	"email": "jasson.testapp@gmail.com",
-	"username": "",
-	"created": 1.694761829102E+12,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "65042bb351be59fc99517580"
-	},
-	"email": "longtnh@kidohu.com",
-	"username": "",
-	"created": 1.694772147114E+12,
-	"__v": 0
+  "_id": {
+    "$oid": "650d0149b21bdc9a7f0b6482"
+  },
+  "username": "Quoc Bao",
+  "first_name": "Quoc",
+  "last_name": "Bao",
+  "email": "quocbao@gmail.com",
+  "organization": {
+    "$oid": "650d00fab21bdc9a7f0b647d"
+  },
+  "adminScope": "admin"
 }]
-
