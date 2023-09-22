@@ -25,8 +25,8 @@ const getAllPartnerByUserId = (req, res) => {
     });
 };
 
-const getAllProjectByPartnerId = (req, res) => {
-  ProjectPartner.find({ partner: req.params.id })
+const getAllProjectByOrganizationId = (req, res) => {
+  Partnership.find({ owner: req.params.organizationId })
     .populate({ path: "project", model: "Project" })
     .then((data) => {
       let transformedData = new Array();
@@ -34,10 +34,9 @@ const getAllProjectByPartnerId = (req, res) => {
         return {
           ...transformedData,
           _id: obj.project._id,
-          long_name: obj.project.long_name,
           name: obj.project.name,
           description: obj.project.description,
-          created: obj.project.created,
+          created: obj.project.startDate,
         };
       });
       res.status(200).json({
@@ -47,6 +46,7 @@ const getAllProjectByPartnerId = (req, res) => {
     })
     .catch((err) => {
       res.status(404).json({ success: false, message: err });
+      console.log(err);
     });
 };
 
@@ -193,6 +193,6 @@ module.exports = {
   removeProjectFromPartner,
   removeUserFromPartner,
   getAllPartnerByUserId,
-  getAllProjectByPartnerId,
+  getAllProjectByOrganizationId,
   createProjectWithPartner,
 };
