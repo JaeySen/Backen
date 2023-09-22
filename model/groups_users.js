@@ -3,8 +3,8 @@ const { Schema } = mongoose;
 
 const groupUserSchema = new Schema(
   {
-    groupId: { type: Schema.Types.ObjectId, ref: "groups", required: true },
-    userId: { type: Schema.Types.ObjectId, ref: "users", required: true },
+    group: { type: Schema.Types.ObjectId, ref: "groups", required: true },
+    user: { type: Schema.Types.ObjectId, ref: "users", required: true },
     created: Number,
     role: String,
     status: String

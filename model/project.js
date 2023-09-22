@@ -56,7 +56,7 @@ const projectSchema = new Schema({
   created: String,
   startDate: Number,
   endDate: Number,
-  adminId: { type: Schema.Types.ObjectId, ref: "users", required: true },
+  admin: { type: Schema.Types.ObjectId, ref: "users", required: true },
 });
 
 module.exports = mongoose.model("Project", projectSchema, "projects");

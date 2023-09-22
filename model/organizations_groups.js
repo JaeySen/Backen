@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const organizationGroup = new Schema({
   name: String,
-  organizationId: {
+  organization: {
     type: Schema.Types.ObjectId,
     ref: "project",
     require: true,
