@@ -29687,4 +29687,16 @@
   "description": "New Project from heuser",
   "created": "1694879365230",
   "__v": 0
+},{
+  "_id":{
+    "$oid": "650d027fb21bdc9a7f0b6488"
+  },
+  "name": "Du an Cau Thi Nghe",
+  "serverLocation": "SG",
+  "description": "Du an ngan ty",
+  "startDate": "",
+  "endDate": "",
+  "admin": {
+    "$oid": "650d0149b21bdc9a7f0b6482"
+  }
 }]

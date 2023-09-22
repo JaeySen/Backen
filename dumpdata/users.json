@@ -199,4 +199,29 @@
     "$numberLong": "1694772147114"
   },
   "__v": 0
+},{
+  "_id":{
+    "$oid": "650d007bb21bdc9a7f0b647b"
+  },
+  "username": "DinhTu",
+  "first_name": "Dinh",
+  "last_name": "Tu",
+  "email": "dinhtu@gmail.com",
+  "organization": {
+    "$oid": "650d00fab21bdc9a7f0b647d"
+  },
+  "adminScope": "user"
+},
+{
+  "_id": {
+    "$oid": "650d0149b21bdc9a7f0b6482"
+  },
+  "username": "Quoc Bao",
+  "first_name": "Quoc",
+  "last_name": "Bao",
+  "email": "quocbao@gmail.com",
+  "organization": {
+    "$oid": "650d00fab21bdc9a7f0b647d"
+  },
+  "adminScope": "admin"
 }]

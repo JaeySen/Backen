@@ -63,4 +63,13 @@
   "collaborator": {
     "$oid": "650cfbbefc13ae3f1dfd54e8"
   }
+},{
+  "_id": {
+    "$oid": "650d035cb21bdc9a7f0b648c"
+  },
+  "projectId": {
+    "$oid": "650d027fb21bdc9a7f0b6488"
+  },
+  "owner": "",
+  "collaborator": ""
 }]
