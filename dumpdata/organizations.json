@@ -1,0 +1,41 @@
+[{
+  "_id": {
+    "$oid": "650cfb52d499bdddb44a4d10"
+  },
+  "name": "CF Corporation",
+  "admin": {
+    "$oid": "65027925ad8655dabb20b3b3"
+  }
+},{
+  "_id": {
+    "$oid": "650cfb52d499bdddb44a4d11"
+  },
+  "name": "Xperi Corporation",
+  "admin": {
+    "$oid": "650cfb31fc13ae40d4fd553f"
+  }
+},{
+  "_id": {
+    "$oid": "650cfb52d499bdddb44a4d12"
+  },
+  "name": "Controladora Vuela Compania de Aviacion, S.A.B. de C.V.",
+  "admin": {
+    "$oid": "650cfb31fc13ae40d4fd5540"
+  }
+},{
+  "_id": {
+    "$oid": "650cfb52d499bdddb44a4d13"
+  },
+  "name": "Silvercrest Asset Management Group Inc.",
+  "admin": {
+    "$oid": "650cfb31fc13ae40d4fd5541"
+  }
+},{
+  "_id": {
+    "$oid": "650cfb52d499bdddb44a4d14"
+  },
+  "name": "Nevro Corp.",
+  "admin": {
+    "$oid": "650cfb31fc13ae40d4fd5542"
+  }
+}]
