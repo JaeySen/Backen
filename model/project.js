@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 // const representationSchema = new Schema({
@@ -36,26 +36,27 @@ const { Schema } = mongoose;
 
 // const projectSchema = new Schema({
 //     globalId: String,
-//     id: Number, 
+//     id: Number,
 //     long_name: String,
 //     name: String,
 //     sites: {
 //         buildings: [buildingSchema],
 //         globalId: String,
-//         id: Number, 
-//         name: String, 
+//         id: Number,
+//         name: String,
 //         project: { type: Schema.Types.ObjectId, ref: "projects"}
 //     },
 //     $ref: String
 // })
 
 const projectSchema = new Schema({
-    name: String,
-    serverLocation: String,
-    description: String,
-    created: String,
-    startDate: Number,
-    endDate: Number
-})
+  name: String,
+  serverLocation: String,
+  description: String,
+  created: String,
+  startDate: Number,
+  endDate: Number,
+  adminId: { type: Schema.Types.ObjectId, ref: "users", required: true },
+});
 
-module.exports = mongoose.model('Project', projectSchema, 'projects');
+module.exports = mongoose.model("Project", projectSchema, "projects");
