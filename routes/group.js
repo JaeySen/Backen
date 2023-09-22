@@ -1,7 +1,7 @@
-const express = require('express');
+const express = require("express");
 let router = express.Router();
 // const checkAuth = require('../middleware/check-auth');
-const upload = require('../middleware/upload');
+const upload = require("../middleware/upload");
 
 const {
     getAllGroups,

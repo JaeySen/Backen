@@ -17,10 +17,43 @@ const getAllGroups = (req, res) => {
     }).catch((err)=>{
         res.status(404).json({
             success: false, 
-            message:err
-        })
+        message: err,
+      });
+    });
+};
+
+// const getAllGroupWithProjectId = (req, res) => {
+//   ProjectGroup.find({ project: req.params.id })
+//     .then((projectGroupData) => {
+//       const groupIds = projectGroupData.map((item) => item.group);
+//       return Group.find({ _id: { $in: groupIds } });
+//     })
+//     .then((data) => {
+//       res.status(202).json({
+//         success: true,
+//         data: data,
+//       });
+//     })
+//     .catch((err) => {
+//       res.status(404).json({ message: err });
+//     });
+// };
+
+const getGroupByID = (req, res) => {
+  Group.findOne({ _id: req.params.id })
+    .then((data) => {
+      res.status(200).json({
+        success: true,
+        data: data,
+      });
     })
-}
+    .catch((err) => {
+      res.status(404).json({
+        success: false,
+        message: err.message,
+      });
+    });
+};
 
 const getGroupsWithUserId = (req, res) => {
     GroupUser.find({ user: req.params.userId }, '-_id -user').populate({path: 'group', model: 'Group', select: 'name created'}).then((data)=>{
@@ -213,5 +246,8 @@ module.exports = {
     createGroup,
     deleteGroup,
     addGroupToProject,
+    // getUsersByGroupId,
     // getUsersByProjectId
-}
+    getGroupByID,
+    // getAllGroupWithProjectId,
+};
