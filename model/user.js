@@ -11,6 +11,7 @@ const userSchema = new mongoose.Schema({
   role: String,
   organization: String,
   adminScope: String,
+  isAdmin: Boolean
   // role: { type: Schema.Types.ObjectId, ref: "roles" }
   // phonecode : String,
   // phone : String,

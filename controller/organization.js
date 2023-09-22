@@ -1,6 +1,7 @@
 const Organization = require("../model/organization");
 const OrganizationGroup = require("../model/organizations_groups");
 const Partnership = require("../model/partnership");
+const Project = require("../model/project");
 
 const getAllOrganization = (req, res) => {
   Organization.find({})
@@ -25,8 +26,26 @@ const getAllPartnerByUserId = (req, res) => {
     });
 };
 
-const getAllProjectByOrganizationId = (req, res) => {
-  Partnership.find({ owner: req.params.organizationId })
+const getAllPartnerByOrganizationId = (req, res) => {
+  Partnership.find({ owner: req.params.id }, "-_id -owner")
+  .populate({path: "collaborator", model: "Organization", select: "-_id -admin"})
+  .populate({path: "project", model: "Project", select: "-_id -__v"})
+    .then((data) => {
+      let transformedData = new Array();
+      transformedData = data.map((obj) => { return { ...transformedData, project_name: obj.project.name, project_desc: obj.project.description, created_at: obj.project.created, partner_name: obj.collaborator.name }})
+      res.status(200).json({
+        success: true,
+        data: transformedData,
+        // data: data,
+      });
+    })
+    .catch((err) => {
+      res.status(404).json({ success: false, message: err });
+    });
+};
+
+const getAllProjectByPartnerId = (req, res) => {
+  ProjectPartner.find({ partner: req.params.id })
     .populate({ path: "project", model: "Project" })
     .then((data) => {
       let transformedData = new Array();

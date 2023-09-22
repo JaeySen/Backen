@@ -19,6 +19,7 @@ const HandleRegister = (req, res) => {
       newUserModel.username = name;
       newUserModel.email = email;
       newUserModel.passwordHash = hash;
+      newUserModel.isAdmin = false;
       newUserModel.created = new Date().getTime();
       newUserModel.role = "user";
       // newUserModel.phonecode=phonecode;
@@ -71,15 +72,19 @@ const HandleLogin = (req, res) => {
             { expiresIn: "1h" }
           );
 
-          res.status(202).json({
-            success: true,
-            auth_token: token,
-            message: "Logged In Successfully",
-            data: {
-              username: user.username,
-              email: user.email,
-              role: user.role,
-              userId: user._id,
+          res
+            .status(202)
+            .json({
+              success: true,
+              auth_token: token,
+              message: "Logged In Successfully",
+              data: {
+                username: user.username,
+                email: user.email,
+                role: user.role,
+                userId: user._id,
+                isAdmin: user.isAdmin,
+                orgId: user.organization
               //   phonecode: user.phonecode,
               //   phone: user.phone,
               //   country: user.country,

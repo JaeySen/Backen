@@ -3,9 +3,9 @@ const { Schema } = mongoose;
 
 const partnership = new Schema(
   {
-    project: { type: Schema.Types.ObjectId, ref: "user", require: true },
-    owner: { type: Schema.Types.ObjectId, ref: "user", require: true },
-    collaborator: [],
+    project: { type: Schema.Types.ObjectId, ref: "projects", require: true },
+    owner: { type: Schema.Types.ObjectId, ref: "organizations", require: true },
+    collaborator: { type: Schema.Types.ObjectId, ref: "organization", require: true },
   },
   { versionKey: false }
 );
