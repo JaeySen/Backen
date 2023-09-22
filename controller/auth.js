@@ -19,6 +19,7 @@ const HandleRegister = (req, res) => {
       newUserModel.username = name;
       newUserModel.email = email;
       newUserModel.passwordHash = hash;
+      newUserModel.isAdmin = false;
       newUserModel.created = new Date().getTime();
       newUserModel.role = "user";
       // newUserModel.phonecode=phonecode;
@@ -81,7 +82,9 @@ const HandleLogin = (req, res) => {
                 username: user.username,
                 email: user.email,
                 role: user.role,
-                userId: user._id
+                userId: user._id,
+                isAdmin: user.isAdmin,
+                orgId: user.organization
               //   phonecode: user.phonecode,
               //   phone: user.phone,
               //   country: user.country,

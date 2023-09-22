@@ -7,9 +7,8 @@ const organizationSchema = new Schema({
   created: Number,
 });
 
-const Organization = mongoose.model(
+module.exports = new mongoose.model(
   "Organization",
   organizationSchema,
   "organizations"
-);
-module.exports = Organization;
+)

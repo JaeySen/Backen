@@ -12,11 +12,13 @@ const {
   getAllPartnerByUserId,
   getAllProjectByPartnerId,
   createProjectWithPartner,
+  getAllPartnerByOrganizationId,
 } = require("../controller/organization");
 
 router.get("/", getAllOrganization);
 router.get("/user/:id", getAllPartnerByUserId);
-router.get("/:id", getAllProjectByPartnerId);
+router.get("/:id/partners", getAllPartnerByOrganizationId)
+router.get("/projects/:id", getAllProjectByPartnerId);
 router.post("/", createOrganization);
 router.post("/project", createProjectWithPartner);
 router.delete("/:id", deleteOrganization);
