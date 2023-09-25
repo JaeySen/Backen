@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../model/user");
 const { sendMail, sendMailTemplate } = require("../middleware/send-mail");
 
-const HandleRegister = (req, res) => {
+const HandleRegister = async (req, res) => {
   let name = req.body.username;
   let email = req.body.email;
   let password = req.body.password;
@@ -11,41 +11,46 @@ const HandleRegister = (req, res) => {
   // let phone = req.body.phone;
   // let country = req.body.country;
 
-  const saltRounds = 11;
-  let newUserModel = new User();
+  const existingUser = await User.findOne({ username: name });
+  if (existingUser) {
+    res.status(400).json({ success: false, message: "Tài khoản đã tồn tại" });
+  } else {
+    const saltRounds = 11;
+    let newUserModel = new User();
 
-  bcrypt.genSalt(saltRounds, function (err, salt) {
-    bcrypt.hash(password, salt, function (err, hash) {
-      newUserModel.username = name;
-      newUserModel.email = email;
-      newUserModel.passwordHash = hash;
-      newUserModel.isAdmin = false;
-      newUserModel.created = new Date().getTime();
-      newUserModel.role = "user";
-      // newUserModel.phonecode=phonecode;
-      // newUserModel.phone=phone;
-      // newUserModel.country=country;
-      newUserModel
-        .save()
-        .then((doc) => {
-          res.status(202).json({
-            success: true,
-            message: "SignUp Successfully",
-            data: {
-              username: doc.username,
-              email: doc.email,
-              role: doc.role,
-              userId: doc._id,
-            },
+    bcrypt.genSalt(saltRounds, function (err, salt) {
+      bcrypt.hash(password, salt, function (err, hash) {
+        newUserModel.username = name;
+        newUserModel.email = email;
+        newUserModel.passwordHash = hash;
+        newUserModel.isAdmin = false;
+        newUserModel.created = new Date().getTime();
+        newUserModel.role = "user";
+        // newUserModel.phonecode=phonecode;
+        // newUserModel.phone=phone;
+        // newUserModel.country=country;
+        newUserModel
+          .save()
+          .then((doc) => {
+            res.status(202).json({
+              success: true,
+              message: "SignUp Successfully",
+              data: {
+                username: doc.username,
+                email: doc.email,
+                role: doc.role,
+                userId: doc._id,
+              },
+            });
+            // sendMail(email, "Sign Up Successfully");
+            sendMailTemplate(email, "Verification Notice");
+          })
+          .catch((err) => {
+            res.status(202).json({ success: false, message: err });
           });
-          // sendMail(email, "Sign Up Successfully");
-          sendMailTemplate(email, "Verification Notice");
-        })
-        .catch((err) => {
-          res.status(202).json({ success: false, message: err });
-        });
+      });
     });
-  });
+  }
 };
 
 const HandleLogin = (req, res) => {
@@ -72,19 +77,17 @@ const HandleLogin = (req, res) => {
             { expiresIn: "1h" }
           );
 
-          res
-            .status(202)
-            .json({
-              success: true,
-              auth_token: token,
-              message: "Logged In Successfully",
-              data: {
-                username: user.username,
-                email: user.email,
-                role: user.role,
-                userId: user._id,
-                isAdmin: user.isAdmin,
-                orgId: user.organization
+          res.status(202).json({
+            success: true,
+            auth_token: token,
+            message: "Logged In Successfully",
+            data: {
+              username: user.username,
+              email: user.email,
+              role: user.role,
+              userId: user._id,
+              isAdmin: user.isAdmin,
+              orgId: user.organization,
               //   phonecode: user.phonecode,
               //   phone: user.phone,
               //   country: user.country,

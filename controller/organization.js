@@ -44,8 +44,8 @@ const getAllPartnerByOrganizationId = (req, res) => {
     });
 };
 
-const getAllProjectByPartnerId = (req, res) => {
-  ProjectPartner.find({ partner: req.params.id })
+const getAllProjectByOrganizationId = (req, res) => {
+  Partnership.find({ owner: req.params.organizationId })
     .populate({ path: "project", model: "Project" })
     .then((data) => {
       let transformedData = new Array();
@@ -213,5 +213,6 @@ module.exports = {
   removeUserFromPartner,
   getAllPartnerByUserId,
   getAllProjectByOrganizationId,
+  getAllPartnerByOrganizationId,
   createProjectWithPartner,
 };
