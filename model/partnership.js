@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const partnership = new Schema(
+const partnershipSchema = new Schema(
   {
     project: { type: Schema.Types.ObjectId, ref: "projects", require: true },
     owner: { type: Schema.Types.ObjectId, ref: "organizations", require: true },
@@ -10,6 +10,4 @@ const partnership = new Schema(
   { versionKey: false }
 );
 
-const Partnership = mongoose.model("Partnership", partnership, "partnerships");
-
-module.exports = Partnership;
+module.exports = new mongoose.model("Partnership", partnershipSchema, "partnerships");

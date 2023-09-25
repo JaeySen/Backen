@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const organizationGroup = new Schema({
+const organizationGroupSchema = new Schema({
   name: String,
   organization: {
     type: Schema.Types.ObjectId,
@@ -10,10 +10,9 @@ const organizationGroup = new Schema({
   },
 });
 
-const Organizations_Groups = mongoose.model(
-  "Organizations_Groups",
-  organizationGroup,
+module.exports = new mongoose.model(
+  "OrganizationsGroups",
+  organizationGroupSchema,
   "organizations_groups"
 );
 
-module.exports = Organizations_Groups;
