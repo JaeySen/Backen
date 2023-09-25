@@ -1,28 +1,15 @@
 [{
   "_id": {
-    "$oid": "650cfbcdd499bdddb44a4d1b"
+    "$oid": "650cfbcdd499bdddb44a4d1f"
   },
   "project": {
     "$oid": "6505ce8597d0499c196095ff"
   },
   "owner": {
-    "$oid": "650cfb52d499bdddb44a4d10"
-  },
-  "collaborator": {
     "$oid": "650cfb52d499bdddb44a4d11"
-  }
-},{
-  "_id": {
-    "$oid": "650cfbcdd499bdddb44a4d1c"
-  },
-  "project": {
-    "$oid": "650cfbbefc13ae3f1dfd54dd"
-  },
-  "owner": {
-    "$oid": "650cfbbefc13ae3f1dfd54de"
   },
   "collaborator": {
-    "$oid": "650cfbbefc13ae3f1dfd54df"
+    "$oid": "650cfb52d499bdddb44a4d12"
   }
 },{
   "_id": {
@@ -52,24 +39,28 @@
   }
 },{
   "_id": {
-    "$oid": "650cfbcdd499bdddb44a4d1f"
-  },
-  "project": {
-    "$oid": "650cfbbefc13ae3f1dfd54e6"
+    "$oid": "650d035cb21bdc9a7f0b648c"
   },
   "owner": {
-    "$oid": "650cfbbefc13ae3f1dfd54e7"
+    "$oid": "650cfb52d499bdddb44a4d10"
   },
   "collaborator": {
-    "$oid": "650cfbbefc13ae3f1dfd54e8"
+    "$oid": "650cfb52d499bdddb44a4d11"
+  },
+  "project": {
+    "$oid": "650d027fb21bdc9a7f0b6488"
   }
 },{
   "_id": {
-    "$oid": "650d035cb21bdc9a7f0b648c"
+    "$oid": "650cfbcdd499bdddb44a4d1c"
   },
-  "projectId": {
-    "$oid": "650d027fb21bdc9a7f0b6488"
+  "project": {
+    "$oid": "650cfbbefc13ae3f1dfd54dd"
   },
-  "owner": "",
-  "collaborator": ""
+  "owner": {
+    "$oid": "650cfbbefc13ae3f1dfd54de"
+  },
+  "collaborator": {
+    "$oid": "650cfbbefc13ae3f1dfd54df"
+  }
 }]

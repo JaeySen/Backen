@@ -4262,6 +4262,628 @@
   "driveId": "1SutNdeeMvKhZJZvFDM-qT67Fws6ruUdg"
 },{
   "_id": {
+    "$oid": "6505ce8597d0499c196095ff"
+  },
+  "name": "Cau duong",
+  "description": "New Project from heuser",
+  "created": "1694879365230",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "650d027fb21bdc9a7f0b6488"
+  },
+  "name": "Du an Cau Thi Nghe",
+  "serverLocation": "SG",
+  "description": "Du an ngan ty",
+  "startDate": "",
+  "endDate": "",
+  "admin": {
+    "$oid": "650d0149b21bdc9a7f0b6482"
+  }
+},{
+  "_id": {
+    "$oid": "64e5b3108699b36847b5280d"
+  },
+  "type": "IfcProject",
+  "globalId": "22e66ddf-794d-40bb-8aa5-3dda450d8255",
+  "name": "Default Project",
+  "description": "Description of Default Project",
+  "isDecomposedBy": {
+    "type": "IfcRelAggregates",
+    "globalId": "57bfe2d2-b505-4bba-8278-f867834a0be0",
+    "ownerHistory": "6d7919fd-2c83-497b-b21c-d4209e5162bf",
+    "name": "ProjectContainer",
+    "description": "ProjectContainer for Sites",
+    "relatedObjects": [
+      {
+        "type": "IfcSite",
+        "globalId": "f55eaf97-145e-4431-b2f3-69f9634f244b",
+        "ownerHistory": "6d7919fd-2c83-497b-b21c-d4209e5162bf",
+        "name": "TU/e campus",
+        "description": "The High Tech campus of the Eindhoven University of Technology",
+        "isDecomposedBy": {
+          "type": "IfcRelAggregates",
+          "globalId": "d3e2bc1a-4cdb-49ed-9c4a-c60c97949121",
+          "ownerHistory": "6d7919fd-2c83-497b-b21c-d4209e5162bf",
+          "name": "SiteContainer",
+          "description": "SiteContainer For Buildings",
+          "relatedObjects": [
+            {
+              "type": "IfcBuilding",
+              "globalId": "3ca7e585-4e3e-4969-a86f-f049f4fbde52",
+              "ownerHistory": "6d7919fd-2c83-497b-b21c-d4209e5162bf",
+              "name": "Vertigo Building",
+              "description": "TU/e Department of the Built Environment"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "long_name": "Default Project",
+  "location": "HANOI"
+},{
+  "_id": {
+    "$oid": "64e45ee9de31141666f9ecf1"
+  },
+  "global_id": "0w984V0GL6yR4z75XVLWOq",
+  "id": 119,
+  "long_name": "Nombre de proyecto",
+  "name": "0001",
+  "sites": [
+    {
+      "buildings": [
+        {
+          "id": 129,
+          "name": "",
+          "storeys": [
+            {
+              "elevation": 0,
+              "id": 138,
+              "long_name": "Nivel 1",
+              "name": "Nivel 1",
+              "products": [
+                {
+                  "id": 186,
+                  "name": "Muro básico:Partición con capa de yeso:163541",
+                  "representations": [
+                    {
+                      "id": 161
+                    },
+                    {
+                      "id": 179
+                    }
+                  ],
+                  "type": "wallstandardcase"
+                },
+                {
+                  "id": 294,
+                  "name": "Muro básico:Partición con capa de yeso:163542",
+                  "representations": [
+                    {
+                      "id": 279
+                    },
+                    {
+                      "id": 290
+                    }
+                  ],
+                  "type": "wallstandardcase"
+                },
+                {
+                  "id": 338,
+                  "name": "Muro básico:Partición con capa de yeso:163543",
+                  "representations": [
+                    {
+                      "id": 323
+                    },
+                    {
+                      "id": 334
+                    }
+                  ],
+                  "type": "wallstandardcase"
+                },
+                {
+                  "id": 6518,
+                  "name": "Ventana simple:100 x 100 cm:164008",
+                  "representations": [
+                    {
+                      "id": 6510
+                    }
+                  ],
+                  "type": "window"
+                },
+                {
+                  "id": 6563,
+                  "name": "Ventana simple:100 x 100 cm:164121",
+                  "representations": [
+                    {
+                      "id": 6555
+                    }
+                  ],
+                  "type": "window"
+                },
+                {
+                  "id": 6595,
+                  "name": "Ventana simple:100 x 100 cm:164156",
+                  "representations": [
+                    {
+                      "id": 6587
+                    }
+                  ],
+                  "type": "window"
+                },
+                {
+                  "id": 6627,
+                  "name": "Ventana simple:100 x 100 cm:164180",
+                  "representations": [
+                    {
+                      "id": 6619
+                    }
+                  ],
+                  "type": "window"
+                },
+                {
+                  "id": 6659,
+                  "name": "Ventana simple:100 x 100 cm:164181",
+                  "representations": [
+                    {
+                      "id": 6651
+                    }
+                  ],
+                  "type": "window"
+                },
+                {
+                  "id": 6691,
+                  "name": "Ventana simple:100 x 100 cm:164192",
+                  "representations": [
+                    {
+                      "id": 6683
+                    }
+                  ],
+                  "type": "window"
+                },
+                {
+                  "id": 6723,
+                  "name": "Ventana simple:100 x 100 cm:164193",
+                  "representations": [
+                    {
+                      "id": 6715
+                    }
+                  ],
+                  "type": "window"
+                },
+                {
+                  "id": 6755,
+                  "name": "Ventana simple:100 x 100 cm:164194",
+                  "representations": [
+                    {
+                      "id": 6747
+                    }
+                  ],
+                  "type": "window"
+                },
+                {
+                  "id": 6787,
+                  "name": "Ventana simple:100 x 100 cm:164195",
+                  "representations": [
+                    {
+                      "id": 6779
+                    }
+                  ],
+                  "type": "window"
+                },
+                {
+                  "id": 7792,
+                  "name": "M_Table-Dining Round w Chairs:0915mm Diameter:165477",
+                  "representations": [
+                    {
+                      "id": 7784
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 18774,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165478",
+                  "representations": [
+                    {
+                      "id": 18766
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 18799,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165479",
+                  "representations": [
+                    {
+                      "id": 18791
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 18819,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165480",
+                  "representations": [
+                    {
+                      "id": 18811
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 18839,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165481",
+                  "representations": [
+                    {
+                      "id": 18831
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 18859,
+                  "name": "M_Table-Dining Round w Chairs:0915mm Diameter:165592",
+                  "representations": [
+                    {
+                      "id": 18851
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 18879,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165593",
+                  "representations": [
+                    {
+                      "id": 18871
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 18899,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165594",
+                  "representations": [
+                    {
+                      "id": 18891
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 18919,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165595",
+                  "representations": [
+                    {
+                      "id": 18911
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 18939,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165596",
+                  "representations": [
+                    {
+                      "id": 18931
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 18959,
+                  "name": "M_Table-Dining Round w Chairs:0915mm Diameter:165631",
+                  "representations": [
+                    {
+                      "id": 18951
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 18979,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165632",
+                  "representations": [
+                    {
+                      "id": 18971
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 18999,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165633",
+                  "representations": [
+                    {
+                      "id": 18991
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19019,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165634",
+                  "representations": [
+                    {
+                      "id": 19011
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19039,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165635",
+                  "representations": [
+                    {
+                      "id": 19031
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19059,
+                  "name": "M_Table-Dining Round w Chairs:0915mm Diameter:165733",
+                  "representations": [
+                    {
+                      "id": 19051
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19079,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165734",
+                  "representations": [
+                    {
+                      "id": 19071
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19099,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165735",
+                  "representations": [
+                    {
+                      "id": 19091
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19119,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165736",
+                  "representations": [
+                    {
+                      "id": 19111
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19139,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165737",
+                  "representations": [
+                    {
+                      "id": 19131
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19159,
+                  "name": "M_Table-Dining Round w Chairs:0915mm Diameter:165776",
+                  "representations": [
+                    {
+                      "id": 19151
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19179,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165777",
+                  "representations": [
+                    {
+                      "id": 19171
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19199,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165778",
+                  "representations": [
+                    {
+                      "id": 19191
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19219,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165779",
+                  "representations": [
+                    {
+                      "id": 19211
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19239,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165780",
+                  "representations": [
+                    {
+                      "id": 19231
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19259,
+                  "name": "M_Table-Dining Round w Chairs:0915mm Diameter:165821",
+                  "representations": [
+                    {
+                      "id": 19251
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19279,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165822",
+                  "representations": [
+                    {
+                      "id": 19271
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19299,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165823",
+                  "representations": [
+                    {
+                      "id": 19291
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19319,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165824",
+                  "representations": [
+                    {
+                      "id": 19311
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19339,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165825",
+                  "representations": [
+                    {
+                      "id": 19331
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19359,
+                  "name": "M_Table-Dining Round w Chairs:0915mm Diameter:165862",
+                  "representations": [
+                    {
+                      "id": 19351
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19379,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165863",
+                  "representations": [
+                    {
+                      "id": 19371
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19399,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165864",
+                  "representations": [
+                    {
+                      "id": 19391
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19419,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165865",
+                  "representations": [
+                    {
+                      "id": 19411
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 19439,
+                  "name": "M_Chair-Breuer:M_Chair-Breuer:165866",
+                  "representations": [
+                    {
+                      "id": 19431
+                    }
+                  ],
+                  "type": "furnishingelement"
+                },
+                {
+                  "id": 22492,
+                  "name": "Puerta de 1 hoja:80 x 210 cm:166070",
+                  "representations": [
+                    {
+                      "id": 22484
+                    }
+                  ],
+                  "type": "door"
+                },
+                {
+                  "id": 22551,
+                  "name": "Suelo:Por defecto - 30 cm:166729",
+                  "representations": [
+                    {
+                      "id": 22547
+                    }
+                  ],
+                  "type": "slab"
+                },
+                {
+                  "id": 22655,
+                  "name": "Muro cortina:Muro cortina - 300 x 200 cm:166910",
+                  "representations": [],
+                  "type": "curtainwall"
+                }
+              ],
+              "representations": [],
+              "spaces": []
+            },
+            {
+              "elevation": 3,
+              "id": 144,
+              "long_name": "Nivel 2",
+              "name": "Nivel 2",
+              "products": [
+                {
+                  "id": 22620,
+                  "name": "Suelo:Por defecto - 30 cm:166811",
+                  "representations": [
+                    {
+                      "id": 22616
+                    }
+                  ],
+                  "type": "slab"
+                }
+              ],
+              "representations": [],
+              "spaces": []
+            }
+          ]
+        }
+      ],
+      "global_id": "0w984V0GL6yR4z75XVLWOs",
+      "id": 148,
+      "name": "Default"
+    }
+  ],
+  "driveId": "1lIXRPXu3saOQ7W9x3y67w2hfYZc_8k7q",
+  "description": "Musuem Architecture"
+},{
+  "_id": {
     "$oid": "64e45ee9de31141666f9ecf0"
   },
   "global_id": "2BJFEX00z1_uN5q3BWIAxR",
@@ -28984,719 +29606,4 @@
     }
   ],
   "driveId": "1SutNdeeMvKhZJZvFDM-qT67Fws6ruUdg"
-},{
-  "_id": {
-    "$oid": "64e45ee9de31141666f9ecf1"
-  },
-  "global_id": "0w984V0GL6yR4z75XVLWOq",
-  "id": 119,
-  "long_name": "Nombre de proyecto",
-  "name": "0001",
-  "sites": [
-    {
-      "buildings": [
-        {
-          "id": 129,
-          "name": "",
-          "storeys": [
-            {
-              "elevation": 0,
-              "id": 138,
-              "long_name": "Nivel 1",
-              "name": "Nivel 1",
-              "products": [
-                {
-                  "id": 186,
-                  "name": "Muro básico:Partición con capa de yeso:163541",
-                  "representations": [
-                    {
-                      "id": 161
-                    },
-                    {
-                      "id": 179
-                    }
-                  ],
-                  "type": "wallstandardcase"
-                },
-                {
-                  "id": 294,
-                  "name": "Muro básico:Partición con capa de yeso:163542",
-                  "representations": [
-                    {
-                      "id": 279
-                    },
-                    {
-                      "id": 290
-                    }
-                  ],
-                  "type": "wallstandardcase"
-                },
-                {
-                  "id": 338,
-                  "name": "Muro básico:Partición con capa de yeso:163543",
-                  "representations": [
-                    {
-                      "id": 323
-                    },
-                    {
-                      "id": 334
-                    }
-                  ],
-                  "type": "wallstandardcase"
-                },
-                {
-                  "id": 6518,
-                  "name": "Ventana simple:100 x 100 cm:164008",
-                  "representations": [
-                    {
-                      "id": 6510
-                    }
-                  ],
-                  "type": "window"
-                },
-                {
-                  "id": 6563,
-                  "name": "Ventana simple:100 x 100 cm:164121",
-                  "representations": [
-                    {
-                      "id": 6555
-                    }
-                  ],
-                  "type": "window"
-                },
-                {
-                  "id": 6595,
-                  "name": "Ventana simple:100 x 100 cm:164156",
-                  "representations": [
-                    {
-                      "id": 6587
-                    }
-                  ],
-                  "type": "window"
-                },
-                {
-                  "id": 6627,
-                  "name": "Ventana simple:100 x 100 cm:164180",
-                  "representations": [
-                    {
-                      "id": 6619
-                    }
-                  ],
-                  "type": "window"
-                },
-                {
-                  "id": 6659,
-                  "name": "Ventana simple:100 x 100 cm:164181",
-                  "representations": [
-                    {
-                      "id": 6651
-                    }
-                  ],
-                  "type": "window"
-                },
-                {
-                  "id": 6691,
-                  "name": "Ventana simple:100 x 100 cm:164192",
-                  "representations": [
-                    {
-                      "id": 6683
-                    }
-                  ],
-                  "type": "window"
-                },
-                {
-                  "id": 6723,
-                  "name": "Ventana simple:100 x 100 cm:164193",
-                  "representations": [
-                    {
-                      "id": 6715
-                    }
-                  ],
-                  "type": "window"
-                },
-                {
-                  "id": 6755,
-                  "name": "Ventana simple:100 x 100 cm:164194",
-                  "representations": [
-                    {
-                      "id": 6747
-                    }
-                  ],
-                  "type": "window"
-                },
-                {
-                  "id": 6787,
-                  "name": "Ventana simple:100 x 100 cm:164195",
-                  "representations": [
-                    {
-                      "id": 6779
-                    }
-                  ],
-                  "type": "window"
-                },
-                {
-                  "id": 7792,
-                  "name": "M_Table-Dining Round w Chairs:0915mm Diameter:165477",
-                  "representations": [
-                    {
-                      "id": 7784
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 18774,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165478",
-                  "representations": [
-                    {
-                      "id": 18766
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 18799,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165479",
-                  "representations": [
-                    {
-                      "id": 18791
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 18819,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165480",
-                  "representations": [
-                    {
-                      "id": 18811
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 18839,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165481",
-                  "representations": [
-                    {
-                      "id": 18831
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 18859,
-                  "name": "M_Table-Dining Round w Chairs:0915mm Diameter:165592",
-                  "representations": [
-                    {
-                      "id": 18851
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 18879,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165593",
-                  "representations": [
-                    {
-                      "id": 18871
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 18899,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165594",
-                  "representations": [
-                    {
-                      "id": 18891
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 18919,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165595",
-                  "representations": [
-                    {
-                      "id": 18911
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 18939,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165596",
-                  "representations": [
-                    {
-                      "id": 18931
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 18959,
-                  "name": "M_Table-Dining Round w Chairs:0915mm Diameter:165631",
-                  "representations": [
-                    {
-                      "id": 18951
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 18979,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165632",
-                  "representations": [
-                    {
-                      "id": 18971
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 18999,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165633",
-                  "representations": [
-                    {
-                      "id": 18991
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19019,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165634",
-                  "representations": [
-                    {
-                      "id": 19011
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19039,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165635",
-                  "representations": [
-                    {
-                      "id": 19031
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19059,
-                  "name": "M_Table-Dining Round w Chairs:0915mm Diameter:165733",
-                  "representations": [
-                    {
-                      "id": 19051
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19079,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165734",
-                  "representations": [
-                    {
-                      "id": 19071
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19099,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165735",
-                  "representations": [
-                    {
-                      "id": 19091
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19119,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165736",
-                  "representations": [
-                    {
-                      "id": 19111
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19139,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165737",
-                  "representations": [
-                    {
-                      "id": 19131
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19159,
-                  "name": "M_Table-Dining Round w Chairs:0915mm Diameter:165776",
-                  "representations": [
-                    {
-                      "id": 19151
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19179,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165777",
-                  "representations": [
-                    {
-                      "id": 19171
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19199,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165778",
-                  "representations": [
-                    {
-                      "id": 19191
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19219,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165779",
-                  "representations": [
-                    {
-                      "id": 19211
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19239,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165780",
-                  "representations": [
-                    {
-                      "id": 19231
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19259,
-                  "name": "M_Table-Dining Round w Chairs:0915mm Diameter:165821",
-                  "representations": [
-                    {
-                      "id": 19251
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19279,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165822",
-                  "representations": [
-                    {
-                      "id": 19271
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19299,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165823",
-                  "representations": [
-                    {
-                      "id": 19291
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19319,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165824",
-                  "representations": [
-                    {
-                      "id": 19311
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19339,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165825",
-                  "representations": [
-                    {
-                      "id": 19331
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19359,
-                  "name": "M_Table-Dining Round w Chairs:0915mm Diameter:165862",
-                  "representations": [
-                    {
-                      "id": 19351
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19379,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165863",
-                  "representations": [
-                    {
-                      "id": 19371
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19399,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165864",
-                  "representations": [
-                    {
-                      "id": 19391
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19419,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165865",
-                  "representations": [
-                    {
-                      "id": 19411
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 19439,
-                  "name": "M_Chair-Breuer:M_Chair-Breuer:165866",
-                  "representations": [
-                    {
-                      "id": 19431
-                    }
-                  ],
-                  "type": "furnishingelement"
-                },
-                {
-                  "id": 22492,
-                  "name": "Puerta de 1 hoja:80 x 210 cm:166070",
-                  "representations": [
-                    {
-                      "id": 22484
-                    }
-                  ],
-                  "type": "door"
-                },
-                {
-                  "id": 22551,
-                  "name": "Suelo:Por defecto - 30 cm:166729",
-                  "representations": [
-                    {
-                      "id": 22547
-                    }
-                  ],
-                  "type": "slab"
-                },
-                {
-                  "id": 22655,
-                  "name": "Muro cortina:Muro cortina - 300 x 200 cm:166910",
-                  "representations": [],
-                  "type": "curtainwall"
-                }
-              ],
-              "representations": [],
-              "spaces": []
-            },
-            {
-              "elevation": 3,
-              "id": 144,
-              "long_name": "Nivel 2",
-              "name": "Nivel 2",
-              "products": [
-                {
-                  "id": 22620,
-                  "name": "Suelo:Por defecto - 30 cm:166811",
-                  "representations": [
-                    {
-                      "id": 22616
-                    }
-                  ],
-                  "type": "slab"
-                }
-              ],
-              "representations": [],
-              "spaces": []
-            }
-          ]
-        }
-      ],
-      "global_id": "0w984V0GL6yR4z75XVLWOs",
-      "id": 148,
-      "name": "Default"
-    }
-  ],
-  "driveId": "1lIXRPXu3saOQ7W9x3y67w2hfYZc_8k7q",
-  "description": "Musuem Architecture"
-},{
-  "_id": {
-    "$oid": "64e5b3108699b36847b5280d"
-  },
-  "type": "IfcProject",
-  "globalId": "22e66ddf-794d-40bb-8aa5-3dda450d8255",
-  "name": "Default Project",
-  "description": "Description of Default Project",
-  "isDecomposedBy": {
-    "type": "IfcRelAggregates",
-    "globalId": "57bfe2d2-b505-4bba-8278-f867834a0be0",
-    "ownerHistory": "6d7919fd-2c83-497b-b21c-d4209e5162bf",
-    "name": "ProjectContainer",
-    "description": "ProjectContainer for Sites",
-    "relatedObjects": [
-      {
-        "type": "IfcSite",
-        "globalId": "f55eaf97-145e-4431-b2f3-69f9634f244b",
-        "ownerHistory": "6d7919fd-2c83-497b-b21c-d4209e5162bf",
-        "name": "TU/e campus",
-        "description": "The High Tech campus of the Eindhoven University of Technology",
-        "isDecomposedBy": {
-          "type": "IfcRelAggregates",
-          "globalId": "d3e2bc1a-4cdb-49ed-9c4a-c60c97949121",
-          "ownerHistory": "6d7919fd-2c83-497b-b21c-d4209e5162bf",
-          "name": "SiteContainer",
-          "description": "SiteContainer For Buildings",
-          "relatedObjects": [
-            {
-              "type": "IfcBuilding",
-              "globalId": "3ca7e585-4e3e-4969-a86f-f049f4fbde52",
-              "ownerHistory": "6d7919fd-2c83-497b-b21c-d4209e5162bf",
-              "name": "Vertigo Building",
-              "description": "TU/e Department of the Built Environment"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  "long_name": "Default Project",
-  "location": "HANOI"
-},{
-  "_id": {
-    "$oid": "650110b6d990afe7e79a119a"
-  },
-  "name": "New Prokect",
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "650111ed37ec2e04dc9b040f"
-  },
-  "name": "New Prokect 1",
-  "description": "Test project",
-  "created": "13",
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "6501127c2fb8b6abce9b9276"
-  },
-  "name": "New Prokect 1",
-  "description": "Test project",
-  "created": "13",
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "650112aa5b6af36de8c69616"
-  },
-  "name": "New Prokect 1",
-  "description": "Test project",
-  "created": "13",
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "6501132edf68d78c90266228"
-  },
-  "name": "New Prokect 1",
-  "description": "Test project",
-  "created": "13",
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "6501134d61a832bf9222f127"
-  },
-  "name": "New Prokect 1",
-  "description": "Test project",
-  "created": "13",
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "6501135961a832bf9222f12a"
-  },
-  "name": "New Prokect 1",
-  "description": "Test project",
-  "created": "13",
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "65011382a366cfb117e57ba1"
-  },
-  "name": "New Prokect 1",
-  "description": "Test project",
-  "created": "13",
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "650113b8b378a56fb365b2fd"
-  },
-  "name": "New Prokect 1",
-  "description": "Test project",
-  "created": "13",
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "65018ed56c1723f9079dbf62"
-  },
-  "name": "Projct of Jasson",
-  "description": "Cool",
-  "created": "13",
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "6502a3596f549f74207e7845"
-  },
-  "name": "sheuser",
-  "description": "asdasdsa",
-  "created": "1694671705508",
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "6504183642580678796dd965"
-  },
-  "name": "Project X",
-  "created": "1694767158394",
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "6505ce8597d0499c196095ff"
-  },
-  "name": "Cau duong",
-  "description": "New Project from heuser",
-  "created": "1694879365230",
-  "__v": 0
-},{
-  "_id":{
-    "$oid": "650d027fb21bdc9a7f0b6488"
-  },
-  "name": "Du an Cau Thi Nghe",
-  "serverLocation": "SG",
-  "description": "Du an ngan ty",
-  "startDate": "",
-  "endDate": "",
-  "admin": {
-    "$oid": "650d0149b21bdc9a7f0b6482"
-  }
 }]

@@ -1,18 +1,10 @@
 [{
   "_id": {
-    "$oid": "650cfb52d499bdddb44a4d10"
-  },
-  "name": "CF Corporation",
-  "admin": {
-    "$oid": "65027925ad8655dabb20b3b3"
-  }
-},{
-  "_id": {
     "$oid": "650cfb52d499bdddb44a4d11"
   },
   "name": "Xperi Corporation",
   "admin": {
-    "$oid": "650cfb31fc13ae40d4fd553f"
+    "$oid": "65027977ad8655dabb20b3b5"
   }
 },{
   "_id": {
@@ -24,23 +16,15 @@
   }
 },{
   "_id": {
-    "$oid": "650cfb52d499bdddb44a4d13"
+    "$oid": "650cfb52d499bdddb44a4d10"
   },
-  "name": "Silvercrest Asset Management Group Inc.",
+  "name": "CF Corporation",
   "admin": {
-    "$oid": "650cfb31fc13ae40d4fd5541"
+    "$oid": "65027925ad8655dabb20b3b3"
   }
 },{
   "_id": {
-    "$oid": "650cfb52d499bdddb44a4d14"
-  },
-  "name": "Nevro Corp.",
-  "admin": {
-    "$oid": "650cfb31fc13ae40d4fd5542"
-  }
-}, {
-  "_id": {
-    "$oid": "650d00fab21bdc9a7f0b647d" 
+    "$oid": "650d00fab21bdc9a7f0b647d"
   },
   "name": "VT Group",
   "admin": {
