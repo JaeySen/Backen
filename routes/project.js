@@ -9,7 +9,8 @@ const {
     getProjectsByUserEmail,
     getProjectsByUserId,
     leaveProject,
-    createProject
+    createProject,
+    getProjectsWithPartnerId
 } = require('../controller/project');
 const { addGroupToProject } = require('../controller/group');
 const { addMemberToProject } = require('../controller/user');
@@ -25,6 +26,7 @@ router.get('/user/:email', getProjectsByUserEmail);
 router.post('/group', addGroupToProject);
 router.post('/add-members', addMemberToProject);
 router.delete('/del-user', leaveProject);
+router.get('/owner/:ownerId/partner/:partnerId', getProjectsWithPartnerId)
 // router.put('/updateEmployeeById/:id', HandleUpdateEmployeeById);
 // router.patch('/patchEmployeeById/:id', HandlePatchEmployeeById);
 // router.delete('/deleteEmployeeById/:id', HandleDeleteEmployeeById);
