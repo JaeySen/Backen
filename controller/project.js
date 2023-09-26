@@ -1,7 +1,8 @@
-const Project = require("../model/project");
-const User = require("../model/user");
-const UserProject = require("../model/users_projects");
-const Types = require("mongoose").Types;
+const Project = require('../model/project');
+const User = require('../model/user');
+const UserProject = require('../model/users_projects');
+const Partnership = require('../model/partnership')
+const Types = require('mongoose').Types
 
 const getAllProjects = (req, res) => {
   Project.find({})
@@ -86,6 +87,61 @@ const getProjectsByUserId = (req, res) => {
     });
 };
 
+
+const getProjectsWithPartnerId = (req, res) => {
+    let full = new Array();
+    Partnership.find({ collaborator: req.params.partnerId, owner: req.params.ownerId }, "-_id -owner -collaborator")
+    .populate({
+        path: "project",
+        model: "Project",
+        select: "-__v"
+    })
+      .then((data) => {
+        let transformedData = new Array();
+        transformedData = data.map((obj) => {
+          return {
+            ...transformedData,
+            _id: obj.project._id,
+            long_name: obj.project.long_name,
+            name: obj.project.name,
+            description: obj.project.description,
+            created: obj.project.created,
+          };
+        });
+        full.push(...transformedData);
+        Partnership.find({ owner: req.params.partnerId, collaborator: req.params.ownerId }, "-_id -owner -collaborator")
+        .populate({
+            path: "project",
+            model: "Project",
+            select: "-__v"
+        })
+        .then((data2) => {
+            let transformedData = new Array();
+            transformedData = data2.map((obj) => {
+              return {
+                ...transformedData,
+                _id: obj.project._id,
+                long_name: obj.project.long_name,
+                name: obj.project.name,
+                description: obj.project.description,
+                created: obj.project.created,
+              };
+            });
+            full.push(...transformedData);
+            res.status(200).json({
+                success: true,
+                data: full,
+              });
+        })
+        .catch((err) => {
+            res.status(404).json({ success: false, message: err });
+        });
+      })
+      .catch((err) => {
+        res.status(404).json({ success: false, message: err });
+      });
+  };
+
 const getProjectById = (req, res) => {
   Project.find({ id: req.params.projectId })
     .exec()
@@ -159,10 +215,11 @@ const leaveProject = async (req, res) => {
 };
 
 module.exports = {
-  getAllProjects,
-  getProjectById,
-  getProjectsByUserEmail,
-  getProjectsByUserId,
-  createProject,
-  leaveProject,
-};
+    getAllProjects,
+    getProjectById,
+    getProjectsByUserEmail,
+    getProjectsByUserId,
+    getProjectsWithPartnerId,
+    createProject,
+    leaveProject
+}
