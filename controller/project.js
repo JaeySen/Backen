@@ -142,6 +142,7 @@ const createProject = async (req, res) => {
     project.name = req.body.name;
     project.description = req.body.description;
     project.created = new Date().getTime();
+    project.admin = req.body.user;
 
     await project.save().then( async(data)=>{
         // console.log(data._id, req.body.user)
