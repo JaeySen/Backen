@@ -18,6 +18,7 @@ const {
 router.get("/", getAllOrganization);
 router.get("/user/:id", getAllPartnerByUserId);
 router.get("/:organizationId", getAllProjectByOrganizationId);
+router.get("/:id/partners", getAllPartnerByOrganizationId);
 router.post("/", createOrganization);
 router.post("/project", createProjectWithPartner);
 router.delete("/", deleteOrganization);
