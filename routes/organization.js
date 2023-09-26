@@ -20,7 +20,7 @@ router.get("/user/:id", getAllPartnerByUserId);
 router.get("/:organizationId", getAllProjectByOrganizationId);
 router.post("/", createOrganization);
 router.post("/project", createProjectWithPartner);
-router.delete("/:id", deleteOrganization);
+router.delete("/", deleteOrganization);
 router.post("/add-user", addUserToPartner);
 router.post("/partnership", createPartnership);
 router.delete("/project/:id", removeProjectFromPartner);

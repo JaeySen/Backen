@@ -323,15 +323,15 @@ const updateUserInfo = async (req, res) => {
     { email: req.body.email },
     {
       $set: {
-        first_name: req.body.firstName,
-        last_name: req.body.lastName,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
       },
     }
   )
-    .then((ures) => {
+    .then((user) => {
       res.status(202).json({
         success: true,
-        data: ures,
+        data: user,
       });
     })
     .catch((err) => {

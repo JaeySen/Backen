@@ -95,8 +95,8 @@ const getAllPartnerByOrganizationId = (req, res) => {
 };
 
 const getAllProjectByOrganizationId = (req, res) => {
-  Partnership.find({ collaborator: req.params.id })
-    // .populate({ path: "project", model: "Project" })
+  Partnership.find({ owner: req.params.organizationId })
+    .populate({ path: "project", model: "Project" })
     .then((data) => {
       let transformedData = new Array();
       transformedData = data.map((obj) => {
@@ -141,20 +141,19 @@ const createOrganization = (req, res) => {
 };
 
 const deleteOrganization = (req, res) => {
-  Organization.deleteOne({ _id: req.params.id }).then((data) => {
-    res
-      .status(200)
-      .json({
+  Organization.deleteOne({ _id: req.body.id })
+    .then((data) => {
+      res.status(200).json({
         success: true,
         data: data,
-      })
-      .catch((error) => {
-        res.status(404).json({
-          success: false,
-          message: error,
-        });
       });
-  });
+    })
+    .catch((error) => {
+      res.status(404).json({
+        success: false,
+        message: error,
+      });
+    });
 };
 
 const createPartnership = (req, res) => {
@@ -251,6 +250,16 @@ const createProjectWithPartner = async (req, res) => {
         message: err,
       });
     });
+};
+
+const searchOrganization = (req, res) => {
+  const search = req.query.search;
+  Organization.find({ $regex: new RegExp(search, "i") }).then((data) =>
+    res.status(200).json({
+      success: true,
+      data: data,
+    })
+  );
 };
 
 module.exports = {
