@@ -21,6 +21,7 @@ const HandleRegister = (req, res) => {
       newUserModel.passwordHash = hash;
       newUserModel.isAdmin = false;
       newUserModel.created = new Date().getTime();
+      newUserModel.organization = '650cfb52d499bdddb44a4d11';
       newUserModel.role = "user";
       // newUserModel.phonecode=phonecode;
       // newUserModel.phone=phone;

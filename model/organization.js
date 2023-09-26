@@ -5,7 +5,7 @@ const organizationSchema = new Schema({
   name: String,
   description: String,
   created: Number,
-});
+}, {versionKey: false});
 
 module.exports = new mongoose.model(
   "Organization",

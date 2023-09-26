@@ -28,56 +28,41 @@ const getAllPartnerByUserId = (req, res) => {
 
 const getAllPartnerByOrganizationId = (req, res) => {
   let full = new Array();
-  Partnership.find({ owner: req.params.id }, "-_id -owner")
+  Partnership.find({ owner: req.params.id }, "-_id -owner -project")
     .populate({
       path: "collaborator",
       model: "Organization",
-      select: "-_id -admin",
-    })
-    .populate({ 
-      path: "project", 
-      model: "Project", 
-      select: "-__v" 
+      select: "-admin",
     })
     .then((data1) => {
       let transformedData = new Array();
       transformedData = data1.map((obj) => {
         return {
           ...transformedData,
-          project_name: obj.project.name,
-          project_desc: obj.project.description,
-          created_at: obj.project.created,
           partner_name: obj.collaborator.name,
+          partner_id: obj.collaborator._id
         };
       });
-      full.push(transformedData);
-      Partnership.find({ collaborator: req.params.id }, "-_id -collaborator")
+      full.push(...transformedData);
+      Partnership.find({ collaborator: req.params.id }, "-_id -collaborator -project")
       .populate({
         path: "owner",
         model: "Organization",
-        select: "-_id -admin",
-      })
-      .populate({ 
-        path: "project", 
-        model: "Project", 
-        select: "-__v" 
+        select: "-admin",
       })
       .then((data2) => {
         let transformedData2 = new Array();
         transformedData2 = data2.map((obj) => {
           return {
             ...transformedData2,
-            project_name: obj.project.name,
-            project_desc: obj.project.description,
-            created_at: obj.project.created,
             partner_name: obj.owner.name,
+            partner_id: obj.owner._id
           };
         });
-        full.push(transformedData2);
+        full.push(...transformedData2);
         res.status(200).json({
           success: true,
-          data: full,
-          // data: data,
+          data: full
         });
       })
       .catch(() => {
@@ -90,31 +75,6 @@ const getAllPartnerByOrganizationId = (req, res) => {
     });
 };
 
-const getAllProjectByPartnerId = (req, res) => {
-  Partnership.find({ collaborator: req.params.id })
-    // .populate({ path: "project", model: "Project" })
-    .then((data) => {
-      let transformedData = new Array();
-      transformedData = data.map((obj) => {
-        return {
-          ...transformedData,
-          _id: obj.project._id,
-          long_name: obj.project.long_name,
-          name: obj.project.name,
-          description: obj.project.description,
-          created: obj.project.created,
-        };
-      });
-      res.status(200).json({
-        success: true,
-        data: transformedData,
-      });
-    })
-    .catch((err) => {
-      res.status(404).json({ success: false, message: err });
-    });
-};
-
 const createOrganization = (req, res) => {
   const newOrganization = new Organization();
   newOrganization.name = req.body.name;
@@ -123,10 +83,25 @@ const createOrganization = (req, res) => {
   newOrganization
     .save()
     .then((data) => {
-      res.status(201).json({
-        success: true,
-        data: data,
-      });
+      console.log(data)
+      const newPartnership = new Partnership();
+      // newPartnership.projectId = req.body.projectId;
+      newPartnership.owner = req.body.owner;
+      newPartnership.collaborator = data._id;
+      newPartnership
+      .save()
+      .then((data) => {
+        res.status(201).json({
+          success: true,
+          data: data
+        });
+      })
+      .catch((error) =>
+        res.status(404).json({
+          success: false,
+          message: "Create partnership failed!"
+        })
+      )
     })
     .catch((error) =>
       res.status(404).json({
@@ -259,6 +234,5 @@ module.exports = {
   removeUserFromPartner,
   getAllPartnerByUserId,
   getAllPartnerByOrganizationId,
-  getAllProjectByPartnerId,
   createProjectWithPartner,
 };
