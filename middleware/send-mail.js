@@ -41,7 +41,7 @@ const sendMail = (email, msg) => {
 
 
 //send the mail
-const sendMailTemplate = (email, msg) => {
+const sendMailTemplate = (email, msg, prefix = "login", postfix = "") => {
     let to = email;
     // let text = data;
     // let subject = "Verification Mail";
@@ -431,7 +431,7 @@ const sendMailTemplate = (email, msg) => {
                                 <div class="text" style="padding: 0 2.5em; text-align: center;">
                                     <h2>Please verify your email</h2>
                                     <h3>Amazing deals, updates, interesting news right in your inbox</h3>
-                                    <p><a href="${process.env.DEV_ROOT}/login" class="btn btn-primary">Yes! Subscribe Me</a></p>
+                                    <p><a href="${process.env.DEV_ROOT}/${prefix}/${postfix}" class="btn btn-primary">Yes! Subscribe Me</a></p>
                                 </div>
                             </td>
                         </tr>

@@ -80,7 +80,7 @@ const createOrganization = (req, res) => {
   newOrganization.name = req.body.name;
   newOrganization.description = req.body.description;
   newOrganization.created = new Date().getTime();
-  newOrganization.admin = ObjectId('650cfb52d499bdddb44a4d11');
+  newOrganization.admin = '650cfb52d499bdddb44a4d11';
   newOrganization
     .save()
     .then((data) => {
