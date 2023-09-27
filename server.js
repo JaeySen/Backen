@@ -12,10 +12,9 @@ const user = require('./routes/user');
 const group = require('./routes/group');
 const organization = require('./routes/organization');
 const connectMongoDB = require('./db/connection');
-const { getAllProjects } = require("./controller/project");
 const port = process.env.DEV_PORT || 5000;
 const app = express();
-
+// const allowedOrigins = ["115.79.199.129"]
 
 //DB Connection
 const connectionURL = process.env.HOST + process.env.DB;
@@ -25,12 +24,31 @@ connectMongoDB(connectionURL).then(()=>{
     console.log(err);
 });
 
+// app.use(cors({
+//     origin: function(origin, callback){
+//       if (!origin) {
+//         return callback(null, true);
+//       }
+  
+//       if (allowedOrigins.includes(origin)) {
+//         const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+//         return callback(new Error(msg), false);
+//       }
+//       return callback(null, true);
+//     }
+  
+//   }));
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 app.use('/public', express.static('public'));
 app.use(cors());
+// app.use((req, res, next) => {
+//     // req.setHeader("Access-Control-Allow-Private-Network", "true")
+//     res.setHeader("Access-Control-Allow-Private-Network", "true")
+//     next();
+// })
 
 app.use(express.json());
 
