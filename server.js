@@ -12,7 +12,6 @@ const user = require('./routes/user');
 const group = require('./routes/group');
 const organization = require('./routes/organization');
 const connectMongoDB = require('./db/connection');
-const { getAllProjects } = require("./controller/project");
 const port = process.env.DEV_PORT || 5000;
 const app = express();
 
@@ -42,6 +41,4 @@ app.use('/api/v1/group',group);
 app.use('/api/v1/organization', organization);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
-app.listen(port,()=>{
-    console.log(`server started at ${port}`);
-})
+app.listen(port, "192.168.1.30")
