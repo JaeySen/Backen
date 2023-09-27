@@ -42,21 +42,10 @@ connectMongoDB(connectionURL).then(()=>{
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-app.use('/public', express.static('public'));
-
-app.use((req, res, next) => {
-    // res.setHeader("Access-Control-Allow-Private-Network", "true")
-    res.set("Access-Control-Allow-Private-Network", "true");
-    next();
-})
 app.use(cors());
 
 app.use(express.json());
-auth.use(require("cors")({credentials: true}))
-project.use(require("cors")({credentials: true}))
-user.use(require("cors")({credentials: true}))
-group.use(require("cors")({credentials: true}))
-organization.use(require("cors")({credentials: true}))
+
 app.use('/api/v1/auth',auth);
 app.use('/api/v1/project',project);
 app.use('/api/v1/user',user);
