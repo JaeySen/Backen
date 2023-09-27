@@ -40,7 +40,9 @@ const getAllPartnerByOrganizationId = (req, res) => {
         return {
           ...transformedData,
           partner_name: obj.collaborator.name,
-          partner_id: obj.collaborator._id
+          partner_id: obj.collaborator._id,
+          created: obj.created,
+          description: obj.description
         };
       });
       full.push(...transformedData);
@@ -56,7 +58,9 @@ const getAllPartnerByOrganizationId = (req, res) => {
           return {
             ...transformedData2,
             partner_name: obj.owner.name,
-            partner_id: obj.owner._id
+            partner_id: obj.owner._id,
+            created: obj.created,
+            description: obj.description
           };
         });
         full.push(...transformedData2);
@@ -133,6 +137,7 @@ const createPartnership = (req, res) => {
   const newPartnership = new Partnership();
   newPartnership.projectId = req.body.projectId;
   newPartnership.owner = req.body.owner;
+  newPartnership.created = new Date().getTime();
   newPartnership
     .save()
     .then((data) => {
