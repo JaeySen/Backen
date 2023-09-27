@@ -1,16 +1,5 @@
 [{
 	"_id": {
-		"$oid": "650d0325b21bdc9a7f0b648a"
-	},
-	"group": {
-		"$oid": "64f9406b9ee8f8d7da1af6f9"
-	},
-	"project": {
-		"$oid": "650d027fb21bdc9a7f0b6488"
-	}
-},
-{
-	"_id": {
 		"$oid": "650aaee76e870547e189cd3c"
 	},
 	"project": {

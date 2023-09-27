@@ -155,5 +155,57 @@
 		"$oid": "650cf9a5d499bdddb44a4d09"
 	},
 	"scope": "user"
+},
+{
+	"_id": {
+		"$oid": "65129575d493a909b46e5ee8"
+	},
+	"username": "admin",
+	"email": "admin@admin.com",
+	"passwordHash": "$2b$11$jGu566ODmkTV.HTC8gSftOU3q2j6VB59jGYVDCVJ5uJjJrzmxwKF2",
+	"isAdmin": false,
+	"created": 1.695716725886E+12,
+	"organization": "650cfb52d499bdddb44a4d11",
+	"role": "user",
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "65129b79b7347db19d5d57eb"
+	},
+	"username": "admin2",
+	"email": "ad2@admin.com",
+	"passwordHash": "$2b$11$n1BYIb4o0nUL6W.Ti4XcmuF5x7jTmlOSiQYj2wjfylSDKD1pSu6D2",
+	"isAdmin": false,
+	"created": 1.69571826603E+12,
+	"organization": "650cfb52d499bdddb44a4d11",
+	"role": "user",
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "651381cb4bbec10b07161ecf"
+	},
+	"username": "admin3",
+	"email": "a@a.com",
+	"passwordHash": "$2b$11$otWRvYsBOsNBbjVwJdeeKOZ7xMGnJSMOjfor4lqbqqZWAxR5TpB/a",
+	"isAdmin": false,
+	"created": 1.695777227598E+12,
+	"organization": "650cfb52d499bdddb44a4d11",
+	"role": "user",
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "65138d0316161aaada1118b2"
+	},
+	"username": "admin4",
+	"email": "admin4@mail.com",
+	"passwordHash": "$2b$11$RWi8lW2KN8B1xK9fxZ0ab.e.3G4oeKJAawfx9w1QEV.TFYxKNIFHi",
+	"isAdmin": false,
+	"created": 1.695780099924E+12,
+	"organization": "650cfb52d499bdddb44a4d11",
+	"role": "user",
+	"__v": 0
 }]
 
