@@ -1,11 +1,11 @@
 // const Organization = require('../model/organization');
 // const OrganizationGroup = require('../model/organizations_groups');
-const Partnership = require('../model/partnership');
+const Partner = require('../model/partner');
 // const User = require('../model/user');
 // const Project = require('../model/project');
 
 const getPartnersByOwnerId = (req, res) => {
-    Partnership.find({ owner_id: req.params.owner }, '-owner_id')
+    Partner.find({ owner_id: req.params.owner }, '-owner_id')
     .then((data) => {
         res.status(200).json({
             success: true,
@@ -17,6 +17,28 @@ const getPartnersByOwnerId = (req, res) => {
     });
 }
 
+const createPartner = (req, res) => {
+    const newPartner = new Partner();
+    newPartner.owner_id = req.body.owner;
+    newPartner.description = req.body.description;
+    newPartner.created_at = new Date().getTime();
+
+    newPartner.save()
+    .then((data) => {
+        res.status(202).json({
+          success: true,
+          data: data
+        })
+    })
+    .catch(() =>
+        res.status(404).json({
+            success: false,
+            message: 'Create new partner failed!',
+        })
+    );
+}
+
 module.exports = {
-    getPartnersByOwnerId
+    getPartnersByOwnerId,
+    createPartner
 }

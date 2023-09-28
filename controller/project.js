@@ -88,57 +88,16 @@ const getProjectsByUserId = (req, res) => {
 };
 
 const getProjectsWithPartnerId = (req, res) => {
-  let full = new Array();
-  Partnership.find({ collaborator: req.params.partnerId, owner: req.params.ownerId }, '-_id -owner -collaborator')
-    .populate({
-      path: 'project',
-      model: 'Project',
-      select: '-__v',
-    })
-    .then((data) => {
-      let transformedData = new Array();
-      transformedData = data.map((obj) => {
-        return {
-          ...transformedData,
-          _id: obj.project._id,
-          long_name: obj.project.long_name,
-          name: obj.project.name,
-          description: obj.project.description,
-          created: obj.project.created,
-        };
-      });
-      full.push(...transformedData);
-      Partnership.find({ owner: req.params.partnerId, collaborator: req.params.ownerId }, '-_id -owner -collaborator')
-        .populate({
-          path: 'project',
-          model: 'Project',
-          select: '-__v',
-        })
-        .then((data2) => {
-          let transformedData = new Array();
-          transformedData = data2.map((obj) => {
-            return {
-              ...transformedData,
-              _id: obj.project._id,
-              long_name: obj.project.long_name,
-              name: obj.project.name,
-              description: obj.project.description,
-              created: obj.project.created,
-            };
-          });
-          full.push(...transformedData);
-          res.status(200).json({
-            success: true,
-            data: full,
-          });
-        })
-        .catch((err) => {
-          res.status(404).json({ success: false, message: err });
-        });
-    })
-    .catch((err) => {
-      res.status(404).json({ success: false, message: err });
+  Project.find({ partner_id: req.params.partner })
+  .then((data) => {
+    res.status(200).json({
+      success: true,
+      data: data
     });
+  })
+  .catch((err) => {
+    res.status(404).json({ success: false, message: err });
+  });
 };
 
 const getProjectById = (req, res) => {
@@ -160,8 +119,8 @@ const createProject = async (req, res) => {
 
   project.name = req.body.name;
   project.description = req.body.description;
-  project.created = new Date().getTime();
-  project.admin = req.body.user;
+  project.created_at = new Date().getTime();
+  project.partner_id = req.body.partner;
 
   await project
     .save()

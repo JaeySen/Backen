@@ -5,11 +5,12 @@ const projectSchema = new Schema({
   name: String,
   server_location: String,
   description: String,
-  created: String,
-  start_date: Number,
-  end_date: Number,
-  partnership_id: { type: Schema.Types.ObjectId, ref: 'partnerships', required: true }
-  // admin: { type: Schema.Types.ObjectId, ref: 'users', required: true },
+  created_at: String,
+  start_date: String,
+  end_date: String,
+  partner_id: { type: Schema.Types.ObjectId, ref: 'partnerships', required: true }
+}, {
+  versionKey: false
 });
 
 module.exports = mongoose.model('Project', projectSchema, 'projects');
