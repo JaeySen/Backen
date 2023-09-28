@@ -11,6 +11,9 @@ const project = require('./routes/project');
 const user = require('./routes/user');
 const group = require('./routes/group');
 const organization = require('./routes/organization');
+// cuong import
+const todo = require('./routes/todo');
+// --------
 const connectMongoDB = require('./db/connection');
 const { getAllProjects } = require('./controller/project');
 const port = process.env.DEV_PORT || 5000;
@@ -46,6 +49,7 @@ app.use('/api/v1/project', project);
 app.use('/api/v1/user', user);
 app.use('/api/v1/group', group);
 app.use('/api/v1/organization', organization);
+app.use('/api/v1/todo', todo);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(port, () => {
