@@ -6,6 +6,7 @@ const GroupUser = require('../model/groups_users');
 const ProjectGroup = require('../model/projects_groups');
 const { sendMailTemplate } = require('../middleware/send-mail');
 const { getUserByEmailPromise, createUserPromise, createUserProjectLink } = require('./user');
+const PartnerGroup = require('../model/partners_groups');
 
 const getAllGroups = (req, res) => {
   Group.find({})
@@ -264,9 +265,30 @@ const getGroupsWithProjectId = (req, res) => {
     });
 };
 
-// const updateGroup = (req, res) => {
-//     Group.findOneAndUpdate()
-// }
+const createPartnerGroup = (req, res) => {
+  const newPartnerGroup = new PartnerGroup();
+  newPartnerGroup.name = req.body.name;
+  newPartnerGroup.role = req.body.role;
+  newPartnerGroup.created_at = new Date().getTime();
+  newPartnerGroup.partner_id = req.body.partner;
+
+  newPartnerGroup
+  .save()
+  .then((createdDoc) => {
+    res.status(202).json({
+      success: true,
+      data: createdDoc
+    });
+  })
+  .catch((err) => {
+    res.status(404).json({
+      success: false,
+      message: err
+    });
+  });
+}
+
+
 
 module.exports = {
   getAllGroups,
@@ -279,4 +301,5 @@ module.exports = {
   // getUsersByProjectId
   getGroupByID,
   // getAllGroupWithProjectId,
+  createPartnerGroup
 };
