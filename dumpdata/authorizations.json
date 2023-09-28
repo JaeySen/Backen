@@ -1,0 +1,8 @@
+[
+  { "_id": { "$oid": "65152bcffc13ae3dc6fd6434" }, "name": "View model", "role": "modular" },
+  { "_id": { "$oid": "65152bcffc13ae3dc6fd6435" }, "name": "Edit model", "role": "coordinator" },
+  { "_id": { "$oid": "65152bcffc13ae3dc6fd6436" }, "name": "Upload file", "role": "manager" },
+  { "_id": { "$oid": "65152bcffc13ae3dc6fd6437" }, "name": "Delete file", "role": "modular" },
+  { "_id": { "$oid": "65152bcffc13ae3dc6fd6438" }, "name": "Change file", "role": "manager" },
+  { "_id": { "$oid": "65152bcffc13ae3dc6fd6439" }, "name": "Add member", "role": "coordinator" }
+]
