@@ -17,6 +17,12 @@ const port = process.env.DEV_PORT || 5000;
 const app = express();
 
 //DB Connection
+const { HOST, DB } = process.env;
+if (!HOST || !DB) {
+  console.warn("You're not provide `HOST` and `DB` in `.env` file.");
+  process.exit(0);
+}
+
 const connectionURL = process.env.HOST + process.env.DB;
 connectMongoDB(connectionURL)
   .then(() => {
