@@ -1,7 +1,7 @@
-const Organization = require("../model/organization");
-const OrganizationGroup = require("../model/organizations_groups");
-const Partnership = require("../model/partnership");
-const Project = require("../model/project");
+const Organization = require('../model/organization');
+const OrganizationGroup = require('../model/organizations_groups');
+const Partnership = require('../model/partnership');
+const Project = require('../model/project');
 
 const getAllOrganization = (req, res) => {
   Organization.find({})
@@ -28,11 +28,11 @@ const getAllPartnerByUserId = (req, res) => {
 
 const getAllPartnerByOrganizationId = (req, res) => {
   let full = new Array();
-  Partnership.find({ owner: req.params.id }, "-_id -owner -project")
+  Partnership.find({ owner: req.params.id }, '-_id -owner -project')
     .populate({
-      path: "collaborator",
-      model: "Organization",
-      select: "-admin",
+      path: 'collaborator',
+      model: 'Organization',
+      select: '-admin',
     })
     .then((data1) => {
       let transformedData = new Array();
@@ -42,40 +42,39 @@ const getAllPartnerByOrganizationId = (req, res) => {
           partner_name: obj.collaborator.name,
           partner_id: obj.collaborator._id,
           created: obj.created,
-          description: obj.description
+          description: obj.description,
         };
       });
       full.push(...transformedData);
-      Partnership.find({ collaborator: req.params.id }, "-_id -collaborator -project")
-      .populate({
-        path: "owner",
-        model: "Organization",
-        select: "-admin",
-      })
-      .then((data2) => {
-        let transformedData2 = new Array();
-        transformedData2 = data2.map((obj) => {
-          return {
-            ...transformedData2,
-            partner_name: obj.owner.name,
-            partner_id: obj.owner._id,
-            created: obj.created,
-            description: obj.description
-          };
+      Partnership.find({ collaborator: req.params.id }, '-_id -collaborator -project')
+        .populate({
+          path: 'owner',
+          model: 'Organization',
+          select: '-admin',
+        })
+        .then((data2) => {
+          let transformedData2 = new Array();
+          transformedData2 = data2.map((obj) => {
+            return {
+              ...transformedData2,
+              partner_name: obj.owner.name,
+              partner_id: obj.owner._id,
+              created: obj.created,
+              description: obj.description,
+            };
+          });
+          full.push(...transformedData2);
+          res.status(200).json({
+            success: true,
+            data: full,
+          });
+        })
+        .catch(() => {
+          res.status(404).json({ success: false, message: 'Get Partnerships as collaborator Failed!' });
         });
-        full.push(...transformedData2);
-        res.status(200).json({
-          success: true,
-          data: full
-        });
-      })
-      .catch(() => {
-        res.status(404).json({ success: false, message: "Get Partnerships as collaborator Failed!" });
-      });
-
     })
     .catch(() => {
-      res.status(404).json({ success: false, message: "Get Partnerships as owner Failed!" });
+      res.status(404).json({ success: false, message: 'Get Partnerships as owner Failed!' });
     });
 };
 
@@ -88,31 +87,31 @@ const createOrganization = (req, res) => {
   newOrganization
     .save()
     .then((data) => {
-      console.log(data)
+      console.log(data);
       const newPartnership = new Partnership();
       // newPartnership.projectId = req.body.projectId;
       newPartnership.owner = req.body.owner;
       newPartnership.collaborator = data._id;
       newPartnership
-      .save()
-      .then((data) => {
-        res.status(201).json({
-          success: true,
-          data: data
-        });
-      })
-      .catch((error) =>
-        res.status(404).json({
-          success: false,
-          message: "Create partnership failed!"
+        .save()
+        .then((data) => {
+          res.status(201).json({
+            success: true,
+            data: data,
+          });
         })
-      )
+        .catch((error) =>
+          res.status(404).json({
+            success: false,
+            message: 'Create partnership failed!',
+          }),
+        );
     })
     .catch((error) =>
       res.status(404).json({
         success: false,
         message: error,
-      })
+      }),
     );
 };
 
@@ -212,7 +211,7 @@ const createProjectWithPartner = async (req, res) => {
         .then(() => {
           res.status(201).json({
             success: true,
-            message: "Project added partner",
+            message: 'Project added partner',
           });
         })
         .catch((err) => {

@@ -4,16 +4,14 @@ let router = express.Router();
 const upload = require('../middleware/upload');
 
 const {
-    HandleAddEmployee, 
-    HandleDeleteEmployeeById, 
-    HandleGetAllEmployee, 
-    HandleGetEmployeeById, 
-    HandlePatchEmployeeById, 
-    HandleSearchEmployee, 
-    HandleUpdateEmployeeById
+  HandleAddEmployee,
+  HandleDeleteEmployeeById,
+  HandleGetAllEmployee,
+  HandleGetEmployeeById,
+  HandlePatchEmployeeById,
+  HandleSearchEmployee,
+  HandleUpdateEmployeeById,
 } = require('../controller/employee');
-
-
 
 // router.route('/getAllEmployee').get(HandleControllerOne).post(HandleControllerTwo);
 router.post('/addEmployee', upload.single('avatar'), HandleAddEmployee);
@@ -23,7 +21,6 @@ router.put('/updateEmployeeById/:id', HandleUpdateEmployeeById);
 router.patch('/patchEmployeeById/:id', HandlePatchEmployeeById);
 router.delete('/deleteEmployeeById/:id', HandleDeleteEmployeeById);
 router.get('/search/:key', HandleSearchEmployee);
-
 
 // Product API find
 // router.post('/post/date', (req,res)=>{
@@ -43,4 +40,4 @@ router.get('/search/:key', HandleSearchEmployee);
 //     })
 // })
 
-module.exports=router;
+module.exports = router;

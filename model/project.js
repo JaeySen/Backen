@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 // const representationSchema = new Schema({
@@ -56,7 +56,7 @@ const projectSchema = new Schema({
   created: String,
   startDate: Number,
   endDate: Number,
-  admin: { type: Schema.Types.ObjectId, ref: "users", required: true },
+  admin: { type: Schema.Types.ObjectId, ref: 'users', required: true },
 });
 
-module.exports = mongoose.model("Project", projectSchema, "projects");
+module.exports = mongoose.model('Project', projectSchema, 'projects');

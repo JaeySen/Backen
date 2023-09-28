@@ -1,37 +1,38 @@
-[{
-	"_id": {
-		"$oid": "650cfb52d499bdddb44a4d11"
-	},
-	"name": "Xperi Corporation",
-	"admin": {
-		"$oid": "65027977ad8655dabb20b3b5"
-	}
-},
-{
-	"_id": {
-		"$oid": "650cfb52d499bdddb44a4d12"
-	},
-	"name": "Controladora Vuela Compania de Aviacion, S.A.B. de C.V.",
-	"admin": {
-		"$oid": "650cfb31fc13ae40d4fd5540"
-	}
-},
-{
-	"_id": {
-		"$oid": "650cfb52d499bdddb44a4d10"
-	},
-	"name": "CF Corporation",
-	"admin": {
-		"$oid": "65027925ad8655dabb20b3b3"
-	}
-},
-{
-	"_id": {
-		"$oid": "650d00fab21bdc9a7f0b647d"
-	},
-	"name": "VT Group",
-	"admin": {
-		"$oid": "650d01afb21bdc9a7f0b6484"
-	}
-}]
-
+[
+  {
+    "_id": {
+      "$oid": "650cfb52d499bdddb44a4d11"
+    },
+    "name": "Xperi Corporation",
+    "admin": {
+      "$oid": "65027977ad8655dabb20b3b5"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "650cfb52d499bdddb44a4d12"
+    },
+    "name": "Controladora Vuela Compania de Aviacion, S.A.B. de C.V.",
+    "admin": {
+      "$oid": "650cfb31fc13ae40d4fd5540"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "650cfb52d499bdddb44a4d10"
+    },
+    "name": "CF Corporation",
+    "admin": {
+      "$oid": "65027925ad8655dabb20b3b3"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "650d00fab21bdc9a7f0b647d"
+    },
+    "name": "VT Group",
+    "admin": {
+      "$oid": "650d01afb21bdc9a7f0b6484"
+    }
+  }
+]
