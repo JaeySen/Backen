@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
   // _id: mongoose.Schema.Types.ObjectId,
@@ -11,13 +11,13 @@ const userSchema = new mongoose.Schema({
   role: String,
   organization: String,
   adminScope: String,
-  isAdmin: Boolean
+  isAdmin: Boolean,
   // role: { type: Schema.Types.ObjectId, ref: "roles" }
   // phonecode : String,
   // phone : String,
   // country : String,
 });
 
-const User = new mongoose.model("User", userSchema, "users");
+const User = new mongoose.model('User', userSchema, 'users');
 
 module.exports = User;

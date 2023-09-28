@@ -1,18 +1,18 @@
-const express = require("express");
+const express = require('express');
 let router = express.Router();
 // const checkAuth = require('../middleware/check-auth');
-const upload = require("../middleware/upload");
+const upload = require('../middleware/upload');
 
 const {
-    getAllGroups,
-    createGroup,
-    deleteGroup,
-    getGroupsWithUserId,
-    getGroupsWithProjectId,
-    // getUsersByGroupId,
-    // getUsersByProjectId
+  getAllGroups,
+  createGroup,
+  deleteGroup,
+  getGroupsWithUserId,
+  getGroupsWithProjectId,
+  // getUsersByGroupId,
+  // getUsersByProjectId
 } = require('../controller/group');
-const { addMemberToGroup, removeUserFromGroup, updateMemberRole } = require('../controller/user')
+const { addMemberToGroup, removeUserFromGroup, updateMemberRole } = require('../controller/user');
 
 // router.route('/getAllEmployee').get(HandleControllerOne).post(HandleControllerTwo);
 // router.post('/addEmployee', upload.single('avatar'), HandleAddEmployee);
@@ -21,7 +21,7 @@ router.get('/', getAllGroups);
 router.get('/project/:projectId', getGroupsWithProjectId);
 router.delete('/:groupId', deleteGroup);
 router.post('/add-user', addMemberToGroup);
-router.get('/user/:userId', getGroupsWithUserId)
+router.get('/user/:userId', getGroupsWithUserId);
 router.put('/user/set-role', updateMemberRole);
 router.delete('/user/remove', removeUserFromGroup);
 // router.get('/getUsersByGroupId/:gid', getUsersByGroupId);
@@ -31,5 +31,4 @@ router.delete('/user/remove', removeUserFromGroup);
 // router.delete('/deleteEmployeeById/:id', HandleDeleteEmployeeById);
 // router.get('/search/:key', HandleSearchEmployee);
 
-
-module.exports=router;
+module.exports = router;

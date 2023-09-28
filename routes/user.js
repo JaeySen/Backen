@@ -4,14 +4,14 @@ let router = express.Router();
 // const upload = require('../middleware/upload');
 
 const {
-    getAllUsers,
-    getUserById,
-    getUserByUsername,
-    getUserByEmail,
-    getUsersByGroupId,
-    getUsersByProjectId,
-    createUser,
-    updateUserInfo
+  getAllUsers,
+  getUserById,
+  getUserByUsername,
+  getUserByEmail,
+  getUsersByGroupId,
+  getUsersByProjectId,
+  createUser,
+  updateUserInfo,
 } = require('../controller/user');
 
 // router.route('/getAllEployee').get(HandleControllerOne).post(HandleControllerTwo);
@@ -29,5 +29,4 @@ router.get('/project/:projectId', getUsersByProjectId);
 // router.delete('/deleteEmployeeById/:id', HandleDeleteEmployeeById);
 // router.get('/search/:key', HandleSearchEmployee);
 
-
-module.exports=router;
+module.exports = router;

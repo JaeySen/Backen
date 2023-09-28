@@ -1,774 +1,705 @@
 {
-    "swagger": "2.0",
-    "info": {
-      "version": "1.0.0",
-      "title": "Autodesk-based BIM API",
-      "description": "Autodesk-based BIM API",
-      "license": {
-        "name": "MIT",
-        "url": "https://opensource.org/licenses/MIT"
-      }
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Autodesk-based BIM API",
+    "description": "Autodesk-based BIM API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:5001",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "User",
+      "description": "User APIs"
     },
-    "host": "localhost:5001",
-    "basePath": "/api/v1",
-    "tags": [
-      {
-        "name": "User",
-        "description": "User APIs"
-      }, 
-      {
-        "name": "Group",
-        "description": "Group APIs"
-      }, 
-      {
-        "name": "Project",
-        "description": "Project APIs"
-      }
-    ],
-    "schemes": [
-      "http"
-    ],
-    "consumes": [
-      "application/json"
-    ],
-    "produces": [
-      "application/json"
-    ],
-    "paths": {
-      "/user": {
-        "post": {
-          "tags": [
-            "User"
-          ],
-          "summary": "Create new user in system",
-          "description": "Create new user in system",
-          "parameters": [
-            {
-              "name": "user",
-              "in": "body",
-              "description": "User that we want to create",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "New user is created",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
+    {
+      "name": "Group",
+      "description": "Group APIs"
+    },
+    {
+      "name": "Project",
+      "description": "Project APIs"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/user": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Create new user in system",
+        "description": "Create new user in system",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User that we want to create",
+            "schema": {
+              "$ref": "#/definitions/User"
             }
           }
-        },
-        "get": {
-          "tags": [
-            "User"
-          ],
-          "summary": "Get all users in system",
-          "responses": {
-            "200": {
-              "description": "OK",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          }
-        },
-        "put": {
-          "tags": [
-            "User"
-          ],
-          "summary": "Update user info",
-          "description": "Update user info",
-          "parameters": [
-            {
-              "name": "email",
-              "in": "body",
-              "description": "Email of user that we want to update info upon",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "User info is updated",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New user is created",
+            "schema": {
+              "$ref": "#/definitions/User"
             }
           }
         }
       },
-      "/user/{userId}": {
+      "get": {
+        "tags": ["User"],
+        "summary": "Get all users in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["User"],
+        "summary": "Update user info",
+        "description": "Update user info",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "body",
+            "description": "Email of user that we want to update info upon",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "User info is updated",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/user/{userId}": {
+      "parameters": [
+        {
+          "name": "userId",
+          "in": "path",
+          "required": true,
+          "description": "ID of user that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["User"],
+        "summary": "Get user with given ID",
+        "responses": {
+          "200": {
+            "description": "User is found",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/user/name/{name}": {
+      "parameters": [
+        {
+          "name": "username",
+          "in": "path",
+          "required": true,
+          "description": "Username of user that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["User"],
+        "summary": "Get user with given username",
+        "responses": {
+          "200": {
+            "description": "User is found",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/user/email/{email}": {
+      "parameters": [
+        {
+          "name": "email",
+          "in": "path",
+          "required": true,
+          "description": "Email of user that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["User"],
+        "summary": "Get user with given email",
+        "responses": {
+          "200": {
+            "description": "User is found",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/user/group/{groupId}": {
+      "parameters": [
+        {
+          "name": "groupId",
+          "in": "path",
+          "required": true,
+          "description": "ID of group that we want to get all User",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["User"],
+        "summary": "Get Users within a group with groupId",
+        "responses": {
+          "200": {
+            "description": "List of User in group is returned",
+            "schema": {
+              "$ref": "#/definitions/UserList"
+            }
+          }
+        }
+      }
+    },
+    "/user/project/{projectId}": {
+      "parameters": [
+        {
+          "name": "projectId",
+          "in": "path",
+          "required": true,
+          "description": "ID of project that we want to get all User",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["User"],
+        "summary": "Get Users within a project with projectId",
+        "responses": {
+          "200": {
+            "description": "List of User in project is returned",
+            "schema": {
+              "$ref": "#/definitions/UserList"
+            }
+          }
+        }
+      }
+    },
+    "/group": {
+      "post": {
+        "tags": ["Group"],
+        "description": "Create new group",
+        "summary": "Create new group",
+        "parameters": [
+          {
+            "name": "group",
+            "in": "body",
+            "description": "Group Schema properties",
+            "schema": {
+              "$ref": "#/definitions/Group"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "New group is created",
+            "schema": {
+              "$ref": "#/definitions/Group"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Group"],
+        "summary": "Get all groups",
+        "description": "Get all groups",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Group"
+            }
+          }
+        }
+      }
+    },
+    "/group/{groupId}": {
+      "delete": {
+        "summary": "Delete group with given ID",
+        "tags": ["Group"],
+        "responses": {
+          "200": {
+            "description": "Group is deleted",
+            "schema": {
+              "$ref": "#/definitions/DeleteResponseSuccess"
+            }
+          },
+          "404": {
+            "description": "Group is NOT deleted",
+            "schema": {
+              "$ref": "#/definitions/DeleteResponseFailed"
+            }
+          }
+        }
+      }
+    },
+    "/group/add-user": {
+      "post": {
+        "tags": ["Group"],
+        "summary": "Add user to group with userId",
+        "description": "Add user to group with userId",
+        "parameters": [
+          {
+            "name": "group",
+            "in": "body",
+            "description": "Group Schema properties",
+            "schema": {
+              "$ref": "#/definitions/GroupUserBodySchema"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "User is added to Group",
+            "schema": {
+              "$ref": "#/definitions/PostResponseSuccess"
+            }
+          }
+        }
+      }
+    },
+    "/group/user/${userId}": {
+      "get": {
+        "tags": ["Group"],
+        "summary": "Get groups that user is in with given userId",
+        "description": "Get groups that user is in with given userId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Group"
+            }
+          }
+        }
+      }
+    },
+    "/group/user/set-role": {
+      "get": {
+        "tags": ["Group"],
+        "summary": "Set new role to user",
+        "description": "Set new role to user",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "body",
+            "description": "Email of user that we want to update role upon",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Group"
+            }
+          }
+        }
+      }
+    },
+    "/group/del-user": {
+      "delete": {
+        "tags": ["Group"],
+        "summary": "Remove a member from group",
+        "description": "Remove a member from group",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "body",
+            "description": "ID of user that we want to remove from group",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Group"
+            }
+          }
+        }
+      }
+    },
+    "/project": {
+      "get": {
+        "tags": ["Project"],
+        "summary": "Get all projects",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Project"
+            }
+          }
+        }
+      }
+    },
+    "/project/${projectId}": {
+      "get": {
+        "tags": ["Project"],
+        "summary": "Get project with given ID",
+        "responses": {
+          "200": {
+            "description": "Project is return",
+            "schema": {
+              "$ref": "#/definitions/Project"
+            }
+          }
+        }
+      }
+    },
+    "/project/user/${userId}": {
+      "get": {
+        "tags": ["Project"],
+        "summary": "Get project with given user ID",
         "parameters": [
           {
             "name": "userId",
             "in": "path",
-            "required": true,
-            "description": "ID of user that we want to find",
-            "type": "string"
+            "description": "ID of user inside the project",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
           }
         ],
-        "get": {
-          "tags": [
-            "User"
-          ],
-          "summary": "Get user with given ID",
-          "responses": {
-            "200": {
-              "description": "User is found",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Project is return",
+            "schema": {
+              "$ref": "#/definitions/Project"
             }
           }
         }
-      },
-      "/user/name/{name}": {
-        "parameters": [
-          {
-            "name": "username",
-            "in": "path",
-            "required": true,
-            "description": "Username of user that we want to find",
-            "type": "string"
-          }
-        ],
-        "get": {
-          "tags": [
-            "User"
-          ],
-          "summary": "Get user with given username",
-          "responses": {
-            "200": {
-              "description": "User is found",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          }
-        }
-      },
-      "/user/email/{email}": {
+      }
+    },
+    "/project/user/${email}": {
+      "get": {
+        "tags": ["Project"],
+        "summary": "Get project with given user email",
         "parameters": [
           {
             "name": "email",
             "in": "path",
-            "required": true,
-            "description": "Email of user that we want to find",
-            "type": "string"
+            "description": "Email of an user inside the project",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
           }
         ],
-        "get": {
-          "tags": [
-            "User"
-          ],
-          "summary": "Get user with given email",
-          "responses": {
-            "200": {
-              "description": "User is found",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Project is return",
+            "schema": {
+              "$ref": "#/definitions/Project"
             }
           }
         }
-      },
-      "/user/group/{groupId}": {
+      }
+    },
+    "/project/group": {
+      "post": {
+        "tags": ["Project"],
+        "summary": "Add a group to project",
+        "description": "Add a group to project",
         "parameters": [
           {
-            "name": "groupId",
-            "in": "path",
-            "required": true,
-            "description": "ID of group that we want to get all User",
-            "type": "string"
-          }
-        ],
-        "get": {
-          "tags": [
-            "User"
-          ],
-          "summary": "Get Users within a group with groupId",
-          "responses": {
-            "200": {
-              "description": "List of User in group is returned",
-              "schema": {
-                "$ref": "#/definitions/UserList"
-              }
+            "name": "group",
+            "in": "body",
+            "description": "Group name",
+            "schema": {
+              "$ref": "#/definitions/AddGroupToProject"
             }
-          }
-        }
-      },
-      "/user/project/{projectId}": {
-        "parameters": [
+          },
           {
             "name": "projectId",
-            "in": "path",
-            "required": true,
-            "description": "ID of project that we want to get all User",
-            "type": "string"
+            "in": "body",
+            "description": "Project ID",
+            "schema": {
+              "$ref": "#/definitions/AddGroupToProject"
+            }
           }
         ],
-        "get": {
-          "tags": [
-            "User"
-          ],
-          "summary": "Get Users within a project with projectId",
-          "responses": {
-            "200": {
-              "description": "List of User in project is returned",
-              "schema": {
-                "$ref": "#/definitions/UserList"
-              }
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Group added to Project",
+            "schema": {
+              "$ref": "#/definitions/PostResponseSuccess"
             }
           }
         }
-      },
-      "/group": {
-        "post": {
-          "tags": [
-            "Group"
-          ],        
-          "description": "Create new group",
-          "summary": "Create new group",
-          "parameters": [
-            {
-              "name": "group",
-              "in": "body",
-              "description": "Group Schema properties",
-              "schema": {
-                "$ref": "#/definitions/Group"
-              }
+      }
+    },
+    "/project/del-user": {
+      "delete": {
+        "tags": ["Project"],
+        "summary": "Delete an user from project",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "ID of user inside the project",
+            "schema": {
+              "$ref": "#/definitions/User"
             }
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "201": {
-              "description": "New group is created",
-              "schema": {
-                "$ref": "#/definitions/Group"
-              }
+          },
+          {
+            "name": "project",
+            "in": "body",
+            "description": "ID of project that user is leaving",
+            "schema": {
+              "$ref": "#/definitions/User"
             }
           }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Project is return",
+            "schema": {
+              "$ref": "#/definitions/Project"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "required": ["_id"],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "default": "string ObjectId",
+          "uniqueItems": true
         },
-        "get": {
-          "tags": [
-            "Group"
-          ],
-          "summary": "Get all groups",
-          "description": "Get all groups",
-          "responses": {
-            "200": {
-              "description": "OK",
-              "schema": {
-                "$ref": "#/definitions/Group"
-              }
-            }
-          }
+        "email": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "username": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "created": {
+          "type": "integer",
+          "default": "integer UNIX Timestamp"
         }
-      }, 
-      "/group/{groupId}": {
-        "delete": {
-          "summary": "Delete group with given ID",
-          "tags": [
-            "Group"
-          ],
-          "responses": {
-            "200": {
-              "description": "Group is deleted",
-              "schema": {
-                "$ref": "#/definitions/DeleteResponseSuccess"
-              }
-            },
-            "404": {
-              "description": "Group is NOT deleted",
-              "schema": {
-                "$ref": "#/definitions/DeleteResponseFailed"
-              }
-            }
-          }
+      }
+    },
+    "Project": {
+      "required": ["_id"],
+      "properties": {
+        "_id": {
+          "type": "ObjectId",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
         }
-      },
-      "/group/add-user": {
-        "post": {
-          "tags": [
-            "Group"
-          ],
-          "summary": "Add user to group with userId",
-          "description": "Add user to group with userId",
-          "parameters": [
-            {
-              "name": "group",
-              "in": "body",
-              "description": "Group Schema properties",
-              "schema": {
-                "$ref": "#/definitions/GroupUserBodySchema"
-              }
-            }
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "201": {
-              "description": "User is added to Group",
-              "schema": {
-                "$ref": "#/definitions/PostResponseSuccess"
-              }
-            }
-          }
+      }
+    },
+    "Group": {
+      "required": ["_id"],
+      "properties": {
+        "_id": {
+          "type": "ObjectId",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "created": {
+          "type": "UNIX timestamp"
+        },
+        "authorization": {
+          "type": "Array"
         }
-      },
-      "/group/user/${userId}": {
-        "get": {
-          "tags": [
-            "Group"
-          ],
-          "summary": "Get groups that user is in with given userId",
-          "description": "Get groups that user is in with given userId",
-          "responses": {
-            "200": {
-              "description": "OK",
-              "schema": {
-                "$ref": "#/definitions/Group"
-              }
-            }
-          }
-        }
-      }, 
-      "/group/user/set-role": {
-        "get": {
-          "tags": [
-            "Group"
-          ],
-          "summary": "Set new role to user",
-          "description": "Set new role to user",
-          "parameters": [
-            {
-              "name": "email",
-              "in": "body",
-              "description": "Email of user that we want to update role upon",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "OK",
-              "schema": {
-                "$ref": "#/definitions/Group"
-              }
-            }
-          }
-        }
-      }, 
-      "/group/del-user": {
-        "delete": {
-          "tags": [
-            "Group"
-          ],
-          "summary": "Remove a member from group",
-          "description": "Remove a member from group",
-          "parameters": [
-            {
-              "name": "userId",
-              "in": "body",
-              "description": "ID of user that we want to remove from group",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "OK",
-              "schema": {
-                "$ref": "#/definitions/Group"
-              }
-            }
-          }
-        }
-      },
-      "/project": {
-        "get": {
-          "tags": [
-            "Project"
-          ],
-          "summary": "Get all projects",
-          "responses": {
-            "200": {
-              "description": "OK",
-              "schema": {
-                "$ref": "#/definitions/Project"
-              }
-            }
-          }
-        }
-      },
-      "/project/${projectId}": {
-        "get": {
-          "tags": [
-            "Project"
-          ],
-          "summary": "Get project with given ID",
-          "responses": {
-            "200": {
-              "description": "Project is return",
-              "schema": {
-                "$ref": "#/definitions/Project"
-              }
-            }
-          }
-        }
-      }, 
-      "/project/user/${userId}": {
-        "get": {
-          "tags": [
-            "Project"
-          ],
-          "summary": "Get project with given user ID",
-          "parameters": [
-            {
-              "name": "userId",
-              "in": "path",
-              "description": "ID of user inside the project",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "Project is return",
-              "schema": {
-                "$ref": "#/definitions/Project"
-              }
-            }
-          }
-        }
-      }, 
-      "/project/user/${email}": {
-        "get": {
-          "tags": [
-            "Project"
-          ],
-          "summary": "Get project with given user email",
-          "parameters": [
-            {
-              "name": "email",
-              "in": "path",
-              "description": "Email of an user inside the project",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "Project is return",
-              "schema": {
-                "$ref": "#/definitions/Project"
-              }
-            }
-          }
-        }
-      }, 
-      "/project/group": {
-        "post": {
-          "tags": ["Project"],
-          "summary": "Add a group to project",
-          "description": "Add a group to project",
-          "parameters": [
-            {
-              "name": "group",
-              "in": "body",
-              "description": "Group name",
-              "schema": {
-                "$ref": "#/definitions/AddGroupToProject"
-              }
-            },
-            {
-              "name": "projectId",
-              "in": "body",
-              "description": "Project ID",
-              "schema": {
-                "$ref": "#/definitions/AddGroupToProject"
-              }
-            }
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "Group added to Project",
-              "schema": {
-                "$ref": "#/definitions/PostResponseSuccess"
-              }
-            }
-          }
-        }
-      },
-      "/project/del-user": {
-        "delete": {
-          "tags": [
-            "Project"
-          ],
-          "summary": "Delete an user from project",
-          "parameters": [
-            {
-              "name": "user",
-              "in": "body",
-              "description": "ID of user inside the project",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            },
-            {
-              "name": "project",
-              "in": "body",
-              "description": "ID of project that user is leaving",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "Project is return",
-              "schema": {
-                "$ref": "#/definitions/Project"
+      }
+    },
+    "UserList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "object",
+            "properties": {
+              "_id": {
+                "type": "string",
+                "default": "string ObjectId",
+                "uniqueItems": true
+              },
+              "email": {
+                "type": "string",
+                "uniqueItems": true
+              },
+              "username": {
+                "type": "string",
+                "uniqueItems": true
+              },
+              "last_name": {
+                "type": "string"
+              },
+              "first_name": {
+                "type": "string"
+              },
+              "created": {
+                "type": "integer",
+                "default": "integer UNIX Timestamp"
               }
             }
           }
         }
       }
     },
-    "definitions": {
-      "User": {
-        "required": [
-          "_id"
-        ],
-        "properties": {
-          "_id": {
-            "type": "string",
-            "default": "string ObjectId",
-            "uniqueItems": true
-          },
-          "email": {
-            "type": "string",
-            "uniqueItems": true
-          },
-          "username": {
-            "type": "string",
-            "uniqueItems": true
-          },
-          "last_name": {
-            "type": "string"
-          },
-          "first_name": {
-            "type": "string"
-          },
-          "created": {
-            "type": "integer",
-            "default": "integer UNIX Timestamp"
-          }
+    "AddGroupToProject": {
+      "required": ["name", "project"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string",
+          "default": "${projectId}"
         }
-      },
-      "Project": {
-        "required":["_id"],
-        "properties": {
-          "_id": {
-            "type": "ObjectId",
-            "uniqueItems": true
-          },
-          "name": {
-            "type": "string"
-          }
-        }
-      }, 
-      "Group": {
-        "required": ["_id"],
-        "properties": {
-          "_id": {
-            "type": "ObjectId",
-            "uniqueItems": true
-          }, 
-          "name": {
-            "type": "string"
-          },
-          "created": {
-            "type": "UNIX timestamp"
-          }, 
-          "authorization": {
-            "type": "Array"
-          }
-        }
-      },
-      "UserList": {
-        "type": "array",
-        "items": {
+      }
+    },
+    "DeleteResponseSuccess": {
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "default": true
+        },
+        "data": {
           "type": "object",
           "properties": {
-            "user": {
+            "acknowledged": {
+              "type": "boolean",
+              "default": true
+            },
+            "deleteCount": {
+              "type": "integer",
+              "default": 1
+            }
+          }
+        }
+      }
+    },
+    "DeleteResponseFailed": {
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "default": true
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "stringValue": {
+              "type": "string",
+              "default": "\"${groupId}\""
+            },
+            "valueType": {
+              "type": "string",
+              "default": "string"
+            },
+            "kind": {
+              "type": "string",
+              "default": "ObjectId"
+            },
+            "value": {
+              "type": "string",
+              "default": "${groupId}"
+            },
+            "path": {
+              "type": "string",
+              "default": "field"
+            },
+            "reason": {
               "type": "object",
-              "properties": {
-                "_id": {
-                  "type": "string",
-                  "default": "string ObjectId",
-                  "uniqueItems": true
-                },
-                "email": {
-                  "type": "string",
-                  "uniqueItems": true
-                },
-                "username": {
-                  "type": "string",
-                  "uniqueItems": true
-                },
-                "last_name": {
-                  "type": "string"
-                },
-                "first_name": {
-                  "type": "string"
-                },
-                "created": {
-                  "type": "integer",
-                  "default": "integer UNIX Timestamp"
-                }
-              }
+              "default": "{}"
+            },
+            "name": {
+              "type": "string",
+              "default": "CastError"
+            },
+            "message": {
+              "type": "string",
+              "default": "Cast to ObjectId failed for value \"${groupId}\" (type string) at path \"_id\" for model \"groups\""
             }
           }
         }
-      },
-      "AddGroupToProject": {
-        "required": ["name", "project"],
-        "properties": {
-          "name": {
-            "type": "string"
-          }, 
-          "project": {
-            "type": "string",
-            "default": "${projectId}"
-          }
+      }
+    },
+    "GroupUserBodySchema": {
+      "required": ["group", "user"],
+      "properties": {
+        "group": {
+          "type": "string",
+          "default": "${groupId}"
+        },
+        "user": {
+          "type": "string",
+          "default": "${userId}"
         }
-      },
-      "DeleteResponseSuccess": {
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "default": true
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "acknowledged": {
-                "type": "boolean",
-                "default": true
-              },
-              "deleteCount": {
-                "type": "integer",
-                "default": 1
-              }
-            }
-          }
-        }
-      },
-      "DeleteResponseFailed": {
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "default": true
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "stringValue": {
-                "type": "string",
-                "default": "\"${groupId}\""
-              },
-              "valueType": {
-                "type": "string",
-                "default": "string"
-              },
-              "kind": {
-                "type": "string",
-                "default": "ObjectId"
-              },
-              "value": {
-                "type": "string",
-                "default": "${groupId}"
-              },
-              "path": {
-                "type": "string",
-                "default": "field"
-              },
-              "reason": {
-                "type": "object",
-                "default": "{}"
-              },
-              "name": {
-                "type": "string",
-                "default": "CastError"
-              },
-              "message": {
-                "type": "string",
-                "default": "Cast to ObjectId failed for value \"${groupId}\" (type string) at path \"_id\" for model \"groups\""
-              }
-            }
-          }
-        }
-      }, 
-      "GroupUserBodySchema": {
-        "required": ["group", "user"],
-        "properties": {
-          "group": {
-            "type": "string",
-            "default": "${groupId}"
-          },
-          "user": {
-            "type": "string",
-            "default": "${userId}"
-          }
-        }
-      }, 
-      "PostResponseSuccess": {
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "default": true
-          },
-          "message": {
-            "type": "string"
-          }
+      }
+    },
+    "PostResponseSuccess": {
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "default": true
+        },
+        "message": {
+          "type": "string"
         }
       }
     }
   }
-  
+}

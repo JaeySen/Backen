@@ -1,84 +1,82 @@
-require("dotenv").config();
+require('dotenv').config();
 const nodemailer = require('nodemailer');
 // const mailjetTransport = require('nodemailer-mailjet-transport');
 //send the mail
 const sendMail = (email, msg) => {
-    let to = email;
-    let text = msg;
-    let subject = "Authentication Notice";
+  let to = email;
+  let text = msg;
+  let subject = 'Authentication Notice';
 
-    var transporter = nodemailer.createTransport({
-        // host: process.env.MAILTRAP_HOST,
-        // port: process.env.MAILTRAP_PORT,
-        // auth: {
-        //   user: process.env.MAILTRAP_USER,
-        //   pass: process.env.MAILTRAP_PASS
-        // }
-        host: process.env.ELASTIC_HOST,
-        port: process.env.ELASTIC_PORT,
-        auth: {
-          user: process.env.ELASTIC_USER,
-          pass: process.env.ELASTIC_PASS
-        }
-    })
+  var transporter = nodemailer.createTransport({
+    // host: process.env.MAILTRAP_HOST,
+    // port: process.env.MAILTRAP_PORT,
+    // auth: {
+    //   user: process.env.MAILTRAP_USER,
+    //   pass: process.env.MAILTRAP_PASS
+    // }
+    host: process.env.ELASTIC_HOST,
+    port: process.env.ELASTIC_PORT,
+    auth: {
+      user: process.env.ELASTIC_USER,
+      pass: process.env.ELASTIC_PASS,
+    },
+  });
 
-    var mailOptions = {
-        from : process.env.MAILTRAP_DOMAIN,
-        to : `${to}`,
-        subject : `${subject}`,
-        text : `${text}`
+  var mailOptions = {
+    from: process.env.MAILTRAP_DOMAIN,
+    to: `${to}`,
+    subject: `${subject}`,
+    text: `${text}`,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('mail sent');
+      flag = 0;
     }
-
-    transporter.sendMail(mailOptions,(error,info)=>{
-        if(error){
-            console.log(error);
-        }else{
-            console.log("mail sent");
-            flag = 0;
-        }
-    })
-}
-
+  });
+};
 
 //send the mail
-const sendMailTemplate = (email, msg, prefix = "login", postfix = "") => {
-    let to = email;
-    // let text = data;
-    // let subject = "Verification Mail";
+const sendMailTemplate = (email, msg, prefix = 'login', postfix = '') => {
+  let to = email;
+  // let text = data;
+  // let subject = "Verification Mail";
 
-    var transporter = nodemailer.createTransport({
-        host: process.env.BREVO_HOST,
-        port: process.env.BREVO_PORT,
-        auth: {
-          user: process.env.BREVO_USER,
-          pass: process.env.BREVO_PASS
-        }
-        // host: process.env.GOOGLE_HOST,
-        // port: process.env.GOOGLE_PORT,
-        // auth: {
-        //   user: process.env.GOOGLE_USER,
-        //   pass: process.env.GOOGLE_PASS
-        // }
-        // host: process.env.MS_HOST,
-        // port: process.env.MS_PORT,
-        // auth: {
-        //   user: process.env.MS_USER,
-        //   pass: process.env.MS_PASS
-        // }
-        // host: process.env.MAILJET_HOST,
-        // port: process.env.MAILJET_PORT,
-        // auth: {
-        //     apiKey: process.env.MAILJET_API_KEY,
-        //     apiSecret: process.env.AILJET_API_SECRET
-        // }
+  var transporter = nodemailer.createTransport({
+    host: process.env.BREVO_HOST,
+    port: process.env.BREVO_PORT,
+    auth: {
+      user: process.env.BREVO_USER,
+      pass: process.env.BREVO_PASS,
+    },
+    // host: process.env.GOOGLE_HOST,
+    // port: process.env.GOOGLE_PORT,
+    // auth: {
+    //   user: process.env.GOOGLE_USER,
+    //   pass: process.env.GOOGLE_PASS
+    // }
+    // host: process.env.MS_HOST,
+    // port: process.env.MS_PORT,
+    // auth: {
+    //   user: process.env.MS_USER,
+    //   pass: process.env.MS_PASS
+    // }
+    // host: process.env.MAILJET_HOST,
+    // port: process.env.MAILJET_PORT,
+    // auth: {
+    //     apiKey: process.env.MAILJET_API_KEY,
+    //     apiSecret: process.env.AILJET_API_SECRET
+    // }
+  });
 
-    })
-
-    var mailOptions = {
-        from :  process.env.DEV_TEST,
-        to : `${to}`,
-        subject : `${msg}`,
-        html : `<!DOCTYPE html>
+  var mailOptions = {
+    from: process.env.DEV_TEST,
+    to: `${to}`,
+    subject: `${msg}`,
+    html: `<!DOCTYPE html>
         <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
         <head>
             <meta charset="utf-8"> <!-- utf-8 works for most cases -->
@@ -497,20 +495,20 @@ const sendMailTemplate = (email, msg, prefix = "login", postfix = "") => {
             </div>
           </center>
         </body>
-        </html>`
-    }
+        </html>`,
+  };
 
-    transporter.sendMail(mailOptions,(error,info)=>{
-        if(error){
-            console.log(error);
-        }else{
-            console.log("mail with template sent");
-            flag = 0;
-        }
-    })
-}
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('mail with template sent');
+      flag = 0;
+    }
+  });
+};
 
 module.exports = {
-    sendMail,
-    sendMailTemplate
+  sendMail,
+  sendMailTemplate,
 };
