@@ -6,13 +6,12 @@ const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const auth = require('./routes/auth');
-// const employee = require('./routes/employee');
 const project = require('./routes/project');
 const user = require('./routes/user');
 const group = require('./routes/group');
 const organization = require('./routes/organization');
+const partner = require('./routes/partner');
 const connectMongoDB = require('./db/connection');
-const { getAllProjects } = require('./controller/project');
 const port = process.env.DEV_PORT || 5000;
 const app = express();
 
@@ -40,6 +39,7 @@ app.use('/api/v1/project', project);
 app.use('/api/v1/user', user);
 app.use('/api/v1/group', group);
 app.use('/api/v1/organization', organization);
+app.use('/api/v1/partners', partner);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(port, () => {
