@@ -11,6 +11,7 @@ const project = require('./routes/project');
 const user = require('./routes/user');
 const group = require('./routes/group');
 const organization = require('./routes/organization');
+const authorization = require('./routes/authorization');
 const connectMongoDB = require('./db/connection');
 const { getAllProjects } = require('./controller/project');
 const port = process.env.DEV_PORT || 5000;
@@ -42,6 +43,7 @@ app.use(express.json());
 
 app.use('/api/v1/auth', auth);
 // app.use('/employee',employee);
+app.use('/api/v1/authorization', authorization);
 app.use('/api/v1/project', project);
 app.use('/api/v1/user', user);
 app.use('/api/v1/group', group);
