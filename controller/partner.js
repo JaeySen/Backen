@@ -1,6 +1,7 @@
 // const Organization = require('../model/organization');
 // const OrganizationGroup = require('../model/organizations_groups');
 const Partner = require('../model/partner');
+const PartnerGroup = require('../model/partners_groups');
 // const User = require('../model/user');
 // const Project = require('../model/project');
 
@@ -38,7 +39,20 @@ const createPartner = (req, res) => {
     );
 }
 
+const getPartnerById = (partnerId) => {
+    return new Promise((resolve, reject) => {
+        PartnerGroup.findOne({ partner_id: partnerId })
+        .then((data) => {
+            resolve(data)
+        })
+        .catch((err) => {
+            reject(new Error('An error occured when fetching partner with id: '+ err))
+        })
+    })
+}
+
 module.exports = {
     getPartnersByOwnerId,
-    createPartner
+    createPartner,
+    getPartnerById
 }

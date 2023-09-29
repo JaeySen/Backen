@@ -5,6 +5,7 @@ const GroupUser = require('../model/groups_users');
 const jwt = require('jsonwebtoken');
 const { sendMailTemplate } = require('../middleware/send-mail');
 const { ObjectId } = require('mongoose');
+const { getPartnerById } = require('./partner');
 
 const getAllUsers = (req, res) => {
   User.find({})
@@ -417,6 +418,62 @@ const updateMemberRole = async (req, res) => {
   }
 };
 
+const addMemberToPartner = async (req, res) => {
+  let existedPartner = await getPartnerById(req.body.partner);
+  if (!existedPartner) return;
+
+  const invitees = JSON.parse(req.body.invitees);
+
+  const worker = [...new Array(invitees.length)];
+  const newMembers = [];
+  
+  await Promise.all(
+    worker.map(async (_, index) => {
+      // return new Promise(async (resolve, reject) => {
+      // })
+      let invitee;
+
+      const existedUser = await getUserByEmailPromise(invitees[index].email);
+
+      if (existedUser) {
+        // sendMailTemplate(invitees[index].email, 'DEMO-APS - You have been Invited as Partner !');
+        invitee = existedUser;
+      } else {
+        // sendMailTemplate(
+        //   invitees[index].email,
+        //   'DEMO-APS - You have been Invited as Partner !',
+        //   'register',
+        //   `?invitee=${invitees[index].email}`,
+        // );
+        await createUserPromise(invitees[index].email).then((user) => (invitee = user));
+      }
+      newMembers.push(invitee._id)
+    })
+  )
+  .then(() => {
+    existedPartner.users = [ ...existedPartner.users, ...newMembers];
+    existedPartner.save()
+    .then(() => {
+      res.status(202).json({
+        success: true,
+        message: 'Members added Successfully!'
+      });
+    })
+    .catch((err) => {
+      res.status(404).json({
+        success: false,
+        message: 'Members added Failed!'
+      });
+    })
+  })
+  .catch((err) => {
+    res.status(404).json({
+      success: false,
+      message: 'Promise all Failed' + err
+    });
+  });
+}
+
 module.exports = {
   getAllUsers,
   getUserById,
@@ -433,4 +490,5 @@ module.exports = {
   updateUserInfo,
   updateMemberRole,
   createUserProjectLink,
+  addMemberToPartner
 };
