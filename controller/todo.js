@@ -9,6 +9,7 @@ const getAllTodos = (req, res) => {
   const limit = req.params.limit || 10;
   Todo.find()
     .limit(limit)
+    .sort({ created_at: -1 })
     .then((resp) => {
       const status = resp.length > 0 ? 200 : 404;
       res.status(status).json({
@@ -32,6 +33,7 @@ const getAllTodos = (req, res) => {
 const getOneTodo = (req, res) => {
   const { id } = req.params;
   Todo.findById(id)
+    .populate({ path: 'assignees', select: '-passwordHash' })
     .then((todo) => {
       const status = todo ? 200 : 404;
       return res.status(status).json({
@@ -53,15 +55,17 @@ const getOneTodo = (req, res) => {
  * @param {Response} res
  */
 const addNewTodo = (req, res) => {
-  const { title, description, assigner, assignee, priority, deadline } = req.body;
+  const { title, description, assigner, assignees, priority, deadline, status, type } = req.body;
 
   const newTodo = new Todo({
     title,
     description,
     assigner,
-    assignee,
+    assignees,
     priority,
     deadline,
+    status,
+    type,
   });
 
   newTodo
