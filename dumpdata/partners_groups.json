@@ -1,0 +1,92 @@
+[
+  {
+    "_id": { "$oid": "6516321dfc13ae7b24fd544e" },
+    "name": "Jazzy",
+    "partner": { "$oid": "65162f84fc13ae7c63fd5430" },
+    "users": [{ "$oid": "65162e08fc13ae7bf5fd5412" }]
+  },
+  {
+    "_id": { "$oid": "6516321dfc13ae7b24fd5450" },
+    "name": "Oloo",
+    "partner": { "$oid": "65162f84fc13ae7c63fd5432" },
+    "users": [{ "$oid": "65162e08fc13ae7bf5fd5413" }]
+  },
+  {
+    "_id": { "$oid": "6516321dfc13ae7b24fd5452" },
+    "name": "Linkbuzz",
+    "partner": { "$oid": "65162f84fc13ae7c63fd5434" },
+    "users": [{ "$oid": "65162e08fc13ae7bf5fd5414" }]
+  },
+  {
+    "_id": { "$oid": "6516321dfc13ae7b24fd5454" },
+    "name": "Wikibox",
+    "partner": { "$oid": "65162f84fc13ae7c63fd5436" },
+    "users": [{ "$oid": "65162e08fc13ae7bf5fd5415" }]
+  },
+  {
+    "_id": { "$oid": "6516321dfc13ae7b24fd5456" },
+    "name": "Flashdog",
+    "partner": { "$oid": "65162f84fc13ae7c63fd5438" },
+    "users": [{ "$oid": "65162e08fc13ae7bf5fd5412" }, { "$oid": "65162e08fc13ae7bf5fd5413" }]
+  },
+  {
+    "_id": { "$oid": "6516321dfc13ae7b24fd5458" },
+    "name": "Mita",
+    "partner": { "$oid": "65162f84fc13ae7c63fd543a" },
+    "users": [{ "$oid": "65162e08fc13ae7bf5fd5416" }]
+  },
+  {
+    "_id": { "$oid": "6516321dfc13ae7b24fd545a" },
+    "name": "Lazz",
+    "partner": { "$oid": "65162f84fc13ae7c63fd543c" },
+    "users": [{ "$oid": "65162e08fc13ae7bf5fd5412" }]
+  },
+  {
+    "_id": { "$oid": "6516321dfc13ae7b24fd545c" },
+    "name": "Eamia",
+    "partner": { "$oid": "65162f84fc13ae7c63fd543e" },
+    "users": [{ "$oid": "65162e08fc13ae7bf5fd5417" }]
+  },
+  {
+    "_id": { "$oid": "6516321dfc13ae7b24fd545e" },
+    "name": "Twinte",
+    "partner": { "$oid": "65162f84fc13ae7c63fd5440" },
+    "users": [{ "$oid": "65162e08fc13ae7bf5fd5418" }]
+  },
+  {
+    "_id": { "$oid": "6516321dfc13ae7b24fd5460" },
+    "name": "Lazz",
+    "partner": { "$oid": "65162f84fc13ae7c63fd5442" },
+    "users": []
+  },
+  {
+    "_id": { "$oid": "6516321dfc13ae7b24fd5462" },
+    "name": "Tambee",
+    "partner": { "$oid": "65162f84fc13ae7c63fd5444" },
+    "users": [{ "$oid": "65162e08fc13ae7bf5fd5412" }]
+  },
+  {
+    "_id": { "$oid": "6516321dfc13ae7b24fd5464" },
+    "name": "Meevee",
+    "partner": { "$oid": "65162f84fc13ae7c63fd5446" },
+    "users": [{ "$oid": "65162e08fc13ae7bf5fd5413" }]
+  },
+  {
+    "_id": { "$oid": "6516321dfc13ae7b24fd5466" },
+    "name": "Trupe",
+    "partner": { "$oid": "65162f84fc13ae7c63fd5448" },
+    "users": []
+  },
+  {
+    "_id": { "$oid": "6516321dfc13ae7b24fd5468" },
+    "name": "Gabvine",
+    "partner": { "$oid": "65162f84fc13ae7c63fd544a" },
+    "users": []
+  },
+  {
+    "_id": { "$oid": "6516321dfc13ae7b24fd546a" },
+    "name": "Dabvine",
+    "partner": { "$oid": "65162f84fc13ae7c63fd544c" },
+    "users": [{ "$oid": "65162e08fc13ae7bf5fd541a" }]
+  }
+]
