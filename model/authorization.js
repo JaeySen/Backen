@@ -8,6 +8,10 @@ const authorizationSchema = new mongoose.Schema({
   },
 });
 
+/**
+ * @type {mongoose.Model}
+ */
+
 const Authorization = new mongoose.model('Authorization', authorizationSchema, 'authorizations');
 
 module.exports = Authorization;

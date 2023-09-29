@@ -3,12 +3,11 @@ const { Schema } = mongoose;
 
 const projectGroupSchema = new Schema(
   {
-    project: { type: Schema.Types.ObjectId, ref: 'projects', required: true },
-    // groupsList: [{ type: Schema.Types.ObjectId, ref: "groups", required: true }],
-    group: { type: Schema.Types.ObjectId, ref: 'groups', required: true },
-    role: String,
+    name: String,
+    project: { type: Schema.Types.ObjectId, ref: 'projects' },
+    group_pool: [{ type: Schema.Types.ObjectId, ref: 'partners_groups' }],
   },
   { versionKey: false },
 );
 
-module.exports = mongoose.model('projects_groups', projectGroupSchema);
+module.exports = mongoose.model('Projects_Groups', projectGroupSchema);

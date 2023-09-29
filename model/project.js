@@ -53,10 +53,11 @@ const projectSchema = new Schema({
   name: String,
   server_location: String,
   description: String,
-  created: String,
+  create_at: String,
   start_date: Number,
   end_date: Number,
-  admin: { type: Schema.Types.ObjectId, ref: 'users', required: true },
+  admin: { type: Schema.Types.ObjectId, ref: 'users' },
+  partner: { type: Schema.Types.ObjectId, ref: 'partners', required: true },
   authorizations: [{ type: Schema.Types.ObjectId, ref: 'authorizations' }],
 });
 

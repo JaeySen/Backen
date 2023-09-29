@@ -3,19 +3,15 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
   // _id: mongoose.Schema.Types.ObjectId,
   username: String,
-  firstName: String,
-  lastName: String,
+  first_name: String,
+  last_name: String,
+  avatar: String,
   email: String,
-  passwordHash: String,
-  created: Number,
+  phone: String,
+  password_hash: String,
+  create_at: String,
   role: String,
-  organization: String,
-  adminScope: String,
-  isAdmin: Boolean,
-  // role: { type: Schema.Types.ObjectId, ref: "roles" }
-  // phonecode : String,
-  // phone : String,
-  // country : String,
+  is_admin: Boolean,
 });
 
 const User = new mongoose.model('User', userSchema, 'users');
